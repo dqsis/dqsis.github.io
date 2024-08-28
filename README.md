@@ -1,4 +1,4 @@
-Hi! And welcome to my digital [home](dqsis.github.io/eadme.md). My name is Dimitrios.
+Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimitrios.
 
 I was born in Athens, Greece in 1979.
 
