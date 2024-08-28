@@ -1,4 +1,4 @@
-Hi! And welcome to my digital [home](readme.md). My name is Dimitrios.
+Hi! And welcome to my digital [home](readme). My name is Dimitrios.
 
 I was born in Athens, Greece in 1979.
 
