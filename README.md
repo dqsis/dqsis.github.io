@@ -26,4 +26,4 @@ I enjoy a variety of free-time activities, ranging from electric guitar to 3D pr
 
 I try to read [2 to 3 books per month](bookshelf.html). My favorite possession is my [Honda Monkey](https://photos.app.goo.gl/evcdJG2P9QxK2cpy6) which I bought in March 2022.
 
-![That's me!](dqsis.github.io/images/photo.jpg)
+![Example Image](images/photo.jpg)
