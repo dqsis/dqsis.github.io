@@ -1,2 +1,2 @@
 # dqsis.github.io
-Welcome to my digital home
+Hello world and welcome to my digital home
