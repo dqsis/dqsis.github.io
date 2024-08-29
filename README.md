@@ -2,6 +2,9 @@
 # Welcome 
 Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimitrios. I was born in Athens, Greece in 1979.
 
+## Table of Contents
+[About me](#About me)
+[Studies](#Studies)
 ## About me
 ### Studies 
 I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](http://fmysql.tu-graz.ac.at/~karl/verlagspdf/buch_kiousis.pdf).
