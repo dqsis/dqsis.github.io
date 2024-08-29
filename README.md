@@ -8,10 +8,10 @@ Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimi
     - [Work](#work)
     - [Personal information](#personal-information-and-interests)
 - [Contact me](#contact-me) 
+
 ## About me
 ### Studies 
 I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](http://fmysql.tu-graz.ac.at/~karl/verlagspdf/buch_kiousis.pdf).
-
 ### Work
 In 2008 I came to the west coast of Sweden and worked on designing [rocket](http://www.arianespace.com/vehicle/ariane-5/) and [jet](http://www.pratt-whitney.com/PurePowerPW1000G_Engine) engines to withstand thermo-mechanical fatigue.
 
@@ -24,7 +24,6 @@ Between August 2022 and January 2024 I worked as an Innovation Manager at the [R
 Since February 2024, I have been serving as Product Owner at [Glooko](https://glooko.com/), leading the Cloud Integrations team. I am thrilled to be working on a cutting-edge digital health platform that unifies data from many of the leading diabetes devices, delivering thus insights that improve personal and clinical decision support.
 
 Check my [LinkedIn profile](https://www.linkedin.com/in/kiousis/) for more information about my career.  
-
 ### Personal information and interests
 I have [a beautiful wife](https://twitter.com/kalliopierripi) and two incredible daughters.
 
