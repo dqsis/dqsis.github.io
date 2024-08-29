@@ -1,7 +1,7 @@
 
 # Welcome 
 Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimitrios. I was born in Athens, Greece in 1979.
-
+![Group Workout logo](images/groupworkout_icon.png)
 ## Table of Contents
 - [About me](#about-me)
     - [Studies](#studies)
