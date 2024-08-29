@@ -34,10 +34,6 @@ I try to read [2 to 3 books per month](https://www.goodreads.com/review/list/588
 ![Dimitrios Kiousis profile photo 2022](images/photo.jpg)
 
 ## Contact me
-Do you have a question, need my help or just want to say hi?
-
-| Platform | Link | 
-| LinkedIn | [Your LinkedIn Profile](https://www.linkedin.com/in/dqsis) | 
-| --------- | -----------------------| 
-| Instagram | [Your Instagram Profile](https://www.instagram.com/dqsis) |
-
+Do you have a question, need my help or just want to say hi? Reach out through one of my social media profiles:
+- [Linkedin](https://www.linkedin.com/in/kiousis/)
+- [Instagram ](https://www.instagram.com/dqsis)
