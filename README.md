@@ -3,8 +3,11 @@
 Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimitrios. I was born in Athens, Greece in 1979.
 
 ## Table of Contents
-[About me](#About me)
-[Studies](#Studies)
+- [About me](#about-me)
+    - [Studies](#studies)
+    - [Work](#work)
+    - [Personal information](#personal-information-and-interests)
+- [Contact me](#contact-me) 
 ## About me
 ### Studies 
 I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](http://fmysql.tu-graz.ac.at/~karl/verlagspdf/buch_kiousis.pdf).
@@ -30,3 +33,6 @@ I enjoy a variety of free-time activities, ranging from electric guitar to 3D pr
 I try to read [2 to 3 books per month](https://www.goodreads.com/review/list/58873133-dimitrios-kiousis?shelf=read). My favorite possession is my [Honda Monkey](https://photos.app.goo.gl/evcdJG2P9QxK2cpy6) which I bought in March 2022.
 
 ![Dimitrios Kiousis profile photo 2022](images/photo.jpg)
+
+## Contact me
+Do you have a question, need my help or just want to say hi?
