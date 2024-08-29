@@ -6,7 +6,7 @@ Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimi
 ### Studies 
 I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](http://fmysql.tu-graz.ac.at/~karl/verlagspdf/buch_kiousis.pdf).
 
-### Career
+### Work
 In 2008 I came to the west coast of Sweden and worked on designing [rocket](http://www.arianespace.com/vehicle/ariane-5/) and [jet](http://www.pratt-whitney.com/PurePowerPW1000G_Engine) engines to withstand thermo-mechanical fatigue.
 
 In 2013 I moved to Gothenburg, where, for 3.5 years, I worked as a Consultant Manager in the field of Virtual Product Development. During that time I had the possibility to experience several highly technological branches ranging from Automotive to Packaging.  
