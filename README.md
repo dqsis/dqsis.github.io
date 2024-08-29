@@ -14,7 +14,7 @@ Hi! And welcome to my digital [home](dqsis.github.io/readme.md). My name is Dimi
 
 ## About me
 ### Studies 
-I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](http://fmysql.tu-graz.ac.at/~karl/verlagspdf/buch_kiousis.pdf).
+I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](https://diglib.tugraz.at/biomechanical-and-computational-modeling-of-atherosclerotic-arteries-2008-4).
 ### Work
 In 2008 I came to the west coast of Sweden and worked on designing [rocket](http://www.arianespace.com/vehicle/ariane-5/) and [jet](http://www.pratt-whitney.com/PurePowerPW1000G_Engine) engines to withstand thermo-mechanical fatigue.
 
