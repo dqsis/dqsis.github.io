@@ -17,6 +17,7 @@
     - Focus: Deltoids and core stabilization
 5. **Hanging Leg Raise or Plank** (Core)
     - Focus: Lower abs or core stabilization
+
 #### Circuit 2 (20 minutes)
 1. **Deadlifts** (Hamstrings/Glutes/Lower Back)
     - Focus: Posterior chain and lower back
