@@ -33,6 +33,8 @@
 - **3 minutes of light cardio** (walking or cycling)
 - **2 minutes of static stretching** (focusing on major muscle groups: legs, chest, back, shoulders, and arms)
 
+---
+
 ## Whole Body - Week
 
 ### Day 1: Full Body Focus (Push-Pull Strength)
