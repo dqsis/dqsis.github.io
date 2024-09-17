@@ -1,6 +1,6 @@
 
 # Welcome 
-Hi! And welcome to my digital [home](dqsis.com). My name is Dimitrios. I was born in Athens, Greece in 1979.
+Hi! And welcome to my digital [home](http://dqsis.com). My name is Dimitrios. I was born in Athens, Greece in 1979.
 
 ![Group Workout logo](images/groupworkout_icon.png)
 
