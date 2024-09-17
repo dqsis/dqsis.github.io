@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - [[#Gym workouts|Gym workouts]]
 	- [[#Gym workouts#Whole Body - Day|Whole Body - Day]]
 		- [[#Whole Body - Day#Warm-Up (10 minutes)|Warm-Up (10 minutes)]]
@@ -12,6 +13,8 @@
 		- [[#Whole Body - Week#Day 4: Full Body (Explosive Movements)|Day 4: Full Body (Explosive Movements)]]
 		- [[#Whole Body - Week#Day 5: Full Body (Hypertrophy Focus)|Day 5: Full Body (Hypertrophy Focus)]]
 
+=======
+>>>>>>> 14a74909f05eae38928332246566c089b9d26555
 # Gym workouts 
 
 ## Whole Body - Day 
