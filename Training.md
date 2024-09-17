@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-- [[#Gym workouts|Gym workouts]]
-	- [[#Gym workouts#Whole Body - Day|Whole Body - Day]]
-		- [[#Whole Body - Day#Warm-Up (10 minutes)|Warm-Up (10 minutes)]]
-		- [[#Whole Body - Day#Workout (40 minutes)|Workout (40 minutes)]]
-			- [[#Workout (40 minutes)#Circuit 1 (20 minutes)|Circuit 1 (20 minutes)]]
-			- [[#Workout (40 minutes)#Circuit 2 (20 minutes)|Circuit 2 (20 minutes)]]
-		- [[#Whole Body - Day#Cool-Down (5 minutes)|Cool-Down (5 minutes)]]
-	- [[#Gym workouts#Whole Body - Week|Whole Body - Week]]
-		- [[#Whole Body - Week#Day 1: Full Body Focus (Push-Pull Strength)|Day 1: Full Body Focus (Push-Pull Strength)]]
-		- [[#Whole Body - Week#Day 2: Full Body (Lower Body Emphasis)|Day 2: Full Body (Lower Body Emphasis)]]
-		- [[#Whole Body - Week#Day 3: Full Body (Push-Pull)|Day 3: Full Body (Push-Pull)]]
-		- [[#Whole Body - Week#Day 4: Full Body (Explosive Movements)|Day 4: Full Body (Explosive Movements)]]
-		- [[#Whole Body - Week#Day 5: Full Body (Hypertrophy Focus)|Day 5: Full Body (Hypertrophy Focus)]]
 
 # Gym workouts 
 
