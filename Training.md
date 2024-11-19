@@ -5,6 +5,9 @@
 
 ### Workout - Day 1
 
+
+
+
 - **Barbell Back Squat (or Front Squat)**: 4 sets of 4-6 reps
 - **Romanian Deadlift (Barbell or Dumbbell)**: 4 sets of 6-8 reps
 - **Bulgarian Split Squat (Dumbbells)**: 3 sets of 8 reps per leg
@@ -13,11 +16,13 @@
 
 ### Workout - Day 2
 
-- **Conventional Deadlift (Barbell)**: 4 sets of 4-6 reps [30+]
-- **Pull-ups or Weighted Pull-ups**: 4 sets of 6-8 reps [body]
-- **Barbell Row (or Dumbbell Row)**: 3 sets of 6-8 reps [20+]
-- **Single-Arm Dumbbell Row**: 3 sets of 8-10 reps per arm [15]
-- **Core - Weighted Russian Twists (Dumbbell)**: 3 sets of 20 twists (10 per side) [8]
+| Exercise                        | Sets & reps                 | Current PR           |
+| ------------------------------- | --------------------------- | -------------------- |
+| Conventional Deadlift (Barbell) | 4 sets of 4-6 reps          | 30 plus bar          |
+| Pull-ups                        | 4 sets of 6-8 reps          | Body weight (3 reps) |
+| Barbell Row                     | 3 sets of 6-8 reps          | 20 plus bar          |
+| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | 12.5                 |
+| Core - Weighted Russian Twists  | 3 sets of 20 twists         | 8                    |
 
 ### Workout - Day 3
 
