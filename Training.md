@@ -3,7 +3,7 @@
 
 ## Strength training 
 
-### Workout - Day 1
+### Workout - Day 1 TEST
 
 | Exercise                    | Sets & reps          | Current PR  |
 | --------------------------- | -------------------- | ----------- |
