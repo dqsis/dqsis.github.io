@@ -30,7 +30,7 @@ Check my [LinkedIn profile](https://www.linkedin.com/in/kiousis/) for more infor
 ### Personal information and interests
 I have [a beautiful wife](https://twitter.com/kalliopierripi) and two incredible daughters.
 
-I enjoy a variety of free-time activities, ranging from electric guitar to 3D printing. However, I spend most of my free time practicing endurance sports. I started swimming when I was six, and have not stopped since then. But I am also a cyclist and a runner. In 2014 I rode Mont Ventoux, in 2015 Passo dello Stelvio, and in 2022 Alpe d’Huez. In 2021 I ran for the first time the [Athens Marathon](https://www.athensauthenticmarathon.gr/site/index.php/en/) in 4hrs33min, which I did again (together with my wife this time) in 2023.
+I enjoy a variety of free-time activities, ranging from electric guitar to 3D printing. However, I spend most of my free time practicing endurance sports. I started swimming when I was six, and have not stopped since then. But I am also a cyclist and a runner. In 2014 I rode Mont Ventoux, in 2015 Passo dello Stelvio, and in 2022 Alpe d’Huez. In 2021 I ran for the first time the [Athens Marathon](https://www.athensauthenticmarathon.gr/site/index.php/en/) in 4hrs33min, which I did again (together with my wife this time) in 2023. Recently I also discovered [[Training | strength training]], which I try to practice 3 times/week. 
 
 I try to read [2 to 3 books per month](https://www.goodreads.com/review/list/58873133-dimitrios-kiousis?shelf=read). My favorite possession is my [Honda Monkey](https://photos.app.goo.gl/evcdJG2P9QxK2cpy6) which I bought in March 2022.
 
