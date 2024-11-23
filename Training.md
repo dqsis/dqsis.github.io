@@ -5,6 +5,7 @@
 
 ### Workout - Day 1 
 
+<<<<<<< Updated upstream
 | Exercise                    | Sets & reps          | Current PR  |
 | --------------------------- | -------------------- | ----------- |
 | Barbell Back Squat          | 4 sets of 4-6 reps   | 20 plus bar |
@@ -12,6 +13,15 @@
 | Bulgarian Split Squat       | 3 sets of 8 reps     |             |
 | Walking Lunges (Dumbbells)  | sets of 10-12 steps  |             |
 | Core - Weighted Side Planks | 3 sets of 30 seconds |             |
+=======
+| Exercise                    | Sets & reps          | Current PR     |
+| --------------------------- | -------------------- | -------------- |
+| Barbell Back Squat          | 4 sets of 4-6 reps   | 20 plus bar 30 |
+| Romanian Deadlift           | 4 sets of 6-8 reps   | 30             |
+| Bulgarian Split Squat       | 3 sets of 8 reps     | 14             |
+| Walking Lunges (Dumbbells)  | sets of 10-12 steps  |                |
+| Core - Weighted Side Planks | 3 sets of 30 seconds |                |
+>>>>>>> Stashed changes
 
 ### Workout - Day 2
 
@@ -25,6 +35,7 @@
 
 ### Workout - Day 3
 
+<<<<<<< Updated upstream
 | Exercise                              | Sets & reps          | Current PR |
 | ------------------------------------- | -------------------- | ---------- |
 | Flat Barbell Bench Press              | 4 sets of 4-6 reps   |            |
@@ -32,4 +43,13 @@
 | Incline Dumbbell Bench Press          | 3 sets of 8 reps     |            |
 | Dumbbell Floor Press                  | 3 sets of 10 reps    |            |
 | Core - Weighted Plank                 | 3 sets of 45 seconds |            |
+=======
+| Exercise                              | Sets & reps          | Current PR  |
+| ------------------------------------- | -------------------- | ----------- |
+| Flat Barbell Bench Press              | 4 sets of 4-6 reps   | 30 plus bar |
+| Overhead Press (Barbell or Dumbbells) | 4 sets of 4-6 reps   | 10 plus bar |
+| Incline Dumbbell Bench Press          | 3 sets of 8 reps     | 12-14       |
+| Dumbbell Floor Press                  | 3 sets of 10 reps    | 4-5         |
+| Core - Weighted Plank                 | 3 sets of 45 seconds |             |
+>>>>>>> Stashed changes
 
