@@ -15,13 +15,13 @@
 
 ### Workout - Day 2
 
-| Exercise                        | Sets & reps                 | Current PR           |
-| ------------------------------- | --------------------------- | -------------------- |
-| Conventional Deadlift (Barbell) | 4 sets of 4-6 reps          | 30 plus bar          |
-| Pull-ups                        | 4 sets of 6-8 reps          | Body weight (3 reps) |
-| Barbell Row                     | 3 sets of 6-8 reps          | 20 plus bar          |
-| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | 12.5                 |
-| Core - Weighted Russian Twists  | 3 sets of 20 twists         | 8                    |
+| Exercise                        | Sets & reps                 | Current PR                 |
+| ------------------------------- | --------------------------- | -------------------------- |
+| Conventional Deadlift (Barbell) | 4 sets of 4-6 reps          | 30 plus bar                |
+| Pull-ups                        | 4 sets of 6-8 reps          | Body weight (~~3~~ 4 reps) |
+| Barbell Row                     | 3 sets of 6-8 reps          | 20 plus bar                |
+| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | ~~20~~ 17.5                |
+| Core - Weighted Russian Twists  | 3 sets of 20 twists         | 8                          |
 ### Workout - Day 3
 
 | Exercise                              | Sets & reps          | Current PR  |
