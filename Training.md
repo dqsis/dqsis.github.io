@@ -1,17 +1,16 @@
-
 # Gym workouts 
 
 ## Strength training 
 
 ### Workout - Day 1 
 
-| Exercise                    | Sets & reps          | Current PR         |
-| --------------------------- | -------------------- | ------------------ |
-| Barbell Back Squat          | 4 sets of 4-6 reps   | ~~20~~ 30 plus bar |
-| Romanian Deadlift           | 4 sets of 6-8 reps   | ~~20~~ 30 plus bar |
-| Bulgarian Split Squat       | 3 sets of 8 reps     | 14                 |
-| Walking Lunges (Dumbbells)  | sets of 10-12 steps  | 12                 |
-| Core - Weighted Side Planks | 3 sets of 30 seconds |                    |
+| Exercise                    | Sets & reps          | Current PR                |
+| --------------------------- | -------------------- | ------------------------- |
+| Barbell Back Squat          | 4 sets of 4-6 reps   | ~~20~~ ~~30~~ 35 plus bar |
+| Romanian Deadlift           | 4 sets of 6-8 reps   | ~~20~~ ~~30~~ 40 plus bar |
+| Bulgarian Split Squat       | 3 sets of 8 reps     | 14                        |
+| Walking Lunges (Dumbbells)  | sets of 10-12 steps  | 12                        |
+| Core - Weighted Side Planks | 3 sets of 30 seconds |                           |
 
 ### Workout - Day 2
 
@@ -20,7 +19,7 @@
 | Conventional Deadlift (Barbell) | 4 sets of 4-6 reps          | 30 plus bar                |
 | Pull-ups                        | 4 sets of 6-8 reps          | Body weight (~~3~~ 4 reps) |
 | Barbell Row                     | 3 sets of 6-8 reps          | 20 plus bar                |
-| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | ~~20~~ 17.5                |
+| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | ~~15~~ 17.5                |
 | Core - Weighted Russian Twists  | 3 sets of 20 twists         | 8                          |
 ### Workout - Day 3
 
