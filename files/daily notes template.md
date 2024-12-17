@@ -2,7 +2,6 @@
 This template uses the following Obsidian plugins: 
 - [Tasks](https://publish.obsidian.md/tasks/Introduction) 
 - [Templater](https://github.com/SilentVoid13/Templater)
-
 # Template 
 
 # Quote of the day
