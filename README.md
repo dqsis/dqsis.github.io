@@ -2,7 +2,7 @@
 # Welcome 
 Hi! And welcome to my digital [home](http://dqsis.com). My name is Dimitrios. 
 
-![Group Workout logo](images/groupworkout_icon.png)
+![Group Workout logo|300](images/groupworkout_icon.png)
 
 
 ## Table of Contents
