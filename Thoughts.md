@@ -1,3 +1,14 @@
+
+# Carpe diem 
+
+Original article by *Eric Barker* - Can be found [here](https://bakadesuyo.com/2024/12/carpe-diem/)
+
+This Is The Most Fun Way To Make Your Life Awesome
+- Live This *Day* As If It Were Your Last
+- Live This _Year_ As If It Were Your Last
+- Live This Day As If It Were Your *First*
+- Live This Day As If You Were Living It For The *Second* Time
+
 # Kobe’s essay when he ruptured his achilles
 
 This is such BS! All the training and sacrifice just flew out the window with one step that I've done millions of times! The frustration is unbearable. The anger is rage.
