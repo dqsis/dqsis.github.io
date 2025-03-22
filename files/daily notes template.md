@@ -5,7 +5,8 @@ This template uses the following Obsidian plugins:
 # Template 
 
 # Quote of the day
-<% tp.web.daily_quote() %>
+> [!quote] Self-complacency is fatal to progress.
+> — Margaret Sangster
 
 ---
 # Daily questions 🙋
