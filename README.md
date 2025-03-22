@@ -24,7 +24,11 @@ Directly afterwards (in January 2017), I joined Mentice where, for 5 years, me a
 
 Between August 2022 and January 2024 I worked as an Innovation Manager at the [Region of Västra Götaland](https://www.vgregion.se/ov/innovationsplattformen/) and at [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/). My primary focus was the collaboration between the public healthcare sector and the private industry sector. I also served as Innovation coach for a series of projects driven by clinical personnel within the region.
 
-Since February 2024, I have been serving as Product Owner at [Glooko](https://glooko.com/), leading the Cloud Integrations team. I am thrilled to be working on a cutting-edge digital health platform that unifies data from many of the leading diabetes devices, delivering thus insights that improve personal and clinical decision support.
+During 2024, I served as Product Owner at [Glooko](https://glooko.com/), leading the Cloud Integrations team. I was thrilled to work on a cutting-edge digital health platform that unifies data from many of the leading diabetes devices, delivering insights that improved personal and clinical decision support.
+
+After an incredible journey at [Glooko](https://www.linkedin.com/company/glooko/), in 2025 I began a new personal and professional chapter in Oslo, Norway. I joined [Omda](https://omda.com/) as Development Manager in the Woman & Child Business Area.  
+  
+I am thrilled to continue my journey in digital health and to drive healthcare innovation forward! The mission has always been the same: harnessing the power of technology to make healthcare more accessible, efficient, and impactful—right from the earliest moments of life.
 
 Check my [LinkedIn profile](https://www.linkedin.com/in/kiousis/) for more information about my career.  
 ### Personal information and interests
