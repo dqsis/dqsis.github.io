@@ -11,8 +11,8 @@ Hi! And welcome to my digital [home](http://dqsis.com). My name is Dimitrios.
     - [Work](#work)
     - [Personal information](#personal-information-and-interests)
 - [Contact me](#contact-me) 
-## About me
 
+## About me
 I have spent the past fifteen years working at the crossroads of healthcare and technology, helping teams design and build digital health solutions that truly make a difference for clinical professionals. I’m passionate about software development and enjoy using Scaled Agile principles to turn early innovative ideas into real, usable products.
 
 ### Studies 
