@@ -42,5 +42,6 @@ I try to read [2 to 3 books per month](https://www.goodreads.com/review/list/588
 
 ## Contact me
 Do you have a question, need my help or just want to say hi? Reach out through one of my social media profiles:
+- [Substack](https://substack.com/@dqsis)
 - [Linkedin](https://www.linkedin.com/in/kiousis/)
 - [Instagram ](https://www.instagram.com/dqsis)
