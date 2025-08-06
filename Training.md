@@ -1,34 +1,68 @@
-# Gym workouts 
+# 💪 Gym Workout Plan (3-Day Split)
 
-## Strength training 
+Each session:  
+- **Total time:** 40 minutes  
+- **Warm-up:** 5 min (rower, incline walk, or mobility flow)  
+- **Workout:** 30 min  
+- **Cool-down:** 5 min (stretch hips, back, shoulders)
 
-### Workout - Day 1 
+---
 
-| Exercise                    | Sets & reps          | Current PR                |
-| --------------------------- | -------------------- | ------------------------- |
-| Barbell Back Squat          | 4 sets of 4-6 reps   | ~~20~~ ~~30~~ 35 plus bar |
-| Romanian Deadlift           | 4 sets of 6-8 reps   | ~~20~~ ~~30~~ 40 plus bar |
-| Bulgarian Split Squat       | 3 sets of 8 reps     | 14                        |
-| Walking Lunges (Dumbbells)  | sets of 10-12 steps  | 12                        |
-| Core - Weighted Side Planks | 3 sets of 30 seconds |                           |
+## 🔴 Day A – Push Focus (Chest, Shoulders, Triceps)
 
-### Workout - Day 2
+**Superset A**  
+- Barbell Back Squat – 3 sets x 6–8 reps  
+- Push-Ups or Bench Press – 3 sets x 8–10 reps  
+  > Rest ~90s after each superset
 
-| Exercise                        | Sets & reps                 | Current PR                 |
-| ------------------------------- | --------------------------- | -------------------------- |
-| Conventional Deadlift (Barbell) | 4 sets of 4-6 reps          | 30 plus bar                |
-| Pull-ups                        | 4 sets of 6-8 reps          | Body weight (~~3~~ 4 reps) |
-| Barbell Row                     | 3 sets of 6-8 reps          | 20 plus bar                |
-| Single-Arm Dumbbell Row         | 3 sets of 8-10 reps per arm | ~~15~~ 17.5                |
-| Core - Weighted Russian Twists  | 3 sets of 20 twists         | 8                          |
-### Workout - Day 3
+**Superset B**  
+- Dumbbell Overhead Press – 3 sets x 8–10 reps  
+- Cable Tricep Pushdown – 3 sets x 10–12 reps
 
-| Exercise                              | Sets & reps          | Current PR  |
-| ------------------------------------- | -------------------- | ----------- |
-| Flat Barbell Bench Press              | 4 sets of 4-6 reps   | 30 plus bar |
-| Overhead Press (Barbell or Dumbbells) | 4 sets of 4-6 reps   | 10 plus bar |
-| Incline Dumbbell Bench Press          | 3 sets of 8 reps     | 12-14       |
-| ~~Dumbbell Floor Press~~ Push-ups     | 3 sets of 10 reps    | 4-5         |
-| Core - Weighted Plank                 | 3 sets of 45 seconds |             |
+**Finisher**  
+- Plank Hold – 2–3 sets x 45–60 sec  
+  > Variations: shoulder taps, reach-throughs, weight
 
+---
+
+## 🔵 Day B – Pull Focus (Back, Biceps, Rear Delts)
+
+**Superset A**  
+- Romanian Deadlift (Dumbbells or Barbell) – 3 sets x 8–10 reps  
+- Inverted Row or Pull-Up – 3 sets x 8–10 reps  
+  > Use assistance if needed. Emphasize control.
+
+**Superset B**  
+- One-Arm Dumbbell Row (Bench-Supported) – 3 sets x 10–12 reps  
+- Dumbbell Curl – 3 sets x 10–12 reps  
+  > Focus on slow eccentric
+
+**Finisher**  
+- Hanging Knee Raise – 2–3 sets x 12–15 reps  
+  > Or use weighted crunch variation
+
+---
+
+## 🟢 Day C – Legs & Core
+
+**Main Lift**  
+- Trap Bar Deadlift – 4 sets x 5–6 reps  
+  > Use squat rack if needed for setup
+
+**Superset B**  
+- Bulgarian Split Squat (with Dumbbells) – 3 sets x 8 reps/leg  
+- Dumbbell Stiff-Leg Deadlift – 3 sets x 10–12 reps  
+  > Controlled stretch and tempo
+
+**Core Finisher**  
+- Cable or DB Woodchopper – 3 sets x 10–15 reps/side  
+- Farmer’s Carry (DBs or Trap Bar) – 2 sets x 30–40 meters
+
+---
+
+## ✅ Notes
+- Superset where possible to save time and maintain intensity  
+- Stick to clean form and progress weekly by adding weight or reps  
+- Each workout should feel intense but controlled — avoid burnout  
+- Rest days: cardio or mobility (running, swimming, cycling)
 
