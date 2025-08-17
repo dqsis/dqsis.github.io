@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Welcome to the Cone of Uncertainty</title>
+<meta name="description" content="Answer six questions to see where your initiative sits in the Cone of Uncertainty and get an actionable recommendation." />
+<style>
+  :root{
+    --bg:#ffffff;
+    --card:#f7f7f8;
+    --ink:#111118;
+    --muted:#6b7280;
+    --accent:#2563eb;
+    --accent-weak:#dbeafe;
+    --good:#16a34a;
+    --bad:#dc2626;
+    --shadow:0 6px 24px rgba(17,17,24,.08), 0 2px 6px rgba(17,17,24,.06);
+    --radius:16px;
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+  .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
+  header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:20px}
+  h1{font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); margin:0}
+  .subtitle{color:var(--muted);font-size:1.05rem;font-weight:700}
+  .layout{display:grid;grid-template-columns: 420px 1fr;gap:20px}
+  @media (max-width: 980px){.layout{grid-template-columns:1fr}}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .panel{padding:18px}
+  .fieldset{display:grid;gap:16px}
+  .row{display:grid;gap:8px}
+  .row label{display:flex;justify-content:space-between;gap:8px;font-weight:600}
+  .radios{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:4px}
+  .radios label{display:flex;align-items:center;gap:6px;font-weight:600}
+  .hint{color:var(--muted);font-size:0.85rem}
+  .value{color:var(--accent);font-variant-numeric: tabular-nums}
+  input[type=range]{width:100%}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  button{appearance:none;border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:white;font-weight:700;cursor:pointer}
+  button.secondary{background:#1111180d;color:var(--ink)}
+  button:focus-visible{outline:2px solid var(--accent)}
+  #share{margin-left:auto}
+  .chart{position:relative}
+  .legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:10px 18px}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .kpi{display:flex;gap:16px;flex-wrap:wrap}
+  .kpi .pill{background:var(--accent-weak);color:#1e40af;border-radius:999px;padding:6px 10px;font-weight:600}
+  .rec{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;box-shadow:var(--shadow);padding:16px 18px;margin:12px 18px 18px}
+  .rec strong{display:block;margin-bottom:6px}
+  .nudge{margin-top:8px;color:#6b7280;font-style:italic;padding:0;border:0;background:transparent}
+  .nudge .big{font-weight:800;color:var(--bad)}
+  details{margin-top:14px}
+  summary{cursor:pointer;color:var(--muted)}
+  code{background:#00000008;border-radius:6px;padding:2px 5px}
+  [hidden]{display:none !important}
+  .chart-host{width:100%;height:440px}
+  @media (max-width: 600px){.chart-host{height:360px}}
+  .share-sheet{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:var(--shadow);padding:10px;margin-top:8px;display:block}
+  .share-sheet a{margin-right:8px}
+  .share-sheet .secondary{padding:6px 10px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted)}
+  .brand img{width:48px;height:48px;border-radius:10px;object-fit:contain;background:#fff;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+  .footer{max-width:1100px;margin:0 auto;padding:12px 16px;color:var(--muted)}
+  .footer a{color:var(--muted);text-decoration:underline}
+  .footer img{width:18px;height:18px;border-radius:4px;object-fit:contain;background:#fff;vertical-align:-4px;margin-right:8px}
+  @media (prefers-color-scheme: dark){
+    .brand img, .footer img{background:#fff;border:1px solid rgba(255,255,255,.2)}
+  }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Welcome to the Cone of Uncertainty</h1>        <div class="hint">In software development and agile delivery, the <strong>Cone of Uncertainty</strong> says estimates are widest early and converge as you learn. This tool helps you visualize where you are and pick the right kind of work next. Read more in my Substack note: <a href="https://dqsis.substack.com/p/the-cone-of-uncertainty" target="_blank" rel="noopener">The Cone of Uncertainty</a>.</div>
+      </div>
+      <a id="brand" class="brand" href="https://dqsis.github.io/" target="_blank" rel="noopener">dqsis</a>
+    </header>
+
+    <div class="layout">
+      <!-- Left: inputs -->
+      <section class="card panel" aria-label="Inputs">
+        <form id="form" class="fieldset" onsubmit="event.preventDefault()">
+          <div class="row">
+            <label>Project phase</label>
+            <div class="hint">Which stage best describes your current phase?</div>
+            <div class="radios">
+              <label><input type="radio" name="phase" value="Inception"> Inception</label>
+              <label><input type="radio" name="phase" value="Elaboration" checked> Elaboration</label>
+              <label><input type="radio" name="phase" value="Construction"> Construction</label>
+              <label><input type="radio" name="phase" value="Completion"> Completion</label>
+            </div>
+          </div>
+          <div class="subtitle">Use the six sliders to rate your project’s clarity, risks, and team readiness. The tool will place you in the cone and give tailored guidance.</div>
+          <!-- 0 = poor/unknown; 100 = excellent/known -->
+          <div class="row">
+            <label for="requirements"><span>Requirements clarity</span><span class="value" id="v-requirements">50</span></label>
+            <input type="range" id="requirements" min="0" max="100" value="50" step="1" aria-describedby="h-requirements" />
+            <div class="hint" id="h-requirements">How well defined are the project’s goals, scope, and acceptance criteria at this point?</div>
+          </div>
+          <div class="row">
+            <label for="team"><span>Team maturity</span><span class="value" id="v-team">50</span></label>
+            <input type="range" id="team" min="0" max="100" value="50" step="1" aria-describedby="h-team" />
+            <div class="hint" id="h-team">What is the team’s level of experience, stability, working agreements, and delivery cadence?</div>
+          </div>
+          <div class="row">
+            <label for="architecture"><span>Architecture clarity</span><span class="value" id="v-architecture">50</span></label>
+            <input type="range" id="architecture" min="0" max="100" value="50" step="1" aria-describedby="h-architecture" />
+            <div class="hint" id="h-architecture">To what degree are key components, interfaces, and data flows understood and agreed?</div>
+          </div>
+          <div class="row">
+            <label for="dependencies"><span>Dependencies known</span><span class="value" id="v-dependencies">50</span></label>
+            <input type="range" id="dependencies" min="0" max="100" value="50" step="1" aria-describedby="h-dependencies" />
+            <div class="hint" id="h-dependencies">How clearly are external teams, vendors, and sequence constraints identified and mapped?</div>
+          </div>
+          <div class="row">
+            <label for="risk"><span>Risk exposure</span><span class="value" id="v-risk">50</span></label>
+            <input type="range" id="risk" min="0" max="100" value="50" step="1" aria-describedby="h-risk" />
+            <div class="hint" id="h-risk">How significant are uncertainties that you cannot control?</div>
+          </div>
+          <div class="row">
+            <label for="stakeholders"><span>Stakeholder alignment</span><span class="value" id="v-stakeholders">50</span></label>
+            <input type="range" id="stakeholders" min="0" max="100" value="50" step="1" aria-describedby="h-stakeholders" />
+            <div class="hint" id="h-stakeholders">How strongly do product, engineering, compliance, and customers pull together?</div>
+          </div>
+          <div class="controls">
+            <button id="evaluate" type="button">Evaluate</button>
+            <button class="secondary" id="reset" type="button" title="Reset sliders to mid">Reset</button>
+            <button id="share" type="button" title="Share this with your network">Share</button>
+          </div>
+          <div id="share-fallback" class="share-sheet" hidden>
+            <div class="hint" style="margin-bottom:6px">Share via:</div>
+            <a id="share-x" target="_blank" rel="noopener">X</a>
+            <a id="share-li" target="_blank" rel="noopener">LinkedIn</a>
+            <a id="share-wa" target="_blank" rel="noopener">WhatsApp</a>
+            <a id="share-em" target="_blank" rel="noopener">Email</a>
+            <button id="copy-link" class="secondary" type="button" style="margin-left:8px">Copy link</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right: chart + recommendation -->
+      <section class="card chart" aria-label="Chart and recommendation">
+        <div id="svg-host" class="chart-host"></div>
+        <div class="legend">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="kpi" id="kpis">
+            <span class="pill" id="u-pill">Uncertainty: –</span>
+            <span class="pill" id="f-pill">Feasibility: –</span>
+            <span class="pill" id="y-pill">Variance: –</span>
+          </div>
+        </div>
+        <div class="rec" id="rec">
+          <strong>Recommendation will appear here.</strong>
+          <div class="hint">Press <em>Evaluate</em> to place your marker and get advice.</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+<footer class="footer"><small>Made by <a id="site-link" href="https://dqsis.github.io/" target="_blank" rel="noopener"><img id="footer-logo" alt="dqsis logo" loading="lazy" /> dqsis</a></small></footer>
+
+<script>
+// ------------------- CONFIGURABLES -------------------
+const CONFIG = {
+  weightsU: { // higher increases uncertainty
+    requirements: 0.22,
+    architecture: 0.18,
+    dependencies: 0.18,
+    stakeholders: 0.16,
+    risk: 0.18,     // risk adds to U directly
+    team: 0.08      // low maturity adds to U
+  },
+  weightsF: { // higher increases feasibility
+    team: 0.28,
+    requirements: 0.20,
+    architecture: 0.18,
+    dependencies: 0.14,
+    stakeholders: 0.12,
+    risk: 0.08      // we use (1 - risk)
+  },
+  k: Math.log(4),     // exp(k * +/-1) => 4× and 0.25×
+  gain: 2.5,         // sensitivity multiplier for (U - F) — increase to amplify factor impact
+  yMin: 0.25,
+  yMax: 4,
+  sections: ["Inception","Elaboration","Construction","Completion"],
+  recText: {
+    Inception: {
+      title: "Stay in Inception",
+      body: "Your project is still in its formative stage. Focus on discovery activities, research, and aligning on vision. Use spikes and experiments to uncover unknowns before committing to large-scale development."
+    },
+    Elaboration: {
+      title: "Work through Elaboration",
+      body: "The project has enough clarity to move into structured exploration. Continue refining requirements, stabilizing architecture, and validating assumptions through prototypes. Reduce uncertainty before scaling execution."
+    },
+    Construction: {
+      title: "Enter Construction",
+      body: "Foundations are solid; proceed with building the solution. Direct most of your effort toward implementation and delivery while monitoring risks and dependencies. Keep cross-functional collaboration active to maintain momentum."
+    },
+    Completion: {
+      title: "You are near Completion",
+      body: "You are approaching the finish line. Prioritize integration, regression testing, validation, and polishing. Ensure documentation, compliance, and stakeholder readiness are in place for a smooth release."
+    }
+  }
+,
+  brand: { siteName: 'dqsis', siteUrl: 'https://dqsis.github.io/', logoUrl: 'https://dqsis.github.io/images/groupworkout_icon.png' }
+};
+
+// ------------------- UTILITIES -------------------
+const $ = sel => document.querySelector(sel);
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+function normalizeWeights(obj){
+  const sum = Object.values(obj).reduce((a,b)=>a+b,0);
+  const out={}; for(const k in obj){ out[k]=obj[k]/sum; } return out;
+}
+const wU = normalizeWeights(CONFIG.weightsU);
+const wF = normalizeWeights(CONFIG.weightsF);
+
+// ------------------- INPUTS -------------------
+// Permalink helpers (build + restore)
+let lastPermalink = '';
+function getPermalink(vals){
+  const url = new URL(window.location.href);
+  const p = new URLSearchParams();
+  p.set('phase', vals.phase);
+  p.set('requirements', Math.round(vals.requirements*100));
+  p.set('team', Math.round(vals.team*100));
+  p.set('architecture', Math.round(vals.architecture*100));
+  p.set('dependencies', Math.round(vals.dependencies*100));
+  p.set('risk', Math.round(vals.risk*100));
+  p.set('stakeholders', Math.round(vals.stakeholders*100));
+  url.search = p.toString();
+  return url.toString();
+}
+function applyFromURL(){
+  const s = new URLSearchParams(window.location.search);
+  const phase = s.get('phase');
+  if(phase && CONFIG.sections.includes(phase)){
+    const el = document.querySelector(`input[name="phase"][value="${phase}"]`);
+    if(el) el.checked = true;
+  }
+  const ids = ['requirements','team','architecture','dependencies','risk','stakeholders'];
+  ids.forEach(id=>{
+    const v = s.get(id);
+    if(v!==null && !Number.isNaN(parseInt(v))){
+      const el = document.getElementById(id);
+      const num = Math.max(0, Math.min(100, parseInt(v)));
+      el.value = String(num);
+      const out = document.getElementById(`v-${id}`);
+      if(out) out.textContent = String(num);
+    }
+  });
+}
+
+// ------------------- INPUTS -------------------
+const inputs = [
+  {id:"requirements"},
+  {id:"team"},
+  {id:"architecture"},
+  {id:"dependencies"},
+  {id:"risk"},
+  {id:"stakeholders"}
+];
+
+inputs.forEach(({id})=>{
+  const el = document.getElementById(id);
+  const out = document.getElementById(`v-${id}`);
+  el.addEventListener('input', ()=>{ out.textContent = el.value; });
+});
+
+$('#reset').addEventListener('click', ()=>{
+  inputs.forEach(({id})=>{ const el=document.getElementById(id); el.value=50; document.getElementById(`v-${id}`).textContent=50; });
+  const def = document.querySelector('input[name="phase"][value="Elaboration"]');
+  if(def) def.checked = true;
+  evaluateAndRender();
+});
+
+$('#evaluate').addEventListener('click', ()=>{ evaluateAndRender(); });
+
+$('#share').addEventListener('click', async ()=>{
+  const vals = getVals();
+  const link = getPermalink(vals);
+  try{
+    if(navigator.share){
+      await navigator.share({ title: 'Cone of Uncertainty', text: 'My current position & recommendation', url: link });
+      return;
+    }
+  }catch(e){ /* fall through to fallback */ }
+  updateShareLinks(link);
+  const panel = document.getElementById('share-fallback');
+  panel.hidden = !panel.hidden;
+});
+
+// Update immediately when phase changes
+Array.from(document.querySelectorAll('input[name="phase"]')).forEach(r => r.addEventListener('change', evaluateAndRender));
+
+// Copy permalink
+const copyBtn = document.getElementById('copy-link');
+if(copyBtn){
+  copyBtn.addEventListener('click', async ()=>{
+    if(lastPermalink){ await navigator.clipboard.writeText(lastPermalink); copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy link',1200); }
+  });
+}
+// (deduped) Update immediately when phase changes — already registered above
+
+function getVals(){
+  const vals = Object.fromEntries(inputs.map(({id})=>[id, Number(document.getElementById(id).value)/100]));
+  const phaseEl = document.querySelector('input[name="phase"]:checked');
+  vals.phase = phaseEl ? phaseEl.value : CONFIG.sections[1]; // default to Elaboration
+  return vals;
+}
+
+function updateShareLinks(link){
+  lastPermalink = link;
+  const text = 'Check your Cone of Uncertainty position:';
+  const enc = encodeURIComponent;
+  const x = document.getElementById('share-x'); if(x) x.href = `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(link)}`;
+  const li = document.getElementById('share-li'); if(li) li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${enc(link)}`;
+  const wa = document.getElementById('share-wa'); if(wa) wa.href = `https://wa.me/?text=${enc(text + ' ' + link)}`;
+  const em = document.getElementById('share-em'); if(em) em.href = `mailto:?subject=${enc('Cone of Uncertainty result')}&body=${enc(text + '\n' + link)}`; // fixed newline
+}
+
+// ------------------- CORE MATH -------------------
+function compute(v){
+  const U = (
+    wU.requirements * (1 - v.requirements) +
+    wU.architecture  * (1 - v.architecture)  +
+    wU.dependencies  * (1 - v.dependencies)  +
+    wU.stakeholders  * (1 - v.stakeholders)  +
+    wU.team          * (1 - v.team)          +
+    wU.risk          * v.risk
+  );
+
+  const F = (
+    wF.team          * v.team +
+    wF.requirements  * v.requirements +
+    wF.architecture  * v.architecture +
+    wF.dependencies  * v.dependencies +
+    wF.stakeholders  * v.stakeholders +
+    wF.risk          * (1 - v.risk)
+  );
+
+  const delta = CONFIG.gain * (U - F);
+  let yMult = Math.exp(CONFIG.k * delta);
+  yMult = clamp(yMult, CONFIG.yMin, CONFIG.yMax);
+
+  const stage = v.phase || CONFIG.sections[1];
+  const xNorm = stageToX(stage);
+  return {U,F,yMult,xNorm,stage};
+}
+
+function stageToX(stage){
+  const centers = [0.125, 0.375, 0.625, 0.875];
+  const i = Math.max(0, CONFIG.sections.indexOf(stage));
+  return centers[i] ?? 0.375; // default to Elaboration center
+}
+
+function renderBrand(){
+  const b = CONFIG.brand || {};
+  const el = document.getElementById('brand');
+  if(!el) return;
+  el.innerHTML = '';
+  const href = b.siteUrl || '#';
+  el.setAttribute('href', href);
+  if (b.logoUrl) {
+    const img = document.createElement('img');
+    img.src = b.logoUrl; img.alt = b.siteName || 'logo';
+    el.appendChild(img);
+  }
+  const span = document.createElement('span');
+  span.textContent = b.siteName || href.replace(/^https?:\/\//,'').replace(/\/$/,'');
+  el.appendChild(span);
+  const site = document.getElementById('site-link');
+  if(site){ site.href = href; site.textContent = b.siteName || site.href; }
+  const footLogo = document.getElementById('footer-logo');
+  if(footLogo){
+    if(b.logoUrl){ footLogo.src = b.logoUrl; footLogo.alt = (b.siteName||'logo') + ' logo'; footLogo.style.display='inline-block'; }
+    else { footLogo.style.display='none'; }
+  }
+}
+
+// ------------------- RECOMMENDATION -------------------
+function buildRecommendation({U,F,yMult,stage}){
+  const rec = CONFIG.recText[stage];
+  const dev = Math.max(yMult, 1 / yMult);
+  const tilt = U - F;
+  const tip = tilt > 0.15 ? "Bias toward learning: add spikes, mock integrations, and timeboxed experiments." :
+              tilt < -0.15 ? "Bias toward delivery: implement thin vertical slices and integrate continuously." :
+              "Stay balanced: pair discovery with delivery, keep scope thin.";
+
+  let devMsg = "";
+  if (yMult > 1.3) {
+    devMsg = `<div class="nudge"><strong>Nudge:</strong> Variance is high (${yMult.toFixed(2)}×). Expect estimates to take longer than planned. Buy down risk and tighten scope — focus on discovery spikes, dependency mapping, and stakeholder alignment.</div>`;
+  } else if (yMult < 0.7) {
+    devMsg = `<div class="nudge"><strong>Nudge:</strong> Variance is low (${yMult.toFixed(2)}×). Work may finish faster than expected — keep validation strong and avoid cutting quality corners.</div>`;
+  }
+
+  return `
+    <div class="rec-header" style="font-weight:700; letter-spacing:.02em; text-transform:none; margin-bottom:6px">Recommendation</div>
+    <div class="rec-title" style="font-weight:800;font-size:1.1rem">${rec.title} — <span style="color:var(--muted)">${stage}</span></div>
+    <div class="rec-body" style="margin-top:6px">${rec.body}</div>
+    <div class="hint" style="margin-top:6px">${tip}</div>
+    ${devMsg}
+  `;
+}
+
+// ------------------- SVG CHART -------------------
+const host = document.getElementById('svg-host');
+const svgNS = 'http://www.w3.org/2000/svg';
+let markerEl = null;
+
+function renderFrame(){
+  host.innerHTML = '';
+  const W = host.clientWidth, H = host.clientHeight;
+  const m = {l:56,r:16,t:24,b:40};
+  const w = W - m.l - m.r;
+  const h = H - m.t - m.b;
+
+  const svg = document.createElementNS(svgNS,'svg');
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('width','100%');
+  svg.setAttribute('height','100%');
+
+  const yLog = y => {
+    const logMin = Math.log(CONFIG.yMin), logMax = Math.log(CONFIG.yMax);
+    const t = (Math.log(y) - logMin) / (logMax - logMin);
+    return m.t + h * (1 - t);
+  };
+  const xPix = x => m.l + w * x;
+
+  // section backgrounds
+  for(let i=0;i<4;i++){
+    const x0 = xPix(i*0.25), ww = w*0.25;
+    const rect = document.createElementNS(svgNS,'rect');
+    rect.setAttribute('x',x0); rect.setAttribute('y',m.t);
+    rect.setAttribute('width',ww); rect.setAttribute('height',h);
+    rect.setAttribute('fill', i%2===0 ? '#fafafa' : '#f5f5f5');
+    svg.appendChild(rect);
+  }
+
+  // gridlines
+  [0.25,0.5,1,2,4].forEach(val=>{
+    const y = yLog(val);
+    const g = document.createElementNS(svgNS,'line');
+    g.setAttribute('x1',m.l); g.setAttribute('x2',W-m.r); g.setAttribute('y1',y); g.setAttribute('y2',y);
+    g.setAttribute('stroke','#e5e7eb');
+    g.setAttribute('stroke-dasharray', val===1 ? '0' : '4,6');
+    g.setAttribute('stroke-width', val===1 ? 1.2 : 1);
+    svg.appendChild(g);
+
+    const lab = document.createElementNS(svgNS,'text');
+    lab.setAttribute('x', m.l - 10); lab.setAttribute('y', y + 4);
+    lab.setAttribute('text-anchor','end'); lab.setAttribute('font-size','12'); lab.setAttribute('fill', val===1 ? '#111118' : '#6b7280');
+    lab.textContent = `${val}×`;
+    svg.appendChild(lab);
+  });
+
+  // X section labels & dividers
+  CONFIG.sections.forEach((name,i)=>{
+    const x = xPix(i*0.25 + 0.125);
+    const lab = document.createElementNS(svgNS,'text');
+    lab.setAttribute('x', x); lab.setAttribute('y', m.t - 6);
+    lab.setAttribute('text-anchor','middle'); lab.setAttribute('font-size','12'); lab.setAttribute('fill','#374151');
+    lab.textContent = name;
+    svg.appendChild(lab);
+
+    if(i>0){
+      const v = document.createElementNS(svgNS,'line');
+      v.setAttribute('x1', xPix(i*0.25)); v.setAttribute('x2', xPix(i*0.25));
+      v.setAttribute('y1', m.t); v.setAttribute('y2', m.t + h);
+      v.setAttribute('stroke','#e5e7eb');
+      svg.appendChild(v);
+    }
+  });
+
+  // axis titles
+  const yTitle = document.createElementNS(svgNS,'text');
+  yTitle.setAttribute('x', 18); yTitle.setAttribute('y', m.t + h/2);
+  yTitle.setAttribute('transform', `rotate(-90 18 ${m.t + h/2})`);
+  yTitle.setAttribute('text-anchor','middle'); yTitle.setAttribute('font-size','12'); yTitle.setAttribute('fill','#374151');
+  yTitle.textContent = 'Outcome / Estimation (×, log scale)';
+  svg.appendChild(yTitle);
+
+  const xTitle = document.createElementNS(svgNS,'text');
+  xTitle.setAttribute('x', m.l + w/2); xTitle.setAttribute('y', m.t + h + 30);
+  xTitle.setAttribute('text-anchor','middle'); xTitle.setAttribute('font-size','12'); xTitle.setAttribute('fill','#374151');
+  xTitle.textContent = 'Time →';
+  svg.appendChild(xTitle);
+
+  // cone shape (upper from 4→1, lower from 0.25→1)
+  const upperPts = [], lowerPts = [];
+  const N = 80;
+  for(let i=0;i<=N;i++){
+    const x = i/N;
+    const yU = Math.exp(Math.log(CONFIG.yMax) * (1 - x)); // 4 -> 1
+    upperPts.push(`${xPix(x)},${yLog(yU)}`);
+  }
+  for(let i=N;i>=0;i--){
+    const x = i/N;
+    const yL = Math.exp(Math.log(CONFIG.yMin) * (1 - x)); // 0.25 -> 1
+    lowerPts.push(`${xPix(x)},${yLog(yL)}`);
+  }
+  const cone = document.createElementNS(svgNS,'path');
+  cone.setAttribute('d', `M ${upperPts[0]} L ${upperPts.slice(1).join(' ')} L ${lowerPts.join(' ')} Z`);
+  cone.setAttribute('fill', '#e5e7eb55');
+  cone.setAttribute('stroke', '#e5e7eb');
+  svg.appendChild(cone);
+
+  // x-axis line
+  const xAxis = document.createElementNS(svgNS,'line');
+  xAxis.setAttribute('x1', m.l); xAxis.setAttribute('x2', m.l + w);
+  xAxis.setAttribute('y1', m.t + h); xAxis.setAttribute('y2', m.t + h);
+  xAxis.setAttribute('stroke','#111118'); xAxis.setAttribute('stroke-width','1');
+  svg.appendChild(xAxis);
+
+  svg._helpers = {xPix, yLog, m, w, h};
+  host.appendChild(svg);
+}
+
+function renderMarker(pt){
+  const svg = host.querySelector('svg');
+  if(!svg) return;
+  const {xPix, yLog, m, w, h} = svg._helpers; // include w to avoid ReferenceError
+  if(markerEl) markerEl.remove();
+  if(!pt){ markerEl = null; return; }
+
+  const g = document.createElementNS(svgNS,'g');
+  // expose current marker coords for tests/debugging
+  g.dataset.x = String(pt.x);
+  g.dataset.y = String(pt.y);
+  const v = document.createElementNS(svgNS,'line');
+  v.setAttribute('x1', xPix(pt.x)); v.setAttribute('x2', xPix(pt.x));
+  v.setAttribute('y1', m.t); v.setAttribute('y2', m.t + h);
+  v.setAttribute('stroke','#bfdbfe'); v.setAttribute('stroke-dasharray','4,6');
+  g.appendChild(v);
+
+  const hline = document.createElementNS(svgNS,'line');
+  hline.setAttribute('x1', m.l); hline.setAttribute('x2', m.l + w);
+  hline.setAttribute('y1', yLog(pt.y)); hline.setAttribute('y2', yLog(pt.y));
+  hline.setAttribute('stroke','#bfdbfe'); hline.setAttribute('stroke-dasharray','4,6');
+  g.appendChild(hline);
+
+  const c = document.createElementNS(svgNS,'circle');
+  c.setAttribute('cx', xPix(pt.x)); c.setAttribute('cy', yLog(pt.y)); c.setAttribute('r', 6);
+  c.setAttribute('fill', 'var(--accent)'); c.setAttribute('stroke','#1e40af'); c.setAttribute('stroke-width','1');
+  g.appendChild(c);
+
+  const label = document.createElementNS(svgNS,'text');
+  label.setAttribute('x', xPix(pt.x) + 10); label.setAttribute('y', yLog(pt.y) - 10);
+  label.setAttribute('font-size','12'); label.setAttribute('fill','#111118');
+  label.textContent = `${pt.y.toFixed(2)}×`;
+  g.appendChild(label);
+
+  markerEl = g;
+  svg.appendChild(g);
+}
+
+function evaluateAndRender(){
+  const vals = getVals();
+  const {U,F,yMult,xNorm,stage} = compute(vals);
+
+  // KPIs
+  const u = document.getElementById('u-pill'); if(u) u.textContent = `Uncertainty: ${U.toFixed(2)}`;
+  const f = document.getElementById('f-pill'); if(f) f.textContent = `Feasibility: ${F.toFixed(2)}`;
+  const y = document.getElementById('y-pill'); if(y) y.textContent = `Variance: ${yMult.toFixed(2)}×`;
+
+  // Plot marker
+  renderMarker({x:xNorm, y:yMult});
+
+  // Recommendation
+  const rec = document.getElementById('rec');
+  if(rec) rec.innerHTML = buildRecommendation({U,F,yMult,stage});
+
+  // Permalink + share links + address bar
+  const link = getPermalink(vals);
+  updateShareLinks(link);
+  try { history.replaceState(null, '', link); } catch(e) {}
+}
+
+// Initial render and keep in sync on resize
+renderFrame();
+applyFromURL();
+evaluateAndRender();
+renderBrand();
+window.addEventListener('resize', ()=>{ renderFrame(); evaluateAndRender(); });
+</script>
+</body>
+</html>
