@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Norway → Sweden Salary Calculator</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 480px; margin: auto; padding: 20px; line-height: 1.5; text-align: center; }
+    body { font-family: Arial, sans-serif; max-width: 520px; margin: auto; padding: 20px; line-height: 1.5; text-align: center; }
     h2 { margin-bottom: 0.2em; }
     .logo { max-width: 120px; margin: 10px auto; display: block; }
     label { display: block; margin-top: 12px; text-align: left; }
     input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
-    button { margin-top: 20px; width: 48%; padding: 10px; font-size: 1em; }
-    .buttons { display: flex; justify-content: space-between; }
+    button { margin-top: 20px; padding: 10px 12px; font-size: 1em; }
+    .row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end; }
+    .buttons { display: flex; justify-content: space-between; gap: 4%; }
+    .buttons > button { width: 48%; }
+    .meta { font-size: 0.9em; color: #555; margin-top: 6px; text-align: left; }
     .result { margin-top: 24px; padding: 12px; background: #f0f0f0; border-radius: 5px; text-align: left; }
     code { background: #e8e8e8; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+    .warn { color: #b00020; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -22,12 +26,12 @@
 
   <label>
     Norwegian gross salary (NOK/month):
-    <input type="number" id="salaryNOK" />
+    <input type="number" id="salaryNOK" placeholder="e.g., 100000" />
   </label>
 
   <label>
     Salary rise in 2026 (%):
-    <input type="number" id="salaryRisePct" value="4" />
+    <input type="number" id="salaryRisePct" placeholder="e.g., 4" />
   </label>
 
   <label>
@@ -42,7 +46,11 @@
 
   <label>
     Exchange rate <small>(1 NOK = SEK)</small>:
-    <input type="number" step="0.0001" id="exchangeRate" value="0.9390" />
+    <div class="row">
+      <input type="number" step="0.0001" id="exchangeRate" placeholder="Click ‘Fetch rate’" />
+      <button id="fetchRateBtn" type="button">Fetch rate</button>
+    </div>
+    <div class="meta" id="rateInfo"></div>
   </label>
 
   <div class="buttons">
@@ -55,24 +63,92 @@
   <script>
     const defaults = {
       salaryNOK: '',
-      salaryRisePct: 4,
+      salaryRisePct: '',
       multNorway: 1.27,
       multSweden: 1.47,
-      exchangeRate: 0.9390
+      exchangeRate: ''
     };
 
-    document.getElementById('calcBtn').addEventListener('click', () => {
-      const salaryNOK = parseFloat(document.getElementById('salaryNOK').value) || 0;
-      const risePct = parseFloat(document.getElementById('salaryRisePct').value) || 0;
-      const multNo = parseFloat(document.getElementById('multNorway').value) || 1;
-      const multSe = parseFloat(document.getElementById('multSweden').value) || 1;
-      const exRate = parseFloat(document.getElementById('exchangeRate').value) || 1;
+    const el = (id) => document.getElementById(id);
+
+    // Try multiple public sources with CORS enabled in sequence
+    async function fetchFromExchangerateHost() {
+      const res = await fetch('https://api.exchangerate.host/latest?base=NOK&symbols=SEK', { cache: 'no-store' });
+      if (!res.ok) throw new Error('exchangerate.host HTTP ' + res.status);
+      const data = await res.json();
+      const rate = data?.rates?.SEK;
+      if (!rate) throw new Error('exchangerate.host: rate missing');
+      return { rate, source: 'exchangerate.host' };
+    }
+
+    async function fetchFromFrankfurter() {
+      const res = await fetch('https://api.frankfurter.app/latest?from=NOK&to=SEK', { cache: 'no-store' });
+      if (!res.ok) throw new Error('frankfurter.app HTTP ' + res.status);
+      const data = await res.json();
+      const rate = data?.rates?.SEK;
+      if (!rate) throw new Error('frankfurter.app: rate missing');
+      return { rate, source: 'frankfurter.app' };
+    }
+
+    async function fetchFromErApi() {
+      const res = await fetch('https://open.er-api.com/v6/latest/NOK', { cache: 'no-store' });
+      if (!res.ok) throw new Error('open.er-api.com HTTP ' + res.status);
+      const data = await res.json();
+      const rate = data?.rates?.SEK;
+      if (!rate) throw new Error('open.er-api.com: rate missing');
+      return { rate, source: 'open.er-api.com' };
+    }
+
+    async function fetchExchangeRate() {
+      const btn = el('fetchRateBtn');
+      const info = el('rateInfo');
+      btn.disabled = true; btn.textContent = 'Fetching…'; info.textContent = '';
+      const sources = [fetchFromExchangerateHost, fetchFromFrankfurter, fetchFromErApi];
+      let lastError = null;
+      for (const fn of sources) {
+        try {
+          const { rate, source } = await fn();
+          el('exchangeRate').value = Number(rate).toFixed(4);
+          const fetchedAt = new Date();
+          info.innerHTML = `Rate source: ${source} • 1 NOK = <code>${Number(rate).toFixed(4)}</code> SEK • fetched ${fetchedAt.toLocaleString()}`;
+          return;
+        } catch (e) {
+          lastError = e;
+          // Try next source
+        }
+      }
+      info.innerHTML = `<span class="warn">Could not fetch rate from public sources. You can enter it manually.</span>`;
+      console.error('FX fetch error:', lastError);
+      btn.disabled = false; btn.textContent = 'Fetch rate';
+    }
+
+    el('fetchRateBtn').addEventListener('click', async () => {
+      try {
+        await fetchExchangeRate();
+      } finally {
+        el('fetchRateBtn').disabled = false; el('fetchRateBtn').textContent = 'Fetch rate';
+      }
+    });
+
+    el('calcBtn').addEventListener('click', () => {
+      const salaryNOK = parseFloat(el('salaryNOK').value) || 0;
+      const risePct = parseFloat(el('salaryRisePct').value) || 0;
+      const multNo = parseFloat(el('multNorway').value) || 1;
+      const multSe = parseFloat(el('multSweden').value) || 1;
+      const exRate = parseFloat(el('exchangeRate').value);
+
+      const out = el('output');
+
+      if (!exRate || exRate <= 0) {
+        out.style.display = 'block';
+        out.innerHTML = `<span class="warn">Please fetch or enter a valid NOK→SEK exchange rate before calculating.</span>`;
+        return;
+      }
 
       const salaryNOK2026 = salaryNOK * (1 + risePct / 100);
       const costNo = salaryNOK2026 * multNo;
       const salarySEK = costNo / multSe / exRate;
 
-      const out = document.getElementById('output');
       out.style.display = 'block';
       out.innerHTML = `
         <strong>Your calculation results:</strong><br>
@@ -83,14 +159,15 @@
       `;
     });
 
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      document.getElementById('salaryNOK').value = defaults.salaryNOK;
-      document.getElementById('salaryRisePct').value = defaults.salaryRisePct;
-      document.getElementById('multNorway').value = defaults.multNorway;
-      document.getElementById('multSweden').value = defaults.multSweden;
-      document.getElementById('exchangeRate').value = defaults.exchangeRate;
-      document.getElementById('output').style.display = 'none';
-      document.getElementById('output').innerHTML = '';
+    el('resetBtn').addEventListener('click', () => {
+      el('salaryNOK').value = defaults.salaryNOK;
+      el('salaryRisePct').value = defaults.salaryRisePct;
+      el('multNorway').value = defaults.multNorway;
+      el('multSweden').value = defaults.multSweden;
+      el('exchangeRate').value = defaults.exchangeRate;
+      el('rateInfo').textContent = '';
+      el('output').style.display = 'none';
+      el('output').innerHTML = '';
     });
   </script>
 </body>
