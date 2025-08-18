@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Norway → Sweden Salary Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 480px; margin: auto; padding: 20px; line-height: 1.5; text-align: center; }
+    h2 { margin-bottom: 0.2em; }
+    .logo { max-width: 120px; margin: 10px auto; display: block; }
+    label { display: block; margin-top: 12px; text-align: left; }
+    input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    button { margin-top: 20px; width: 48%; padding: 10px; font-size: 1em; }
+    .buttons { display: flex; justify-content: space-between; }
+    .result { margin-top: 24px; padding: 12px; background: #f0f0f0; border-radius: 5px; text-align: left; }
+    code { background: #e8e8e8; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <img src="https://dqsis.com/images/groupworkout_icon.png" alt="Logo" class="logo" />
+  <h2>Salary Equivalency Norway → Sweden<br>No budget impact</h2>
+
+  <label>
+    Norwegian gross salary (NOK/month):
+    <input type="number" id="salaryNOK" value="100000" />
+  </label>
+
+  <label>
+    Salary rise in 2026 (%):
+    <input type="number" id="salaryRisePct" value="4" />
+  </label>
+
+  <label>
+    Employer cost multiplier (Norway):
+    <input type="number" step="0.01" id="multNorway" value="1.27" />
+  </label>
+
+  <label>
+    Employer cost multiplier (Sweden):
+    <input type="number" step="0.01" id="multSweden" value="1.47" />
+  </label>
+
+  <label>
+    Exchange rate <small>(1 NOK = SEK)</small>:
+    <input type="number" step="0.0001" id="exchangeRate" value="0.9390" />
+  </label>
+
+  <div class="buttons">
+    <button id="calcBtn">Calculate</button>
+    <button id="resetBtn" type="button">Reset</button>
+  </div>
+
+  <div id="output" class="result" style="display:none;"></div>
+
+  <script>
+    const defaults = {
+      salaryNOK: 100000,
+      salaryRisePct: 4,
+      multNorway: 1.27,
+      multSweden: 1.47,
+      exchangeRate: 0.9390
+    };
+
+    document.getElementById('calcBtn').addEventListener('click', () => {
+      const salaryNOK = parseFloat(document.getElementById('salaryNOK').value) || 0;
+      const risePct = parseFloat(document.getElementById('salaryRisePct').value) || 0;
+      const multNo = parseFloat(document.getElementById('multNorway').value) || 1;
+      const multSe = parseFloat(document.getElementById('multSweden').value) || 1;
+      const exRate = parseFloat(document.getElementById('exchangeRate').value) || 1;
+
+      const salaryNOK2026 = salaryNOK * (1 + risePct / 100);
+      const costNo = salaryNOK2026 * multNo;
+      const salarySEK = costNo / multSe / exRate;
+
+      const out = document.getElementById('output');
+      out.style.display = 'block';
+      out.innerHTML = `
+        <strong>Your calculation results:</strong><br>
+        • Adjusted Norwegian salary for 2026: <code>${salaryNOK2026.toFixed(0)} NOK/month</code><br>
+        • Total employer cost in Norway: <code>${costNo.toFixed(0)} NOK/month</code><br>
+        • Exchange rate used: <code>1 NOK = ${exRate.toFixed(4)} SEK</code><br>
+        → Equivalent Swedish gross salary: <code>${salarySEK.toFixed(0)} SEK/month</code>
+      `;
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      document.getElementById('salaryNOK').value = defaults.salaryNOK;
+      document.getElementById('salaryRisePct').value = defaults.salaryRisePct;
+      document.getElementById('multNorway').value = defaults.multNorway;
+      document.getElementById('multSweden').value = defaults.multSweden;
+      document.getElementById('exchangeRate').value = defaults.exchangeRate;
+      document.getElementById('output').style.display = 'none';
+      document.getElementById('output').innerHTML = '';
+    });
+  </script>
+</body>
+</html>
