@@ -1,68 +1,41 @@
-# 💪 Gym Workout Plan (3-Day Split)
+# 🏋️ 3-Day Strength & Lean Program  
 
-Each session:  
-- **Total time:** 40 minutes  
-- **Warm-up:** 5 min (rower, incline walk, or mobility flow)  
-- **Workout:** 30 min  
-- **Cool-down:** 5 min (stretch hips, back, shoulders)
-
----
-
-## 🔴 Day A – Push Focus (Chest, Shoulders, Triceps)
-
-**Superset A**  
-- Barbell Back Squat – 3 sets x 6–8 reps  
-- Push-Ups or Bench Press – 3 sets x 8–10 reps  
-  > Rest ~90s after each superset
-
-**Superset B**  
-- Dumbbell Overhead Press – 3 sets x 8–10 reps  
-- Cable Tricep Pushdown – 3 sets x 10–12 reps
-
-**Finisher**  
-- Plank Hold – 2–3 sets x 45–60 sec  
-  > Variations: shoulder taps, reach-throughs, weight
+## Day A – Push (Chest, Shoulders, Triceps)  
+| Exercise | Sets | Reps | Notes |  
+|----------|------|------|-------|  
+| Barbell Bench Press (or Dumbbell Bench) | 4 | 6–8 | Main chest press |  
+| Dumbbell Overhead Press | 4 | 8–10 | Shoulder strength |  
+| Incline Dumbbell Press | 3 | 8–10 | Upper chest focus |  
+| Cable or Dumbbell Tricep Extension | 3 | 10–12 | Isolation |  
+| Plank Variations | 3 | 30–60s | Core stability |  
 
 ---
 
-## 🔵 Day B – Pull Focus (Back, Biceps, Rear Delts)
-
-**Superset A**  
-- Romanian Deadlift (Dumbbells or Barbell) – 3 sets x 8–10 reps  
-- Inverted Row or Pull-Up – 3 sets x 8–10 reps  
-  > Use assistance if needed. Emphasize control.
-
-**Superset B**  
-- One-Arm Dumbbell Row (Bench-Supported) – 3 sets x 10–12 reps  
-- Dumbbell Curl – 3 sets x 10–12 reps  
-  > Focus on slow eccentric
-
-**Finisher**  
-- Hanging Knee Raise – 2–3 sets x 12–15 reps  
-  > Or use weighted crunch variation
+## Day B – Pull (Back, Biceps, Posterior Chain)  
+| Exercise | Sets | Reps | Notes |  
+|----------|------|------|-------|  
+| Pull-Ups (assisted if needed) | 4 | 6–8 | Wide grip if possible |  
+| One-Arm Dumbbell Row | 4 | 8–10 | Keep back flat |  
+| Romanian Deadlift | 4 | 6–8 | Hamstring/hip hinge |  
+| Dumbbell Biceps Curl | 3 | 10–12 | Slow eccentric |  
+| Hanging Knee Raise | 3 | 8–12 | Controlled |  
 
 ---
 
-## 🟢 Day C – Legs & Core
-
-**Main Lift**  
-- Trap Bar Deadlift – 4 sets x 5–6 reps  
-  > Use squat rack if needed for setup
-
-**Superset B**  
-- Bulgarian Split Squat (with Dumbbells) – 3 sets x 8 reps/leg  
-- Dumbbell Stiff-Leg Deadlift – 3 sets x 10–12 reps  
-  > Controlled stretch and tempo
-
-**Core Finisher**  
-- Cable or DB Woodchopper – 3 sets x 10–15 reps/side  
-- Farmer’s Carry (DBs or Trap Bar) – 2 sets x 30–40 meters
+## Day C – Legs & Core  
+| Exercise | Sets | Reps | Notes |  
+|----------|------|------|-------|  
+| Barbell Back Squat (or Front Squat) | 4 | 6–8 | Main leg lift |  
+| Bulgarian Split Squat | 4 | 8–10 | Per leg |  
+| Conventional Deadlift | 4 | 5–6 | Heavy pull |  
+| Farmer’s Hold | 3 | 30–45s | Heavy dumbbells |  
+| Woodchopper (DB or Cable) | 3 | 10–12 | Per side |  
 
 ---
 
-## ✅ Notes
-- Superset where possible to save time and maintain intensity  
-- Stick to clean form and progress weekly by adding weight or reps  
-- Each workout should feel intense but controlled — avoid burnout  
-- Rest days: cardio or mobility (running, swimming, cycling)
+## General Notes  
+- Session length: ~40 minutes (5 min warm-up, 30 min training, 5 min cool-down).  
+- Add weight when you can complete the top of the rep range with good form.  
+- Cycle through A → B → C. If training 4–5 days per week, continue the rotation.  
+
 
