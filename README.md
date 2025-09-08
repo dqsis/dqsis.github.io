@@ -12,7 +12,7 @@ Hi! And welcome to my digital [home](http://dqsis.com). My name is Dimitrios.
 - [Contact me](#contact-me) 
 
 ## About me
-I have spent the past fifteen years working at the crossroads of healthcare and technology, helping teams design and build digital health solutions that truly make a difference for clinical professionals. I’m passionate about software development and enjoy using Scaled Agile principles to turn early innovative ideas into real, usable products.
+I have spent the past fifteen years working at the crossroads of healthcare and technology, helping teams design and build digital health solutions for clinical professionals. I’m passionate about software development and enjoy using Agile principles to turn ideas into products.
 
 ### Studies 
 I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National Technical University of Athens. At the age of 23, my interest for mathematics and [programming](http://web.stanford.edu/class/me200c/tutorial_77/) -and my curiosity to live abroad- brought me to Graz, Austria, where I did research on [angioplasty and stents](https://diglib.tugraz.at/biomechanical-and-computational-modeling-of-atherosclerotic-arteries-2008-4).
