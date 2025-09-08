@@ -1,0 +1,3 @@
+- [AMA2026](https://www.agile-meets-architecture.com/2026/home) 
+	- **From Big-Bang to Incremental**: Collaboration and Agility in Regulated Legacy Systems
+	- **When Lives Depend on Code**: Agility in the Land of Compliance
