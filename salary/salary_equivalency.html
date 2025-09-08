@@ -145,9 +145,11 @@
         return;
       }
 
+      // Corrected calculation:
+      // (Norwegian salary × (1 + rise%/100)) × (multNo / multSe) × exRate
       const salaryNOK2026 = salaryNOK * (1 + risePct / 100);
+      const salarySEK = salaryNOK2026 * (multNo / multSe) * exRate;
       const costNo = salaryNOK2026 * multNo;
-      const salarySEK = costNo / multSe / exRate;
 
       out.style.display = 'block';
       out.innerHTML = `
