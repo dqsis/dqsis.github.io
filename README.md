@@ -29,7 +29,7 @@ In 2024, I served as Product Owner at [Glooko](https://glooko.com/), leading the
 
 In 2025 I began a new chapter in Norway. I move to Oslo, where I joined [Omda](https://omda.com/) as Development Manager in the [Woman & Child Business Area](https://omda.com/solutions/woman-child/), working with digital solutions that support care from pregnancy through early childhood.
 
-Today, I am back in Gothenburg, Sweden, which I consider both my personal and professional home base. From here, I continue to focus on using technology to make healthcare more accessible, efficient, and meaningful, starting from the very earliest moments of life.
+Today, I am back in Gothenburg, Sweden, which I consider both my personal and professional home base. From here, and still in the same role at Omda, I continue to focus on using technology to make healthcare more accessible, efficient, and meaningful, starting from the very earliest moments of life.
 
 Check my [LinkedIn profile](https://www.linkedin.com/in/kiousis/) for more information about my career.  
 ### Personal information and interests
