@@ -27,9 +27,9 @@ Between August 2022 and January 2024 I worked as an Innovation Manager at the [R
 
 In 2024, I served as Product Owner at [Glooko](https://glooko.com/), leading the Cloud Integrations team. I was thrilled to work on a cutting-edge digital health platform that unified data from many of the leading diabetes devices, delivering insights that improved personal and clinical decision support.
 
-In 2025 I began a new personal and professional chapter in Norway. My family and I moved to Oslo, where I joined [Omda](https://omda.com/) as Development Manager in the [Woman & Child Business Area](https://omda.com/solutions/woman-child/), working with digital solutions that support care from pregnancy through early childhood.
+In 2025 I began a new chapter in Norway. I move to Oslo, where I joined [Omda](https://omda.com/) as Development Manager in the [Woman & Child Business Area](https://omda.com/solutions/woman-child/), working with digital solutions that support care from pregnancy through early childhood.
 
-Since 2026, I am back in Gothenburg, Sweden, which I consider both my personal and professional home base. From here, I continue to focus on using technology to make healthcare more accessible, efficient, and meaningful, starting from the very earliest moments of life.
+Today, I am back in Gothenburg, Sweden, which I consider both my personal and professional home base. From here, I continue to focus on using technology to make healthcare more accessible, efficient, and meaningful, starting from the very earliest moments of life.
 
 Check my [LinkedIn profile](https://www.linkedin.com/in/kiousis/) for more information about my career.  
 ### Personal information and interests
