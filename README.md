@@ -2,7 +2,7 @@
 # Welcome 
 Hi! And welcome to my digital [home](http://dqsis.com). My name is Dimitrios. 
 
-![Group Workout logo](images/groupworkout_icon.png)
+![Group Workout logo|200](images/groupworkout_icon.png)
 
 ## Table of Contents
 - [About me](#about-me)
@@ -39,7 +39,7 @@ I enjoy a variety of free-time activities, ranging from electric guitar to 3D pr
 
 I try to read [2 to 3 books per month](https://www.goodreads.com/review/list/58873133-dimitrios-kiousis?shelf=read). My favorite possession is my [Honda Monkey](https://photos.app.goo.gl/evcdJG2P9QxK2cpy6) which I bought in March 2022.
 
-![Dimitrios Kiousis profile photo 2022](images/dimitrios-svartvit.jpg)
+![Dimitrios Kiousis profile photo 2022 |300](images/dimitrios-svartvit.jpg)
 
 ## Contact me
 Do you have a question, need my help or just want to say hi? Reach out through one of my social media profiles:
