@@ -19,13 +19,13 @@ I studied [Mechanical Engineering](http://www.mech.ntua.gr/en) at the National 
 ### Work
 In 2008 I came to the west coast of Sweden and worked on designing [rocket](https://www.arianespace.com/vehicle/ariane-6/) and [jet](https://en.wikipedia.org/wiki/Pratt_%26_Whitney_PW1000G) engines to withstand thermo-mechanical fatigue. It was a rigorous environment, and it taught me a lot about engineering discipline. 
 
-In 2013 I moved to Gothenburg, where I spent 3.5 years as a Consultant Manager in Virtual Product Development, working across industries from automotive to packaging. 
+Between 2013 and 2017 I worked as a Consultant Manager in Virtual Product Development, moving across industries, ranging from automotive to packaging. Broad by design.
 
 In January 2017 I joined Mentice where I led a team of Project Managers building [Virtual Reality simulation software](http://www.mentice.com/), within the fields of endovascular intervention and minimally invasive surgery.
 
-Between August 2022 and January 2024 I worked as an Innovation Manager at the [Region of Västra Götaland](https://www.vgregion.se/ov/innovationsplattformen/) and at [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/). My primary focus was the collaboration between the public healthcare sector and the private industry sector. I also served as Innovation coach for a series of projects driven by clinical personnel within the region.
+From August 2022 to January 2024 I worked as an Innovation Manager at the [Region of Västra Götaland](https://www.vgregion.se/ov/innovationsplattformen/) and at [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/). My primary focus was the collaboration between the public healthcare sector and the private industry sector. I also served as Innovation coach for a series of projects driven by clinical personnel within the region.
 
-In 2024, I served as Product Owner at [Glooko](https://glooko.com/), leading the Cloud Integrations team on a platform that unified data from leading diabetes devices to support clinical and personal decision-making.
+In 2024, I served as Product Owner at [Glooko](https://glooko.com/) leading the Cloud Integrations team on a platform that unified data from leading diabetes devices to support clinical and personal decision-making.
 
 In 2025 I joined [Omda](https://omda.com/) as Development Manager in the Woman & Child Business Area, working on digital solutions that support care from pregnancy through early childhood.
 
