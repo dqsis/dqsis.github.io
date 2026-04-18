@@ -2,7 +2,7 @@ Hi! I'm Dimitrios, an engineering leader based in Gothenburg, Sweden.
 
 ![Group Workout logo](images/groupworkout_icon.png)
 
-I have spent the past fifteen years building software for clinical personnel and patients. The journey started with a PhD in Biomechanics, ran through aerospace engineering, and eventually brought me to where I have been ever since: at the intersection of software and clinical medicine.
+I have spent the past fifteen years building software for clinical personnel and patients. The journey started with a PhD in Biomechanics, ran through aerospace engineering, and eventually brought me to where I have been ever since: at the intersection of software and healthcare.
 
 ---
 
