@@ -1,4 +1,4 @@
-Hi! I'm Dimitrios, an engineering leader based in Gothenburg, Sweden.
+Hi! And welcome to my digital [home](http://dqsis.com)! I'm Dimitrios, an engineering leader based in Gothenburg, Sweden.
 
 ![Group Workout logo](images/groupworkout_icon.png)
 
