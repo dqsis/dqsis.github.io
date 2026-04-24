@@ -1,12 +1,14 @@
-Hi! And welcome to my digital [home](http://dqsis.com)! I'm Dimitrios, an engineering leader based in Gothenburg, Sweden.
+Hi! And welcome to my digital [home](http://dqsis.com)! I am Dimitrios. 
 
 ![Group Workout logo](images/groupworkout_icon.png)
 
-I have spent the past fifteen years building software for clinical personnel and patients. The journey started with a PhD in Biomechanics, ran through aerospace engineering, and eventually brought me to where I have been ever since: at the intersection of software and healthcare.
+I have spent the past fifteen years building software for clinical personnel and patients. My journey started with a PhD in Biomechanics, ran through aerospace engineering, and eventually brought me to where I have been ever since: at the intersection of software and healthcare.
 
 ---
 
-I currently work as Development Manager at [Omda](https://omda.com/), leading development of Electronic Health Record systems used daily by clinical personnel across the Nordics. Before that I spent five years at [Mentice](http://www.mentice.com/) building VR simulation software for endovascular procedures, worked as Innovation Manager inside [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/), and led the Cloud Integrations team at [Glooko](https://glooko.com/) as Product Owner. I care about how teams work, how software gets built, and how it serves its end users.
+I currently work as Development Manager at [Omda](https://omda.com/), leading development of Electronic Health Record systems used daily by clinical personnel across the Nordics. Before that, I spent five years at [Mentice](http://www.mentice.com/) building simulation software for endovascular procedures, worked as Innovation Manager inside [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/), and led the Cloud Integrations team at [Glooko](https://glooko.com/) as Product Owner. 
+
+I care about how teams work, how software gets built, and how it serves the people who use it.
 
 ---
 
