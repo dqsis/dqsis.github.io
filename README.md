@@ -6,7 +6,7 @@ I have spent the past fifteen years building software for clinical personnel and
 
 ---
 
-I currently work as Development Manager at [Omda](https://omda.com/), leading development of Electronic Health Record systems used daily by clinical personnel across the Nordics. Before that, I spent five years at [Mentice](http://www.mentice.com/) building simulation software for endovascular procedures, worked as Innovation Manager inside [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/), and led the Cloud Integrations team at [Glooko](https://glooko.com/) as Product Owner. 
+I currently work as Development Manager at [Omda](https://omda.com/), leading development of Electronic Health Record systems used daily by clinical personnel across the Nordics. Before that, I spent five years at [Mentice](http://www.mentice.com/) building simulation software for endovascular surgery, worked as Innovation Manager inside [Sahlgrenska University Hospital](https://www.sahlgrenska.se/en/), and led the Cloud Integrations team at [Glooko](https://glooko.com/) as Product Owner. 
 
 I care about how teams work, how software gets built, and how it serves the people who use it.
 
