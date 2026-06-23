@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 · Knockout Bracket · DQSIS</title>
+<link rel="stylesheet" href="https://dqsis.com/experiments/style.css">
+<style>
+.bracket-wrap {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bracket {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  min-width: 900px;
+}
+
+.round-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 140px;
+}
+
+.round-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--olive);
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sand);
+  margin-bottom: 0.75rem;
+  white-space: nowrap;
+}
+
+.round-final .round-label {
+  color: var(--terracotta);
+}
+
+.matches-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+  gap: 6px;
+}
+
+.match-group {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.match-card {
+  background: white;
+  border: 1px solid var(--sand);
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.round-final .match-card {
+  border-color: var(--terracotta);
+}
+
+.match-date {
+  font-size: 0.62rem;
+  color: var(--olive);
+  padding: 3px 7px 2px;
+  border-bottom: 1px solid var(--sand);
+  background: var(--ghost);
+  letter-spacing: 0.04em;
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 7px;
+  font-size: 0.78rem;
+  color: var(--ink);
+  gap: 4px;
+}
+
+.team-row + .team-row {
+  border-top: 1px solid var(--sand);
+}
+
+.team-row.winner {
+  background: var(--ghost);
+  font-weight: 600;
+}
+
+.team-row.tbd {
+  color: var(--mid);
+  font-style: italic;
+}
+
+.team-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  font-size: 0.75rem;
+}
+
+.team-score {
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--mid);
+  min-width: 14px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.team-score.winner {
+  color: var(--terracotta);
+}
+
+.connector {
+  width: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.connector::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--sand);
+}
+
+.champion-wrap {
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.champion-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--terracotta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border: 1px solid var(--terracotta);
+  border-radius: 20px;
+}
+
+.champion-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 3px;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.status-text {
+  font-size: 0.75rem;
+  color: var(--mid);
+  font-style: italic;
+}
+
+.refresh-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--terracotta);
+  background: white;
+  border: 1px solid var(--terracotta);
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all 0.15s;
+}
+
+.refresh-btn:hover {
+  background: var(--terracotta);
+  color: white;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading-overlay {
+  text-align: center;
+  padding: 3rem 0;
+  color: var(--mid);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.error-box {
+  background: white;
+  border: 1px solid var(--sand);
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--mid);
+  font-size: 0.85rem;
+}
+
+.third-place-note {
+  font-size: 0.7rem;
+  color: var(--olive);
+  text-align: center;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo" target="_blank" rel="noopener">
+      <img src="https://dqsis.com/images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS
+        <span class="site-logo-sub">Dimitrios Kiousis</span>
+      </span>
+    </a>
+    <span class="site-nav">Life 2.0 · Experiments</span>
+  </header>
+
+  <header class="header">
+    <p class="eyebrow">FIFA World Cup 2026</p>
+    <h1 class="title">Knockout<br><em>Bracket.</em></h1>
+    <p class="subtitle">Round of 32 through the Final. Times in Stockholm (CEST). Updated automatically.</p>
+  </header>
+
+  <div class="status-bar">
+    <span class="status-text" id="status-text">Loading bracket…</span>
+    <button class="refresh-btn" id="refresh-btn" onclick="loadBracket()" disabled>↻ Refresh</button>
+  </div>
+
+  <div id="bracket-container">
+    <div class="loading-overlay">Fetching latest results…</div>
+  </div>
+
+  <p class="third-place-note" id="third-place-note" style="display:none">
+    Third-place play-off: 18 July · Miami
+  </p>
+
+  <footer class="site-footer">DQSIS · Life 2.0 · World Cup 2026</footer>
+
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are a FIFA World Cup 2026 data assistant. Your job is to return the current knockout stage bracket as structured JSON.
+
+The 2026 World Cup has an expanded format with 48 teams:
+- Round of 32 (16 matches) → Round of 16 (8 matches) → Quarter-finals (4 matches) → Semi-finals (2 matches) → Final (1 match)
+- There is also a third-place play-off.
+
+Return ONLY a valid JSON object with NO markdown, NO backticks, NO preamble. The structure is:
+
+{
+  "updated": "ISO timestamp or descriptive string",
+  "stage_note": "Brief note on current tournament stage, e.g. 'Group stage in progress — knockout bracket TBD'",
+  "rounds": [
+    {
+      "id": "r32",
+      "label": "Round of 32",
+      "matches": [
+        {
+          "id": "r32_m1",
+          "date": "28 Jun · 18:00",
+          "home": { "name": "Team A", "flag": "🇦🇦", "score": null },
+          "away": { "name": "Team B", "flag": "🇧🇧", "score": null },
+          "winner": null,
+          "status": "scheduled"
+        }
+      ]
+    },
+    { "id": "r16", "label": "Round of 16", "matches": [...] },
+    { "id": "qf", "label": "Quarter-finals", "matches": [...] },
+    { "id": "sf", "label": "Semi-finals", "matches": [...] },
+    { "id": "final", "label": "Final", "matches": [...] }
+  ],
+  "third_place": {
+    "date": "18 Jul · 21:00",
+    "home": { "name": "TBD", "flag": "🏳️", "score": null },
+    "away": { "name": "TBD", "flag": "🏳️", "score": null },
+    "winner": null,
+    "status": "scheduled"
+  },
+  "champion": null
+}
+
+Rules:
+- All times in CEST (Stockholm time)
+- Use real flag emojis for known teams
+- score: integer if played, null if not yet played
+- winner: "home" | "away" | null
+- status: "scheduled" | "live" | "final"
+- For unknown/unqualified teams use name: "TBD" and flag: "🏳️"
+- Use your best knowledge of what has actually happened so far in the 2026 World Cup knockout stage
+- If the knockout stage has not started yet, return TBD for all matches but include known scheduled dates if available
+- The Final is at MetLife Stadium, New York on 19 July 2026
+- Return ONLY the JSON. Nothing else.`;
+
+async function loadBracket() {
+  const btn = document.getElementById('refresh-btn');
+  const status = document.getElementById('status-text');
+  const container = document.getElementById('bracket-container');
+
+  btn.disabled = true;
+  status.textContent = 'Fetching latest results…';
+  container.innerHTML = '<div class="loading-overlay">Contacting the oracle…</div>';
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: [{
+          role: 'user',
+          content: `Today is ${new Date().toLocaleDateString('en-SE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}. Return the current World Cup 2026 knockout bracket JSON.`
+        }]
+      })
+    });
+
+    const data = await resp.json();
+    const raw = data.content?.find(b => b.type === 'text')?.text || '';
+    const clean = raw.replace(/```json|```/g, '').trim();
+    const bracket = JSON.parse(clean);
+
+    renderBracket(bracket);
+    status.textContent = `Updated ${new Date().toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' })} · ${bracket.stage_note || ''}`;
+
+  } catch (err) {
+    container.innerHTML = `<div class="error-box">Could not load bracket data.<br><small style="color:var(--mid)">${err.message}</small></div>`;
+    status.textContent = 'Error loading data.';
+    console.error(err);
+  }
+
+  btn.disabled = false;
+}
+
+function renderBracket(data) {
+  const container = document.getElementById('bracket-container');
+  const thirdNote = document.getElementById('third-place-note');
+
+  if (!data.rounds || data.rounds.length === 0) {
+    container.innerHTML = '<div class="error-box">No bracket data available yet.</div>';
+    return;
+  }
+
+  let html = '<div class="bracket-wrap"><div class="bracket">';
+
+  data.rounds.forEach((round, ri) => {
+    const isFinal = round.id === 'final';
+    html += `<div class="round-col${isFinal ? ' round-final' : ''}">`;
+    html += `<div class="round-label">${round.label}</div>`;
+    html += `<div class="matches-col">`;
+
+    round.matches.forEach(match => {
+      const homeDone = match.status === 'final' && match.winner;
+      const awayDone = match.status === 'final' && match.winner;
+      const homeWin = match.winner === 'home';
+      const awayWin = match.winner === 'away';
+
+      const homeTbd = match.home.name === 'TBD';
+      const awayTbd = match.away.name === 'TBD';
+
+      html += `<div class="match-group"><div class="match-card">`;
+
+      if (match.date) {
+        html += `<div class="match-date">${match.date}</div>`;
+      }
+
+      html += `<div class="team-row${homeWin ? ' winner' : ''}${homeTbd ? ' tbd' : ''}">
+        <span class="team-name">${match.home.flag || ''} ${match.home.name}</span>
+        <span class="team-score${homeWin ? ' winner' : ''}">${match.home.score !== null ? match.home.score : '—'}</span>
+      </div>`;
+
+      html += `<div class="team-row${awayWin ? ' winner' : ''}${awayTbd ? ' tbd' : ''}">
+        <span class="team-name">${match.away.flag || ''} ${match.away.name}</span>
+        <span class="team-score${awayWin ? ' winner' : ''}">${match.away.score !== null ? match.away.score : '—'}</span>
+      </div>`;
+
+      html += `</div></div>`;
+    });
+
+    html += `</div>`;
+
+    if (isFinal && data.champion) {
+      html += `<div class="champion-wrap">
+        <div class="champion-badge">🏆 Champion</div>
+        <div class="champion-name">${data.champion}</div>
+      </div>`;
+    }
+
+    html += `</div>`;
+
+    if (ri < data.rounds.length - 1) {
+      html += `<div class="connector"></div>`;
+    }
+  });
+
+  html += '</div></div>';
+  container.innerHTML = html;
+
+  if (data.third_place) {
+    thirdNote.style.display = 'block';
+  }
+}
+
+loadBracket();
+</script>
+</body>
+</html>
