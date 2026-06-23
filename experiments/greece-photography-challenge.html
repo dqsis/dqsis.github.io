@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>35-Day Photography Challenge · DQSIS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo" target="_blank" rel="noopener">
+      <img src="https://dqsis.com/images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS
+        <span class="site-logo-sub">Dimitrios Kiousis</span>
+      </span>
+    </a>
+    <span class="site-nav">Life 2.0 · Experiments</span>
+  </header>
+
+  <header class="header">
+    <p class="eyebrow">Life 2.0 · Summer 2026</p>
+    <h1 class="title">Greece &mdash;<br><em>35 days,<br>35 photos.</em></h1>
+    <p class="subtitle">One photo per day. Observational — nothing staged. Phone only. The prompt is a lens, not an assignment. If something better appears, shoot that instead.</p>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Progress</span>
+      <span id="progress-text">0 / 35</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <section class="mb-3">
+    <p class="section-label">Before you start</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Shoot first, decide later</h3>
+        <p>If you're unsure whether to take it, take it. Hesitation costs shots. Editing is for later.</p>
+      </div>
+      <div class="card">
+        <h3>One photo per day — but shoot freely</h3>
+        <p>The challenge is choosing one, not taking one. Shoot what you want, pick the best at the end of the day.</p>
+      </div>
+      <div class="card">
+        <h3>Phone is enough</h3>
+        <p>Proximity and timing beat equipment every time. Resist the urge to apologise for the camera.</p>
+      </div>
+      <div class="card">
+        <h3>No filters</h3>
+        <p>Especially on travel shots. You want to remember what it actually looked like, not the version you performed.</p>
+      </div>
+      <div class="card">
+        <h3>If you miss a day, don't catch up</h3>
+        <p>One missed day is fine. Doubling up the next day is how challenges die. Move forward.</p>
+      </div>
+      <div class="card">
+        <h3>The prompt is a direction, not a rule</h3>
+        <p>It loosens your eye. It doesn't own the day. If something better appears, shoot that.</p>
+      </div>
+      <div class="card">
+        <h3>Keep your phone accessible</h3>
+        <p>The shot you miss is usually the one you saw but didn't reach for the phone in time.</p>
+      </div>
+      <div class="card">
+        <h3>Don't wake the family for a shot</h3>
+        <p>If the light requires an alarm and a 20-minute walk, that's your call. Just don't make it everyone's.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">The 35 days</p>
+    <ul class="checklist" id="days-list"></ul>
+  </section>
+
+  <footer class="site-footer">DQSIS &middot; Life 2.0 &middot; Greece Summer 2026</footer>
+
+</div>
+
+<script>
+const days = [
+  ["First thing that stops you", "Don't look for a shot. Let one find you."],
+  ["Something old next to something new", "Juxtaposition doesn't need to be dramatic."],
+  ["The colour of the water, exactly as it is", "No filter. No edit. Just what you see."],
+  ["A door", "Any door. What matters is why you chose that one."],
+  ["Shadow and light, midday", "Harsh light is hard — but useful. Work with it."],
+  ["Someone at rest", "Candid. Don't arrange it."],
+  ["What you'll miss about this place", "One detail. Not a panorama."],
+  ["Your parents' house — one detail", "Something small. A handle, a tile, a shelf."],
+  ["Hands", "Working, resting, holding — your call."],
+  ["The sea at a time you don't usually photograph it", "Before sunrise or after dark if you can manage it."],
+  ["Eva doing something", "From a distance. Don't interrupt her."],
+  ["Elsa doing something", "Same rule."],
+  ["Food being prepared, not plated", "The process, not the result."],
+  ["A texture", "Close. Fill the frame."],
+  ["Long distance — horizon, mountain, or open road", "The opposite of yesterday."],
+  ["Something broken or worn", "Age is interesting. Look for it."],
+  ["Kalliopi, candid", "She'll know you took it. Take it anyway."],
+  ["Early morning, before anyone else is up", "Whatever the light gives you."],
+  ["A window and what's outside it", "Shoot from inside. Frame the outside."],
+  ["Something you've seen a hundred times but never photographed", "The obvious thing you always skip."],
+  ["Your own feet, somewhere that matters", "Banal prompt, honest result."],
+  ["A colour that feels like Greece to you", "Not blue and white necessarily. What do you actually see?"],
+  ["First impression of the new place", "Take it fast. First impressions fade."],
+  ["A family ritual", "Something that just happens, every day, without anyone deciding it."],
+  ["Something the kids found", "Theirs to find. Yours to frame."],
+  ["The light at 19:00", "Golden hour is a cliché for a reason."],
+  ["Something you don't want to forget", "No rules. Just that."],
+  ["The city after the islands", "Athens will feel different by now."],
+  ["A stranger — from a distance, respectfully", "No faces needed. Presence is enough."],
+  ["Heat", "You can't photograph temperature. Try anyway."],
+  ["Something that made you laugh", "Document it immediately or it's gone."],
+  ["Eva or Elsa, from behind", "Walking away. No pose."],
+  ["The thing you almost didn't photograph", "The hesitation is the signal. Shoot it."],
+  ["Kalliopi, somewhere she belongs", "You know the moment when you see it."],
+  ["What Greece looks like when you're about to leave it", "Last shot of the trip. No pressure."],
+];
+
+const list = document.getElementById('days-list');
+const fill = document.getElementById('progress-fill');
+const progressText = document.getElementById('progress-text');
+const saved = JSON.parse(localStorage.getItem('greece-photo-2026') || '{}');
+
+days.forEach(([prompt, note], i) => {
+  const n = i + 1;
+  const checked = saved[n] || false;
+  const li = document.createElement('li');
+  li.className = 'checklist-item' + (checked ? ' done' : '');
+  li.innerHTML = `
+    <input type="checkbox" class="item-check" id="day-${n}" ${checked ? 'checked' : ''} aria-label="Day ${n}: ${prompt}">
+    <span class="item-ghost">${n}</span>
+    <div class="item-content">
+      <div class="item-prompt">${prompt}</div>
+      <div class="item-note">${note}</div>
+    </div>
+  `;
+  list.appendChild(li);
+  li.querySelector('input').addEventListener('change', e => {
+    li.classList.toggle('done', e.target.checked);
+    saved[n] = e.target.checked;
+    localStorage.setItem('greece-photo-2026', JSON.stringify(saved));
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  const done = Object.values(saved).filter(Boolean).length;
+  fill.style.width = (done / 35 * 100) + '%';
+  progressText.textContent = `${done} / 35`;
+}
+
+updateProgress();
+</script>
+</body>
+</html>
