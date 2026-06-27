@@ -6,44 +6,46 @@
 <title>World Cup 2026 · Knockout Bracket · DQSIS</title>
 <link rel="stylesheet" href="https://dqsis.com/experiments/style.css">
 <style>
-.bracket-scroll { overflow-x: auto; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; }
-.bracket { display: flex; align-items: stretch; min-width: 960px; gap: 0; }
-.round-col { display: flex; flex-direction: column; flex: 1; min-width: 148px; padding: 0 4px; }
+.bracket-scroll { overflow-x: auto; padding-bottom: 1.5rem; -webkit-overflow-scrolling: touch; }
+.bracket { display: flex; align-items: stretch; min-width: 1100px; }
+.round-col { display: flex; flex-direction: column; flex: 1; min-width: 150px; padding: 0 3px; }
 .round-col:first-child { padding-left: 0; }
 .round-col:last-child { padding-right: 0; }
 .round-label {
-  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--olive); text-align: center; padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--sand); margin-bottom: 0.75rem; white-space: nowrap;
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--olive); text-align: center; padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--sand); margin-bottom: 0.6rem; white-space: nowrap;
 }
 .round-final .round-label { color: var(--terracotta); }
-.matches-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 6px; }
-.match-wrap { display: flex; align-items: center; flex: 1; min-height: 60px; }
+.matches-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 5px; }
+.match-wrap { display: flex; align-items: center; flex: 1; min-height: 56px; }
 .match-card { background: white; border: 1px solid var(--sand); border-radius: 5px; overflow: hidden; width: 100%; }
-.round-final .match-card { border-color: var(--terracotta); }
-.match-meta { font-size: 0.6rem; color: var(--olive); padding: 2px 6px; background: var(--ghost); border-bottom: 1px solid var(--sand); letter-spacing: 0.03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.team-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; font-size: 0.73rem; gap: 3px; }
-.team-row + .team-row { border-top: 1px solid var(--sand); }
-.team-row.winner { background: var(--ghost); font-weight: 600; }
-.team-row.tbd .team-name { color: var(--mid); font-style: italic; }
-.team-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); font-size: 0.71rem; }
-.team-score { font-weight: 600; font-size: 0.75rem; color: var(--mid); min-width: 12px; text-align: right; flex-shrink: 0; }
-.team-score.winner { color: var(--terracotta); }
-.connector { width: 10px; flex-shrink: 0; position: relative; }
-.connector::before { content: ''; display: block; height: 1px; background: var(--sand); margin-top: 30px; }
-.champion-wrap { text-align: center; margin-top: 0.75rem; }
-.champion-label { font-size: 0.65rem; color: var(--terracotta); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-.champion-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-top: 2px; }
-.status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
-.status-text { font-size: 0.75rem; color: var(--mid); font-style: italic; }
-.refresh-btn {
-  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500;
-  color: var(--terracotta); background: white; border: 1px solid var(--terracotta);
-  border-radius: 4px; padding: 4px 12px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s;
+.round-final .match-card { border-color: var(--terracotta); border-width: 1.5px; }
+.match-meta {
+  font-size: 0.58rem; color: var(--olive); padding: 2px 6px;
+  background: var(--ghost); border-bottom: 1px solid var(--sand);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.refresh-btn:hover { background: var(--terracotta); color: white; }
-.refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.stage-note { font-size: 0.78rem; color: var(--mid); background: white; border: 1px solid var(--sand); border-radius: 5px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; }
+.team-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; gap: 3px; }
+.team-row + .team-row { border-top: 1px solid var(--sand); }
+.team-row.winner { background: var(--ghost); }
+.team-row.tbd .team-name { color: var(--mid); font-style: italic; font-size: 0.68rem; }
+.team-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); font-size: 0.72rem; }
+.team-row.winner .team-name { font-weight: 600; }
+.team-score { font-weight: 600; font-size: 0.75rem; color: var(--mid); min-width: 13px; text-align: right; flex-shrink: 0; }
+.team-score.winner { color: var(--terracotta); }
+.connector { width: 10px; flex-shrink: 0; }
+.connector::before { content: ''; display: block; height: 1px; background: var(--sand); margin-top: 28px; }
+.champion-wrap { text-align: center; margin-top: 0.6rem; }
+.champion-trophy { font-size: 1.4rem; line-height: 1; }
+.champion-label { font-size: 0.6rem; color: var(--terracotta); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
+.champion-name { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-top: 2px; }
+.info-bar {
+  font-size: 0.75rem; color: var(--mid); background: white;
+  border: 1px solid var(--sand); border-radius: 5px;
+  padding: 0.6rem 1rem; margin-bottom: 1.5rem;
+}
+.updated { font-size: 0.7rem; color: var(--olive); margin-bottom: 1.5rem; font-style: italic; }
 </style>
 </head>
 <body>
@@ -60,228 +62,141 @@
   <header class="header">
     <p class="eyebrow">FIFA World Cup 2026</p>
     <h1 class="title">Knockout<br><em>Bracket.</em></h1>
-    <p class="subtitle">Round of 32 through the Final. All times in Stockholm (CEST). Auto-updated on load.</p>
+    <p class="subtitle">Round of 32 through the Final. All times Stockholm / CEST.</p>
   </header>
 
-  <div class="status-bar">
-    <span class="status-text" id="status-text">Loading…</span>
-    <button class="refresh-btn" id="refresh-btn" onclick="init()" disabled>↻ Refresh</button>
-  </div>
+  <p class="updated">Last updated: 27 Jun 2026 — group stage complete, R32 teams confirmed.</p>
+  <div class="info-bar">🏆 Final: 19 Jul · MetLife Stadium, New York &nbsp;·&nbsp; Third place: 18 Jul · Miami</div>
 
-  <div id="stage-note" class="stage-note" style="display:none"></div>
   <div id="bracket-root"></div>
 
   <footer class="site-footer">DQSIS · Life 2.0 · FIFA World Cup 2026</footer>
 </div>
 
 <script>
-// ── Static schedule (all times CEST) ────────────────────────────────────────
-// Teams filled with "TBD" until known; scores null until played.
-// Structure mirrors actual FIFA bracket connections.
+// ─── BRACKET DATA ────────────────────────────────────────────────────────────
+// To update: edit team names, scores, and winner fields below.
+// winner: "home" | "away" | null
+// status: "scheduled" | "final"
 
-const SCHEDULE = {
-  r32: {
-    label: "Round of 32",
+const BRACKET = [
+  {
+    id: "r32", label: "Round of 32",
     matches: [
-      { id:"r32_73", date:"28 Jun · 02:00", home:"2A", away:"2B" },
-      { id:"r32_74", date:"29 Jun · 03:30", home:"1E", away:"3rd" },
-      { id:"r32_75", date:"30 Jun · 08:00", home:"1F", away:"2C" },
-      { id:"r32_76", date:"29 Jun · 00:00", home:"1C", away:"2F" },
-      { id:"r32_77", date:"30 Jun · 04:00", home:"1I", away:"3rd" },
-      { id:"r32_78", date:"29 Jun · 20:00", home:"2E", away:"2I" },
-      { id:"r32_79", date:"01 Jul · 03:00", home:"1A", away:"3rd" },
-      { id:"r32_80", date:"01 Jul · 23:00", home:"1L", away:"3rd" },
-      { id:"r32_81", date:"02 Jul · 03:00", home:"1D", away:"3rd" },
-      { id:"r32_82", date:"01 Jul · 23:00", home:"1G", away:"3rd" },
-      { id:"r32_83", date:"02 Jul · 21:00", home:"2K", away:"2L" },
-      { id:"r32_84", date:"02 Jul · 23:00", home:"1H", away:"2J" },
-      { id:"r32_85", date:"03 Jul · 01:00", home:"1B", away:"3rd" },
-      { id:"r32_86", date:"03 Jul · 01:00", home:"1J", away:"2H" },
-      { id:"r32_87", date:"03 Jul · 21:00", home:"1K", away:"3rd" },
-      { id:"r32_88", date:"03 Jul · 23:00", home:"2D", away:"2G" },
+      { date:"28 Jun · 02:00", home:"🇿🇦 S. Africa",   away:"🇨🇦 Canada",      hs:null, as:null, w:null, s:"scheduled" },
+      { date:"29 Jun · 00:00", home:"🇧🇷 Brazil",      away:"🇯🇵 Japan",        hs:null, as:null, w:null, s:"scheduled" },
+      { date:"29 Jun · 02:00", home:"🇲🇽 Mexico",      away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"29 Jun · 03:30", home:"🇩🇪 Germany",     away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"30 Jun · 00:00", home:"🇵🇹 Portugal",    away:"🇸🇪 Sweden",       hs:null, as:null, w:null, s:"scheduled" },
+      { date:"30 Jun · 02:00", home:"🇳🇱 Netherlands", away:"🇲🇦 Morocco",      hs:null, as:null, w:null, s:"scheduled" },
+      { date:"30 Jun · 04:00", home:"🇳🇴 Norway",      away:"🇨🇮 Côte d'Ivoire",hs:null, as:null, w:null, s:"scheduled" },
+      { date:"01 Jul · 00:00", home:"🇫🇷 France",      away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"01 Jul · 02:00", home:"🇺🇸 USA",         away:"🇧🇦 Bosnia-Herz.", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"01 Jul · 04:00", home:"🇦🇷 Argentina",   away:"🇨🇻 Cabo Verde",   hs:null, as:null, w:null, s:"scheduled" },
+      { date:"02 Jul · 00:00", home:"🇪🇸 Spain",       away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"02 Jul · 02:00", home:"🏳️ TBD",         away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"02 Jul · 22:00", home:"🇧🇪 Belgium",     away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"03 Jul · 00:00", home:"🇬🇧 England",     away:"🇬🇭 Ghana",        hs:null, as:null, w:null, s:"scheduled" },
+      { date:"03 Jul · 02:00", home:"🇨🇴 Colombia",    away:"🏳️ TBD",          hs:null, as:null, w:null, s:"scheduled" },
+      { date:"03 Jul · 04:00", home:"🇪🇬 Egypt",       away:"🇵🇾 Paraguay",     hs:null, as:null, w:null, s:"scheduled" },
     ]
   },
-  r16: {
-    label: "Round of 16",
+  {
+    id: "r16", label: "Round of 16",
     matches: [
-      { id:"r16_89", date:"04 Jul · 23:00", home:"W73", away:"W77" },
-      { id:"r16_90", date:"05 Jul · 01:00", home:"W74", away:"W75" },
-      { id:"r16_91", date:"05 Jul · 23:00", home:"W76", away:"W78" },
-      { id:"r16_92", date:"06 Jul · 01:00", home:"W79", away:"W80" },
-      { id:"r16_93", date:"06 Jul · 23:00", home:"W83", away:"W84" },
-      { id:"r16_94", date:"07 Jul · 01:00", home:"W81", away:"W82" },
-      { id:"r16_95", date:"07 Jul · 23:00", home:"W86", away:"W88" },
-      { id:"r16_96", date:"08 Jul · 01:00", home:"W85", away:"W87" },
+      { date:"05 Jul · 01:00", home:"W M73", away:"W M74", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"05 Jul · 03:00", home:"W M75", away:"W M76", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"06 Jul · 01:00", home:"W M77", away:"W M78", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"06 Jul · 03:00", home:"W M79", away:"W M80", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"07 Jul · 01:00", home:"W M81", away:"W M82", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"07 Jul · 03:00", home:"W M83", away:"W M84", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"08 Jul · 01:00", home:"W M85", away:"W M86", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"08 Jul · 03:00", home:"W M87", away:"W M88", hs:null, as:null, w:null, s:"scheduled" },
     ]
   },
-  qf: {
-    label: "Quarter-finals",
+  {
+    id: "qf", label: "Quarter-finals",
     matches: [
-      { id:"qf_97", date:"09 Jul · 23:00", home:"W89", away:"W90" },
-      { id:"qf_98", date:"10 Jul · 01:00", home:"W91", away:"W92" },
-      { id:"qf_99", date:"10 Jul · 23:00", home:"W93", away:"W94" },
-      { id:"qf_100", date:"11 Jul · 01:00", home:"W95", away:"W96" },
+      { date:"10 Jul · 01:00", home:"W R16 M1", away:"W R16 M2", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"10 Jul · 03:00", home:"W R16 M3", away:"W R16 M4", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"11 Jul · 01:00", home:"W R16 M5", away:"W R16 M6", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"11 Jul · 03:00", home:"W R16 M7", away:"W R16 M8", hs:null, as:null, w:null, s:"scheduled" },
     ]
   },
-  sf: {
-    label: "Semi-finals",
+  {
+    id: "sf", label: "Semi-finals",
     matches: [
-      { id:"sf_101", date:"14 Jul · 23:00", home:"W97", away:"W98" },
-      { id:"sf_102", date:"15 Jul · 23:00", home:"W99", away:"W100" },
+      { date:"14 Jul · 23:00", home:"W QF 1", away:"W QF 2", hs:null, as:null, w:null, s:"scheduled" },
+      { date:"15 Jul · 23:00", home:"W QF 3", away:"W QF 4", hs:null, as:null, w:null, s:"scheduled" },
     ]
   },
-  final: {
-    label: "Final · MetLife Stadium",
+  {
+    id: "final", label: "Final · New York",
     matches: [
-      { id:"final_104", date:"19 Jul · 23:00", home:"W101", away:"W102" },
+      { date:"19 Jul · 23:00", home:"W SF 1", away:"W SF 2", hs:null, as:null, w:null, s:"scheduled" },
     ]
   }
-};
+];
 
-// ── State (filled by API) ────────────────────────────────────────────────────
-let matchData = {}; // id → { homeTeam, awayTeam, homeScore, awayScore, winner, status }
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function isTbd(name) { return !name || name.includes("TBD") || name.startsWith("W "); }
 
-// ── Fetch from sports API ────────────────────────────────────────────────────
-async function fetchScores() {
-  const resp = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      system: `You are a World Cup 2026 data assistant. Return ONLY a JSON array of match result objects. No markdown, no backticks, no preamble.
-
-Each object: { "id": "match_id", "homeTeam": "Country name + flag emoji", "awayTeam": "Country name + flag emoji", "homeScore": int_or_null, "awayScore": int_or_null, "winner": "home"|"away"|null, "status": "scheduled"|"live"|"final" }
-
-Match IDs to cover (knockout stage only): r32_73 through r32_88, r16_89 through r16_96, qf_97 through qf_100, sf_101, sf_102, final_104.
-
-Use your best knowledge of what has happened so far. If a match hasn't been played yet, set scores to null, winner to null, status to "scheduled". If teams aren't yet known (bracket slot unfilled), use "TBD" for the team name and "🏳️" as flag (combined in one string: "🏳️ TBD").
-
-Today is ${new Date().toLocaleDateString('sv-SE')}.
-
-Return ONLY the JSON array.`,
-      messages: [{ role: "user", content: "Return the World Cup 2026 knockout bracket data." }]
-    })
-  });
-  const data = await resp.json();
-  const raw = data.content?.find(b => b.type === "text")?.text || "[]";
-  return JSON.parse(raw.replace(/```json|```/g, "").trim());
-}
-
-// ── Render ───────────────────────────────────────────────────────────────────
-function getMatch(id) {
-  const s = SCHEDULE;
-  for (const round of Object.values(s)) {
-    const m = round.matches.find(x => x.id === id);
-    if (m) return m;
-  }
-  return null;
-}
-
-function renderMatch(schMatch) {
-  const d = matchData[schMatch.id] || {};
-  const homeTeam = d.homeTeam || "🏳️ TBD";
-  const awayTeam = d.awayTeam || "🏳️ TBD";
-  const homeScore = d.homeScore !== undefined && d.homeScore !== null ? d.homeScore : null;
-  const awayScore = d.awayScore !== undefined && d.awayScore !== null ? d.awayScore : null;
-  const winner = d.winner || null;
-  const played = d.status === "final";
-
-  const homeTbd = homeTeam.includes("TBD");
-  const awayTbd = awayTeam.includes("TBD");
+function renderMatch(m) {
+  const played = m.s === "final";
+  const homeTbd = isTbd(m.home);
+  const awayTbd = isTbd(m.away);
+  const homeWin = m.w === "home";
+  const awayWin = m.w === "away";
 
   return `
     <div class="match-wrap">
       <div class="match-card">
-        <div class="match-meta">${schMatch.date}</div>
-        <div class="team-row ${winner === 'home' ? 'winner' : ''} ${homeTbd ? 'tbd' : ''}">
-          <span class="team-name">${homeTeam}</span>
-          <span class="team-score ${winner === 'home' ? 'winner' : ''}">${homeScore !== null ? homeScore : played ? '—' : ''}</span>
+        <div class="match-meta">${m.date}</div>
+        <div class="team-row${homeWin ? ' winner' : ''}${homeTbd ? ' tbd' : ''}">
+          <span class="team-name">${m.home}</span>
+          <span class="team-score${homeWin ? ' winner' : ''}">${m.hs !== null ? m.hs : ''}</span>
         </div>
-        <div class="team-row ${winner === 'away' ? 'winner' : ''} ${awayTbd ? 'tbd' : ''}">
-          <span class="team-name">${awayTeam}</span>
-          <span class="team-score ${winner === 'away' ? 'winner' : ''}">${awayScore !== null ? awayScore : played ? '—' : ''}</span>
+        <div class="team-row${awayWin ? ' winner' : ''}${awayTbd ? ' tbd' : ''}">
+          <span class="team-name">${m.away}</span>
+          <span class="team-score${awayWin ? ' winner' : ''}">${m.as !== null ? m.as : ''}</span>
         </div>
       </div>
     </div>`;
 }
 
-function renderBracket() {
-  const rounds = [
-    { key: "r32", ...SCHEDULE.r32 },
-    { key: "r16", ...SCHEDULE.r16 },
-    { key: "qf",  ...SCHEDULE.qf  },
-    { key: "sf",  ...SCHEDULE.sf  },
-    { key: "final", ...SCHEDULE.final },
-  ];
-
+function render() {
   let html = '<div class="bracket-scroll"><div class="bracket">';
 
-  rounds.forEach((round, ri) => {
-    const isFinal = round.key === "final";
-    html += `<div class="round-col ${isFinal ? 'round-final' : ''}">`;
+  BRACKET.forEach((round, ri) => {
+    const isFinal = round.id === "final";
+    html += `<div class="round-col${isFinal ? ' round-final' : ''}">`;
     html += `<div class="round-label">${round.label}</div>`;
     html += `<div class="matches-col">`;
     round.matches.forEach(m => { html += renderMatch(m); });
     html += `</div>`;
 
-    // Champion display
+    // Champion
     if (isFinal) {
-      const fd = matchData["final_104"];
-      if (fd && fd.winner) {
-        const champ = fd.winner === "home" ? fd.homeTeam : fd.awayTeam;
+      const fm = round.matches[0];
+      if (fm.w) {
+        const champ = fm.w === "home" ? fm.home : fm.away;
         html += `<div class="champion-wrap">
-          <div class="champion-label">🏆 World Champion</div>
+          <div class="champion-trophy">🏆</div>
+          <div class="champion-label">World Champion</div>
           <div class="champion-name">${champ}</div>
         </div>`;
       }
     }
 
     html += `</div>`;
-    if (ri < rounds.length - 1) {
-      html += `<div class="connector"></div>`;
-    }
+    if (ri < BRACKET.length - 1) html += `<div class="connector"></div>`;
   });
 
   html += '</div></div>';
   document.getElementById("bracket-root").innerHTML = html;
 }
 
-// ── Init ─────────────────────────────────────────────────────────────────────
-async function init() {
-  const btn = document.getElementById("refresh-btn");
-  const status = document.getElementById("status-text");
-  btn.disabled = true;
-  status.textContent = "Fetching latest results…";
-
-  // Render skeleton immediately with TBD
-  renderBracket();
-
-  try {
-    const results = await fetchScores();
-    results.forEach(r => { matchData[r.id] = r; });
-    renderBracket();
-    status.textContent = `Updated ${new Date().toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" })}`;
-
-    // Stage note
-    const played = results.filter(r => r.status === "final").length;
-    const note = document.getElementById("stage-note");
-    if (played === 0) {
-      note.style.display = "block";
-      note.textContent = "Group stage in progress — knockout bracket kicks off 28 June. Teams shown as TBD until confirmed.";
-    } else {
-      note.style.display = "none";
-    }
-
-  } catch (err) {
-    status.textContent = "Could not fetch live data — showing scheduled fixtures.";
-    console.warn("API error:", err.message);
-  }
-
-  btn.disabled = false;
-}
-
-init();
+render();
 </script>
 </body>
 </html>
