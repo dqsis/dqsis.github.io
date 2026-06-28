@@ -11,11 +11,7 @@
 .round-col { display: flex; flex-direction: column; flex: 1; min-width: 148px; padding: 0 3px; }
 .round-col:first-child { padding-left: 0; }
 .round-col:last-child { padding-right: 0; }
-.round-label {
-  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--olive); text-align: center; padding-bottom: 0.45rem;
-  border-bottom: 1px solid var(--sand); margin-bottom: 0.6rem; white-space: nowrap;
-}
+.round-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--olive); text-align: center; padding-bottom: 0.45rem; border-bottom: 1px solid var(--sand); margin-bottom: 0.6rem; white-space: nowrap; }
 .round-final .round-label { color: var(--terracotta); }
 .matches-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 5px; }
 .match-wrap { display: flex; align-items: center; flex: 1; min-height: 58px; }
@@ -25,24 +21,21 @@
 .team-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; gap: 3px; }
 .team-row + .team-row { border-top: 1px solid var(--sand); }
 .team-row.winner { background: var(--ghost); }
-.team-row.tbd .team-name { color: var(--mid); font-style: italic; }
+.team-row.tbd .team-name { color: var(--mid); font-style: italic; font-size: 0.67rem; }
 .team-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); font-size: 0.72rem; }
 .team-row.winner .team-name { font-weight: 600; }
 .team-score { font-weight: 600; font-size: 0.78rem; color: var(--mid); min-width: 14px; text-align: right; flex-shrink: 0; }
 .team-score.winner { color: var(--terracotta); }
-.connector { width: 10px; flex-shrink: 0; }
-.connector::before { content: ''; display: block; height: 1px; background: var(--sand); margin-top: 29px; }
+.connector { width: 20px; flex-shrink: 0; position: relative; }
+.bracket-svg { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
+.bracket-scroll { position: relative; }
 .champion-wrap { text-align: center; margin-top: 0.6rem; }
 .champion-trophy { font-size: 1.4rem; line-height: 1; }
 .champion-label { font-size: 0.6rem; color: var(--terracotta); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
 .champion-name { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-top: 2px; }
 .status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
 .status-text { font-size: 0.75rem; color: var(--mid); font-style: italic; }
-.refresh-btn {
-  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500;
-  color: var(--terracotta); background: white; border: 1px solid var(--terracotta);
-  border-radius: 4px; padding: 4px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s;
-}
+.refresh-btn { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: white; border: 1px solid var(--terracotta); border-radius: 4px; padding: 4px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
 .refresh-btn:hover { background: var(--terracotta); color: white; }
 .refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .loading { text-align: center; padding: 3rem 0; color: var(--mid); font-size: 0.85rem; font-style: italic; }
@@ -51,7 +44,6 @@
 </head>
 <body>
 <div class="page">
-
   <header class="site-header">
     <a href="https://dqsis.com" class="site-logo" target="_blank" rel="noopener">
       <img src="https://dqsis.com/images/groupworkout_icon.png" alt="DQSIS logo">
@@ -77,7 +69,7 @@
 </div>
 
 <script>
-// ── Flag lookup ───────────────────────────────────────────────────────────────
+// ── Flags ─────────────────────────────────────────────────────────────────────
 const FLAGS = {
   "Mexico":"🇲🇽","South Africa":"🇿🇦","South Korea":"🇰🇷","Czech Republic":"🇨🇿",
   "Canada":"🇨🇦","Bosnia & Herzegovina":"🇧🇦","Qatar":"🇶🇦","Switzerland":"🇨🇭",
@@ -91,111 +83,180 @@ const FLAGS = {
   "Argentina":"🇦🇷","Algeria":"🇩🇿","Austria":"🇦🇹","Jordan":"🇯🇴",
   "Portugal":"🇵🇹","DR Congo":"🇨🇩","Uzbekistan":"🇺🇿","Colombia":"🇨🇴",
   "England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croatia":"🇭🇷","Ghana":"🇬🇭","Panama":"🇵🇦",
+  "Senegal":"🇸🇳","Bosnia-Herz.":"🇧🇦",
 };
+const flag = n => FLAGS[n] || "🏳️";
 
-function flag(name) { return FLAGS[name] || "🏳️"; }
+// ── Hardcoded bracket skeleton (dates in CEST) ────────────────────────────────
+// team1/team2: known teams or "TBD". score: null until played.
+const SKELETON = [
+  {
+    id: "Round of 32", label: "Round of 32",
+    matches: [
+      { date:"28 Jun · 02:00", team1:"South Africa",        team2:"Canada",            score:null },
+      { date:"29 Jun · 02:00", team1:"Brazil",              team2:"Japan",             score:null },
+      { date:"29 Jun · 04:00", team1:"Mexico",              team2:"TBD",               score:null },
+      { date:"29 Jun · 05:30", team1:"Germany",             team2:"TBD",               score:null },
+      { date:"30 Jun · 02:00", team1:"Portugal",            team2:"Sweden",            score:null },
+      { date:"30 Jun · 04:00", team1:"Netherlands",         team2:"Morocco",           score:null },
+      { date:"30 Jun · 06:00", team1:"Norway",              team2:"Côte d'Ivoire",     score:null },
+      { date:"01 Jul · 02:00", team1:"France",              team2:"TBD",               score:null },
+      { date:"01 Jul · 04:00", team1:"USA",                 team2:"Bosnia & Herzegovina", score:null },
+      { date:"01 Jul · 06:00", team1:"Argentina",           team2:"Cabo Verde",        score:null },
+      { date:"02 Jul · 02:00", team1:"Spain",               team2:"TBD",               score:null },
+      { date:"02 Jul · 04:00", team1:"TBD",                 team2:"TBD",               score:null },
+      { date:"03 Jul · 00:00", team1:"Belgium",             team2:"TBD",               score:null },
+      { date:"03 Jul · 02:00", team1:"England",             team2:"Ghana",             score:null },
+      { date:"03 Jul · 04:00", team1:"Colombia",            team2:"TBD",               score:null },
+      { date:"03 Jul · 06:00", team1:"Egypt",               team2:"Paraguay",          score:null },
+    ]
+  },
+  {
+    id: "Round of 16", label: "Round of 16",
+    matches: [
+      { date:"05 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"05 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"06 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"06 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"07 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"07 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"08 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"08 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+    ]
+  },
+  {
+    id: "Quarter-finals", label: "Quarter-finals",
+    matches: [
+      { date:"10 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"10 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"11 Jul · 01:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"11 Jul · 03:00", team1:"TBD", team2:"TBD", score:null },
+    ]
+  },
+  {
+    id: "Semi-finals", label: "Semi-finals",
+    matches: [
+      { date:"14 Jul · 23:00", team1:"TBD", team2:"TBD", score:null },
+      { date:"15 Jul · 23:00", team1:"TBD", team2:"TBD", score:null },
+    ]
+  },
+  {
+    id: "Final", label: "Final · New York",
+    matches: [
+      { date:"19 Jul · 23:00", team1:"TBD", team2:"TBD", score:null },
+    ]
+  }
+];
 
-// ── Round order ───────────────────────────────────────────────────────────────
-const ROUND_ORDER = ["Round of 32","Round of 16","Quarter-finals","Semi-finals","Final"];
-const ROUND_LABELS = {
-  "Round of 32": "Round of 32",
-  "Round of 16": "Round of 16",
+// ── Round name aliases from openfootball ──────────────────────────────────────
+const ROUND_ALIASES = {
+  "Round of 32":    "Round of 32",
+  "Round of 16":    "Round of 16",
+  "Quarterfinal":   "Quarter-finals",
+  "Quarter-final":  "Quarter-finals",
   "Quarter-finals": "Quarter-finals",
-  "Semi-finals": "Semi-finals",
-  "Final": "Final · New York"
+  "Semifinal":      "Semi-finals",
+  "Semi-final":     "Semi-finals",
+  "Semi-finals":    "Semi-finals",
+  "Final":          "Final",
 };
 
-// ── UTC offset for UTC string in data → CEST (UTC+2) ─────────────────────────
-function toCEST(dateStr, timeStr) {
-  if (!timeStr) return dateStr;
-  // timeStr like "13:00 UTC-6"
-  const m = timeStr.match(/(\d+):(\d+)\s*UTC([+-]\d+)/);
-  if (!m) return timeStr;
-  const [,h,min,off] = m;
-  const utcH = parseInt(h) - parseInt(off); // convert to UTC
-  const cestH = utcH + 2; // CEST = UTC+2
-  const finalH = ((cestH % 24) + 24) % 24;
-  return `${finalH.toString().padStart(2,'0')}:${min}`;
+// ── CEST conversion ───────────────────────────────────────────────────────────
+function toCEST(timeStr) {
+  const m = timeStr && timeStr.match(/(\d+):(\d+)\s*UTC([+-]\d+)/);
+  if (!m) return timeStr || "";
+  const utcH = parseInt(m[1]) - parseInt(m[3]);
+  const cestH = ((utcH + 2) % 24 + 24) % 24;
+  return `${cestH.toString().padStart(2,'0')}:${m[2]}`;
 }
 
-function formatDate(dateStr, timeStr) {
-  const d = new Date(dateStr);
+function fmtDate(dateStr, timeStr) {
+  const d = new Date(dateStr + "T12:00:00Z");
   const day = d.toLocaleDateString('sv-SE', { month:'short', day:'numeric' });
-  const t = toCEST(dateStr, timeStr);
-  return `${day} · ${t}`;
+  return `${day} · ${toCEST(timeStr)}`;
 }
 
-// ── Determine winner ──────────────────────────────────────────────────────────
-function getWinner(match) {
-  if (!match.score || !match.score.ft) return null;
-  const [s1, s2] = match.score.ft;
+// ── Match winner ──────────────────────────────────────────────────────────────
+function winner(m) {
+  if (!m.score || !m.score.ft) return null;
+  const [s1, s2] = m.score.ft;
   if (s1 > s2) return "team1";
   if (s2 > s1) return "team2";
-  // Check penalty shootout
-  if (match.score.pen) {
-    const [p1, p2] = match.score.pen;
-    return p1 > p2 ? "team1" : "team2";
-  }
+  if (m.score.pen) return m.score.pen[0] > m.score.pen[1] ? "team1" : "team2";
   return null;
 }
 
-// ── Build bracket from flat match list ───────────────────────────────────────
-function buildBracket(matches) {
-  const rounds = {};
-  for (const m of matches) {
-    const r = m.round;
-    if (!ROUND_ORDER.includes(r)) continue;
-    if (!rounds[r]) rounds[r] = [];
-    rounds[r].push(m);
+// ── Merge API data into skeleton ──────────────────────────────────────────────
+function merge(skeleton, apiMatches) {
+  // Group API knockout matches by normalised round name
+  const byRound = {};
+  for (const m of apiMatches) {
+    const norm = ROUND_ALIASES[m.round];
+    if (!norm) continue;
+    if (!byRound[norm]) byRound[norm] = [];
+    byRound[norm].push(m);
   }
-  return ROUND_ORDER.filter(r => rounds[r]).map(r => ({ id: r, matches: rounds[r] }));
+
+  return skeleton.map(round => {
+    const live = byRound[round.id];
+    if (!live || !live.length) return round; // no data yet — keep skeleton
+
+    // Sort by date so order is consistent
+    live.sort((a,b) => new Date(a.date) - new Date(b.date));
+
+    const merged = round.matches.map((slot, i) => {
+      const lm = live[i];
+      if (!lm) return slot;
+      return {
+        date: fmtDate(lm.date, lm.time),
+        team1: lm.team1 || slot.team1,
+        team2: lm.team2 || slot.team2,
+        score: lm.score || null,
+        ground: lm.ground,
+      };
+    });
+    return { ...round, matches: merged };
+  });
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
 function renderMatch(m) {
-  const winner = getWinner(m);
+  const w = winner(m);
   const played = m.score && m.score.ft;
-  const t1win = winner === "team1";
-  const t2win = winner === "team2";
   const t1 = m.team1 || "TBD";
   const t2 = m.team2 || "TBD";
-  const tbd1 = !m.team1;
-  const tbd2 = !m.team2;
+  const tbd1 = t1 === "TBD";
+  const tbd2 = t2 === "TBD";
   const s1 = played ? m.score.ft[0] : "";
   const s2 = played ? m.score.ft[1] : "";
+  const meta = typeof m.date === "string" ? m.date : fmtDate(m.date, "");
+  const ground = m.ground ? ` · ${m.ground}` : "";
 
   return `<div class="match-wrap"><div class="match-card">
-    <div class="match-meta">${formatDate(m.date, m.time)}${m.ground ? ' · ' + m.ground : ''}</div>
-    <div class="team-row${t1win?' winner':''}${tbd1?' tbd':''}">
+    <div class="match-meta">${meta}${ground}</div>
+    <div class="team-row${w==='team1'?' winner':''}${tbd1?' tbd':''}">
       <span class="team-name">${flag(t1)} ${t1}</span>
-      <span class="team-score${t1win?' winner':''}">${s1}</span>
+      <span class="team-score${w==='team1'?' winner':''}">${s1}</span>
     </div>
-    <div class="team-row${t2win?' winner':''}${tbd2?' tbd':''}">
+    <div class="team-row${w==='team2'?' winner':''}${tbd2?' tbd':''}">
       <span class="team-name">${flag(t2)} ${t2}</span>
-      <span class="team-score${t2win?' winner':''}">${s2}</span>
+      <span class="team-score${w==='team2'?' winner':''}">${s2}</span>
     </div>
   </div></div>`;
 }
 
 function render(bracket) {
-  const root = document.getElementById("root");
-  if (!bracket.length) {
-    root.innerHTML = '<div class="error">No knockout matches found yet — check back after 28 June.</div>';
-    return;
-  }
-
   let html = '<div class="bracket-scroll"><div class="bracket">';
   bracket.forEach((round, ri) => {
     const isFinal = round.id === "Final";
     html += `<div class="round-col${isFinal?' round-final':''}">`;
-    html += `<div class="round-label">${ROUND_LABELS[round.id]}</div>`;
+    html += `<div class="round-label">${round.label}</div>`;
     html += `<div class="matches-col">`;
     round.matches.forEach(m => { html += renderMatch(m); });
     html += `</div>`;
-
-    if (isFinal && round.matches.length) {
+    if (isFinal) {
       const fm = round.matches[0];
-      const w = getWinner(fm);
+      const w = winner(fm);
       if (w) {
         const champ = w === "team1" ? fm.team1 : fm.team2;
         html += `<div class="champion-wrap">
@@ -205,57 +266,44 @@ function render(bracket) {
         </div>`;
       }
     }
-
     html += `</div>`;
     if (ri < bracket.length - 1) html += `<div class="connector"></div>`;
   });
   html += '</div></div>';
-  root.innerHTML = html;
+  document.getElementById("root").innerHTML = html;
 }
 
-// ── Fetch & load ──────────────────────────────────────────────────────────────
+// ── Load ──────────────────────────────────────────────────────────────────────
 async function load() {
   const btn = document.getElementById("refresh-btn");
   const status = document.getElementById("status-text");
   btn.disabled = true;
   status.textContent = "Fetching…";
 
+  // Render skeleton immediately
+  render(SKELETON);
+
   try {
-    // Also try to fetch the finals file if it exists
-    const [mainResp, finalsResp] = await Promise.allSettled([
-      fetch("https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json"),
-      fetch("https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup_finals.json")
-    ]);
-
+    const urls = [
+      "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
+      "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup_finals.json",
+    ];
+    const results = await Promise.allSettled(urls.map(u => fetch(u).then(r => r.ok ? r.json() : null)));
     let allMatches = [];
-
-    if (mainResp.status === "fulfilled" && mainResp.value.ok) {
-      const data = await mainResp.value.json();
-      allMatches = allMatches.concat(data.matches || []);
+    for (const r of results) {
+      if (r.status === "fulfilled" && r.value && r.value.matches) {
+        allMatches = allMatches.concat(r.value.matches);
+      }
     }
 
-    if (finalsResp.status === "fulfilled" && finalsResp.value.ok) {
-      const data = await finalsResp.value.json();
-      allMatches = allMatches.concat(data.matches || []);
-    }
+    const bracket = merge(SKELETON, allMatches);
+    render(bracket);
 
-    const bracket = buildBracket(allMatches);
-
-    if (!bracket.length) {
-      document.getElementById("root").innerHTML =
-        '<div class="error">Knockout stage not yet started — group stage ends 27 June. Check back from 28 June.</div>';
-      status.textContent = "Group stage in progress";
-    } else {
-      render(bracket);
-      const played = bracket.flatMap(r => r.matches).filter(m => m.score && m.score.ft).length;
-      status.textContent = `Updated ${new Date().toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})} CEST · ${played} match${played!==1?'es':''} played`;
-    }
-
+    const played = bracket.flatMap(r => r.matches).filter(m => m.score && m.score.ft).length;
+    status.textContent = `Updated ${new Date().toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})} CEST · ${played} knockout match${played!==1?'es':''} played`;
   } catch (err) {
-    document.getElementById("root").innerHTML =
-      `<div class="error">Could not fetch data — check your connection and try refreshing.<br><small style="color:var(--mid)">${err.message}</small></div>`;
-    status.textContent = "Error loading data";
-    console.error(err);
+    status.textContent = "Showing scheduled fixtures — could not fetch live data";
+    console.warn(err);
   }
 
   btn.disabled = false;
