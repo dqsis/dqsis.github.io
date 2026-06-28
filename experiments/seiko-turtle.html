@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seiko Turtle · A Diver's History · DQSIS</title>
+<link rel="stylesheet" href="../styles/style.css">
+<style>
+
+/* ── Timeline ── */
+.timeline {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 2.6rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--sand);
+}
+
+.tl-item {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Year bubble */
+.tl-year {
+  flex-shrink: 0;
+  width: 5.2rem;
+  text-align: right;
+  padding-top: 0.1rem;
+}
+
+.tl-year span {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--olive);
+  background: var(--stone);
+  padding: 0 0.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Dot on the line */
+.tl-dot {
+  flex-shrink: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--sand);
+  border: 2px solid var(--olive);
+  margin-top: 0.28rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-item.milestone .tl-dot {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.tl-item.mine .tl-dot {
+  background: var(--ink);
+  border-color: var(--ink);
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: 0.18rem;
+}
+
+/* Content */
+.tl-content {
+  flex: 1;
+  padding-bottom: 0.25rem;
+}
+
+.tl-model {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.tl-item.milestone .tl-model {
+  color: var(--terracotta);
+}
+
+.tl-desc {
+  font-size: 0.88rem;
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+/* Mine card */
+.mine-card {
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.mine-card .tl-model {
+  color: var(--ink);
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.mine-card .tl-desc {
+  font-size: 0.85rem;
+}
+
+.mine-label {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--ink);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+  margin-bottom: 0.5rem;
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo">
+      <img src="../images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS
+        <span class="site-logo-sub">Dimitrios Kiousis</span>
+      </span>
+    </a>
+    <span class="site-nav">Life 2.0 · Experiments</span>
+  </header>
+
+  <div class="header">
+    <p class="eyebrow">Seiko Prospex</p>
+    <h1 class="title">The <em>Turtle</em></h1>
+    <p class="subtitle">Few watches have earned a nickname as affectionately as the Seiko Turtle. Nearly five decades of cushion-cased, water-resistant history — from the ocean floor to the wrist of everyday enthusiasts.</p>
+  </div>
+
+  <p class="section-label">A History</p>
+
+  <div class="timeline">
+
+    <div class="tl-item milestone">
+      <div class="tl-year"><span>1965</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">62MAS · The Beginning</p>
+        <p class="tl-desc">Seiko launches its first professional diver, the 62MAS, rated to 150m. It sets the foundation for all Seiko dive watches to come — a commitment to tool-watch precision at an accessible price.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>1968</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">6159-7001 · 600m Professional</p>
+        <p class="tl-desc">Seiko pushes into professional territory with a 600m-rated diver used on the Kon-Tiki Trans-Pacific expedition. A landmark for the brand's engineering credibility.</p>
+      </div>
+    </div>
+
+    <div class="tl-item milestone">
+      <div class="tl-year"><span>1976</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">6309-7040 · The Original Turtle</p>
+        <p class="tl-desc">The watch that started it all. The 6309 introduces the distinctive cushion-shaped case — wider at the lugs, rounder at the sides — that earns it the "Turtle" nickname among collectors. Water resistant to 150m, powered by the reliable 6309 movement. It becomes one of the most beloved Seiko divers ever made.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>1982</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">6309-729x · Variants</p>
+        <p class="tl-desc">New dial variants of the 6309 appear, including the iconic black dial / golden indices combination. The Turtle's cult following grows quietly through the 1980s.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>1988</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">7002-7000 · The Successor</p>
+        <p class="tl-desc">The 7002 takes over from the 6309, retaining the cushion case and 150m rating. Casually referred to as the "Baby Turtle" by some collectors, it carries the lineage into the 1990s.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>1996</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">Discontinuation</p>
+        <p class="tl-desc">Seiko quietly discontinues the cushion-case diver line. The original Turtles move to the secondhand market, where they gain a devoted following among collectors who prize their robust simplicity.</p>
+      </div>
+    </div>
+
+    <div class="tl-item milestone">
+      <div class="tl-year"><span>2016</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">SRP777 / SRP779 · The Return</p>
+        <p class="tl-desc">After 20 years, Seiko brings back the Turtle under the Prospex banner. The modern reissue is faithful to the original silhouette — same cushion case, same spirit — but updated with the automatic 4R36 movement (hand-winding and hacking), 200m water resistance, and Lumibrite lume. The watch community erupts with enthusiasm. Multiple colorways follow rapidly.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>2018</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">SRPC Series · Expanding the Range</p>
+        <p class="tl-desc">Seiko expands the modern Turtle lineup with new dial colors and the SRPC series. Special editions and limited runs make the Turtle one of the most active references in the Prospex collection.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year"><span>2020</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-model">SRPE Series · New Generation</p>
+        <p class="tl-desc">The SRPE generation introduces refreshed colorways and updated finishing. The cushion case remains unchanged — a deliberate nod to the 1976 original. New dial textures and indices variations keep the lineup fresh for a new decade of enthusiasts.</p>
+      </div>
+    </div>
+
+    <div class="tl-item mine">
+      <div class="tl-year"><span>Mine</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="mine-card">
+          <span class="mine-label">My Watch</span>
+          <p class="tl-model">SRPE93K1 · Prospex Turtle</p>
+          <p class="tl-desc">The SRPE93K1 — a deep, commanding black dial with applied indices and Lumibrite fill, housed in the unmistakable cushion case. Powered by the 4R36 automatic movement with 200m water resistance. A direct descendant of the 1976 original, wearing its heritage without making a fuss about it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">DQSIS · Dimitrios Kiousis</footer>
+
+</div>
+</body>
+</html>
