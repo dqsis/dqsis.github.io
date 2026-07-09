@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Beach Today · Marmari–Karystia Wind Forecast · DQSIS</title>
+<link rel="stylesheet" href="../styles/style.css">
+<style>
+/* ── Status bar (loading / refresh) ── */
+.status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 0.5rem; }
+.status-text { font-size: 0.75rem; color: var(--mid); font-style: italic; }
+.refresh-btn { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: white; border: 1px solid var(--terracotta); border-radius: 4px; padding: 5px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
+.refresh-btn:hover { background: var(--terracotta); color: white; }
+.refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.loading { text-align: center; padding: 3rem 0; color: var(--mid); font-size: 0.85rem; font-style: italic; }
+.error { background: white; border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.2rem; text-align: center; color: var(--mid); font-size: 0.82rem; }
+
+/* ── Sections ── */
+.block { margin-bottom: 3.2rem; }
+
+/* ── Wind card ── */
+.wind-hero { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.6rem 1.6rem 1.5rem; display: flex; align-items: center; gap: 1.6rem; margin-bottom: 1.25rem; }
+.compass-wrap { flex-shrink: 0; width: 92px; height: 92px; }
+.compass-arrow { transition: transform 0.6s cubic-bezier(.4,1.4,.6,1); transform-origin: 50px 50px; }
+.wind-figures { flex: 1; }
+.wind-speed { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; color: var(--ink); line-height: 1; }
+.wind-speed span { font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--mid); margin-left: 0.3rem; }
+.wind-dir-label { font-size: 0.85rem; color: var(--olive); font-weight: 600; margin-top: 0.35rem; }
+.wind-sub-stats { display: flex; gap: 1.5rem; margin-top: 0.65rem; }
+.wind-sub-stat { font-size: 0.72rem; color: var(--mid); }
+.wind-sub-stat b { color: var(--ink); font-weight: 600; }
+.wind-narrative { font-size: 0.85rem; color: var(--mid); line-height: 1.7; border-left: 2px solid var(--terracotta); padding-left: 1rem; }
+.wind-meta { font-size: 0.68rem; color: var(--olive); letter-spacing: 0.04em; margin-top: 0.6rem; text-transform: uppercase; }
+
+/* ── Ranked list ── */
+.beach-list { list-style: none; }
+.beach-item { position: relative; display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--sand); }
+.beach-item:first-child { border-top: 1px solid var(--sand); }
+.beach-ghost { flex-shrink: 0; font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; color: var(--ghost); line-height: 1; width: 2.4rem; text-align: right; user-select: none; }
+.beach-item.tier-calm .beach-ghost { color: var(--olive); opacity: 0.5; }
+.beach-content { flex: 1; padding-top: 0.1rem; }
+.beach-name-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.beach-name { font-size: 0.98rem; font-weight: 600; color: var(--ink); }
+.beach-name-gr { font-size: 0.78rem; color: var(--mid); font-style: italic; }
+.tier-badge { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-left: auto; white-space: nowrap; }
+.tier-calm { background: rgba(138,144,112,0.16); color: var(--olive); }
+.tier-moderate { background: var(--ghost); color: var(--mid); }
+.tier-choppy { background: rgba(196,113,74,0.14); color: var(--terracotta); }
+.beach-blurb { font-size: 0.82rem; color: var(--mid); margin-top: 0.3rem; line-height: 1.55; }
+.beach-meta { font-size: 0.68rem; color: var(--olive); letter-spacing: 0.04em; margin-top: 0.4rem; text-transform: uppercase; }
+
+/* ── Disclaimer / source ── */
+.disclaimer { font-size: 0.78rem; color: var(--mid); font-style: italic; line-height: 1.7; }
+.source-note { font-size: 0.68rem; color: var(--olive); letter-spacing: 0.05em; margin-top: 0.6rem; text-transform: uppercase; }
+
+@media (max-width: 480px) {
+  .wind-hero { flex-direction: column; align-items: flex-start; }
+  .tier-badge { margin-left: 0; }
+  .beach-name-row { gap: 0.4rem; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo" target="_blank" rel="noopener">
+      <img src="https://dqsis.com/images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+    </a>
+    <span class="site-nav">Life 2.0 · Experiments</span>
+  </header>
+
+  <header class="header">
+    <p class="eyebrow">Marmari · Karystia · Southern Evia</p>
+    <h1 class="title">Where to<br><em>Swim Today.</em></h1>
+    <p class="subtitle">Every beach around Marmari answers to the wind differently — a southerly that wrecks the water at Figia can leave Kallianou glassy calm, and vice versa. This page checks today's forecast against nine local favourites and ranks them by how calm each one should be, using what actually shelters — or exposes — each cove.</p>
+  </header>
+
+  <div class="status-bar">
+    <span class="status-text" id="status-text">Loading today's wind…</span>
+    <button class="refresh-btn" id="refresh-btn" onclick="load()" disabled>↻ Refresh</button>
+  </div>
+
+  <div id="root"><div class="loading">Fetching the forecast…</div></div>
+
+  <div class="block">
+    <p class="disclaimer">Estimates only, based on today's wind forecast and each beach's typical exposure — not a substitute for checking conditions in person. Local effects (headlands, gusts funnelled through gaps in the hills) can outrun any model.</p>
+    <p class="source-note">Wind data: Open-Meteo · Exposure notes: local knowledge · Refreshed live on every visit</p>
+  </div>
+
+  <footer class="site-footer">DQSIS · Life 2.0 · Marmari–Karystia Swim Forecast</footer>
+</div>
+
+<script>
+// ── Reference point ──────────────────────────────────────────────────────────
+const HOME = { name: "Paralia Figia", nameGr: "Παραλία Φηγιά", lat: 38.070481, lon: 24.304507 };
+
+// ── Beaches: badFrom = wind-FROM direction that hits the beach onshore (bad).
+//    shelter: 0 (fully exposed) – 1 (fully sheltered), dampens the wind's effect.
+//    funnel: extra roughness specifically when wind has a northerly component
+//            (local channel/funnel effect, independent of general shelter). ──
+const BEACHES = [
+  { id:'agia-irini', name:'Agia Irini', nameGr:'Αγία Ειρήνη', lat:38.0830822, lon:24.2840964,
+    badFrom:190, shelter:0.35,
+    blurb:'Tucked into the Bay of Karystos — picks up chop whenever the wind swings southerly.' },
+  { id:'kokkinis', name:'Kokkinis', nameGr:'Κοκκίνης', lat:38.062348, lon:24.312302,
+    badFrom:175, shelter:0.35,
+    blurb:'Blue-flag beach, gently shelving — open enough to feel a southerly head-on.' },
+  { id:'great-sand', name:'Great Sand (Megali Ammos)', nameGr:'Μεγάλη Άμμος', lat:38.0338903, lon:24.3060713,
+    badFrom:175, shelter:0.12, funnel:0.55,
+    blurb:'The famous kite-surf funnel — catches the meltemi from the north even when the rest of the bay is calm, on top of the usual southerly chop.' },
+  { id:'zastani', name:'Zastani', nameGr:'Ζάστανη', lat:38.0259382, lon:24.3052637,
+    badFrom:180, shelter:0.22, funnel:0.25,
+    blurb:'Neighbour of Great Sand — a touch more sheltered, but still funnel-prone in a meltemi.' },
+  { id:'agia-paraskevi', name:'Agia Paraskevi', nameGr:'Αγία Παρασκευή', lat:37.9683219, lon:24.3851942,
+    badFrom:180, shelter:0.6,
+    blurb:'Hidden coves behind small headlands — one of the best southerly hideouts around.' },
+  { id:'river-beach', name:'River Beach', nameGr:'Ποταμάκι', lat:38.005555, lon:24.5669543,
+    badFrom:160, shelter:0.55,
+    blurb:'A sheltered pocket near the cape — usually rides out a southerly better than the main bay.' },
+  { id:'kallianou', name:'Kallianou', nameGr:'Καλλιανού', lat:38.1410829, lon:24.4795269,
+    badFrom:20, shelter:0.12,
+    blurb:'Open to the Cavodoro Strait — first to turn rough once the meltemi kicks in.' },
+  { id:'giannitsi', name:'Giannitsi (Limnionas)', nameGr:'Γιαννίτσι (Λιμνιώνας)', lat:38.1585581, lon:24.3974296,
+    badFrom:30, shelter:0.55,
+    blurb:'Faces the meltemi almost head-on but is boxed in by cliffs on both sides — often calmer than it looks.' },
+  { id:'agios-dimitrios', name:'Agios Dimitrios Gorge', nameGr:'Άγιος Δημήτριος', lat:38.142036, lon:24.4477712,
+    badFrom:90, shelter:0.55,
+    blurb:'A gorge beach walled in by cliffs — only a rare easterly ever reaches it.' }
+];
+
+const COMPASS16 = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+function dirLabel(deg){ return COMPASS16[Math.round(((deg%360)+360)%360/22.5)%16]; }
+function angDiff(a,b){ let d = Math.abs(a-b) % 360; return d>180 ? 360-d : d; }
+function angleFactor(diff){ return (1+Math.cos(diff*Math.PI/180))/2; } // 1 = onshore, 0 = offshore
+function haversine(lat1,lon1,lat2,lon2){
+  const R=6371, toRad=d=>d*Math.PI/180;
+  const dLat=toRad(lat2-lat1), dLon=toRad(lon2-lon1);
+  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function computeScore(beach, speed, dir){
+  const factor = angleFactor(angDiff(dir, beach.badFrom));
+  let score = speed*factor*(1-beach.shelter) + speed*beach.shelter*0.15;
+  if (beach.funnel){
+    score += speed*beach.funnel*angleFactor(angDiff(dir, 10));
+  }
+  return score;
+}
+
+function tierFor(rank){
+  if (rank<=3) return {cls:'calm', label:'Calm'};
+  if (rank<=6) return {cls:'moderate', label:'Moderate'};
+  return {cls:'choppy', label:'Choppy'};
+}
+
+function renderCompassArrow(dir){
+  // arrow points where the wind is blowing TOWARD (dir + 180)
+  const rot = (dir+180)%360;
+  return `
+  <svg class="compass-wrap" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="var(--sand)" stroke-width="1.5"/>
+    <text x="50" y="12" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">N</text>
+    <text x="50" y="94" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">S</text>
+    <text x="8" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">W</text>
+    <text x="92" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">E</text>
+    <g class="compass-arrow" style="transform: rotate(${rot}deg)">
+      <line x1="50" y1="50" x2="50" y2="18" stroke="var(--terracotta)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M50,12 L44,24 L56,24 Z" fill="var(--terracotta)"/>
+      <circle cx="50" cy="50" r="4" fill="var(--ink)"/>
+    </g>
+  </svg>`;
+}
+
+async function load(){
+  const statusEl = document.getElementById('status-text');
+  const btn = document.getElementById('refresh-btn');
+  const root = document.getElementById('root');
+  btn.disabled = true;
+  statusEl.textContent = 'Loading today\'s wind…';
+  root.innerHTML = '<div class="loading">Fetching the forecast…</div>';
+
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${HOME.lat}&longitude=${HOME.lon}` +
+      `&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m` +
+      `&current=wind_speed_10m,wind_direction_10m,wind_gusts_10m,temperature_2m` +
+      `&wind_speed_unit=kmh&timezone=auto`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Weather service unavailable');
+    const data = await res.json();
+
+    const cur = data.current;
+    const today = data.hourly.time[0].slice(0,10);
+    let sumSin=0, sumCos=0, sumSpeed=0, n=0;
+    data.hourly.time.forEach((t, i) => {
+      const hour = parseInt(t.slice(11,13), 10);
+      if (t.slice(0,10)===today && hour>=8 && hour<=20){
+        const speed = data.hourly.wind_speed_10m[i];
+        const rad = data.hourly.wind_direction_10m[i]*Math.PI/180;
+        sumSin += Math.sin(rad)*speed;
+        sumCos += Math.cos(rad)*speed;
+        sumSpeed += speed;
+        n++;
+      }
+    });
+    const avgSpeed = n ? sumSpeed/n : cur.wind_speed_10m;
+    const avgDir = n ? (Math.atan2(sumSin,sumCos)*180/Math.PI+360)%360 : cur.wind_direction_10m;
+
+    // rank beaches using today's daytime average
+    const ranked = BEACHES.map(b => ({...b, score: computeScore(b, avgSpeed, avgDir)}))
+                           .sort((a,b) => a.score - b.score);
+
+    // narrative
+    const towardSouthCoast = angDiff(avgDir,180) < angDiff(avgDir,0);
+    const narrative = towardSouthCoast
+      ? `A southerly is blowing today — the Marmari / South Evoikos side will feel it most, while the Aegean-facing coves up north (Kallianou, Giannitsi) are the better bet.`
+      : `A northerly is blowing today — the Aegean-facing coast (Kallianou, Giannitsi, Agios Dimitrios) will feel it most, while the South Evoikos side around Marmari should stay calmer.`;
+
+    let html = `
+      <div class="block">
+        <p class="section-label">Today's Wind</p>
+        <div class="wind-hero">
+          ${renderCompassArrow(cur.wind_direction_10m)}
+          <div class="wind-figures">
+            <div class="wind-speed">${Math.round(cur.wind_speed_10m)}<span>km/h right now</span></div>
+            <div class="wind-dir-label">from the ${dirLabel(cur.wind_direction_10m)} (${Math.round(cur.wind_direction_10m)}°)</div>
+            <div class="wind-sub-stats">
+              <span class="wind-sub-stat">Gusts <b>${Math.round(cur.wind_gusts_10m)} km/h</b></span>
+              <span class="wind-sub-stat">Air <b>${Math.round(cur.temperature_2m)}°C</b></span>
+              <span class="wind-sub-stat">Daytime avg <b>${Math.round(avgSpeed)} km/h ${dirLabel(avgDir)}</b></span>
+            </div>
+          </div>
+        </div>
+        <p class="wind-narrative">${narrative}</p>
+      </div>
+
+      <div class="block">
+        <p class="section-label">Ranked For Today</p>
+        <ol class="beach-list">`;
+
+    ranked.forEach((b, i) => {
+      const rank = i+1;
+      const tier = tierFor(rank);
+      const km = haversine(HOME.lat, HOME.lon, b.lat, b.lon).toFixed(1);
+      html += `
+          <li class="beach-item tier-${tier.cls}">
+            <div class="beach-ghost">${String(rank).padStart(2,'0')}</div>
+            <div class="beach-content">
+              <div class="beach-name-row">
+                <span class="beach-name">${b.name}</span>
+                <span class="beach-name-gr">${b.nameGr}</span>
+                <span class="tier-badge tier-${tier.cls}">${tier.label}</span>
+              </div>
+              <p class="beach-blurb">${b.blurb}</p>
+              <p class="beach-meta">${km} km from home</p>
+            </div>
+          </li>`;
+    });
+
+    html += `
+        </ol>
+      </div>`;
+
+    root.innerHTML = html;
+    const now = new Date();
+    statusEl.textContent = `Updated ${now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} · ${now.toLocaleDateString([], {weekday:'long', day:'numeric', month:'long'})}`;
+  } catch (err) {
+    root.innerHTML = `<div class="error">Couldn't load the forecast (${err.message}). Check your connection and try again.</div>`;
+    statusEl.textContent = 'Failed to load';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+load();
+</script>
+</body>
+</html>
