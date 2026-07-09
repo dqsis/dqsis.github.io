@@ -33,19 +33,25 @@
 .wind-meta { font-size: 0.68rem; color: var(--olive); letter-spacing: 0.04em; margin-top: 0.6rem; text-transform: uppercase; }
 
 /* ── Ranked list ── */
+:root { --amber: #B9852E; }
 .beach-list { list-style: none; }
-.beach-item { position: relative; display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--sand); }
+.beach-item { position: relative; display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0.9rem; border-bottom: 1px solid var(--sand); border-left: 4px solid transparent; }
 .beach-item:first-child { border-top: 1px solid var(--sand); }
+.beach-item.tier-calm { background: rgba(138,144,112,0.08); border-left-color: var(--olive); }
+.beach-item.tier-moderate { background: rgba(185,133,46,0.08); border-left-color: var(--amber); }
+.beach-item.tier-choppy { background: rgba(196,113,74,0.08); border-left-color: var(--terracotta); }
 .beach-ghost { flex-shrink: 0; font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; color: var(--ghost); line-height: 1; width: 2.4rem; text-align: right; user-select: none; }
-.beach-item.tier-calm .beach-ghost { color: var(--olive); opacity: 0.5; }
+.beach-item.tier-calm .beach-ghost { color: var(--olive); }
+.beach-item.tier-moderate .beach-ghost { color: var(--amber); }
+.beach-item.tier-choppy .beach-ghost { color: var(--terracotta); }
 .beach-content { flex: 1; padding-top: 0.1rem; }
 .beach-name-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
 .beach-name { font-size: 0.98rem; font-weight: 600; color: var(--ink); }
 .beach-name-gr { font-size: 0.78rem; color: var(--mid); font-style: italic; }
-.tier-badge { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-left: auto; white-space: nowrap; }
-.tier-calm { background: rgba(138,144,112,0.16); color: var(--olive); }
-.tier-moderate { background: var(--ghost); color: var(--mid); }
-.tier-choppy { background: rgba(196,113,74,0.14); color: var(--terracotta); }
+.tier-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-left: auto; white-space: nowrap; color: var(--white); }
+.tier-calm { background: var(--olive); }
+.tier-moderate { background: var(--amber); }
+.tier-choppy { background: var(--terracotta); }
 .beach-blurb { font-size: 0.82rem; color: var(--mid); margin-top: 0.3rem; line-height: 1.55; }
 .beach-meta { font-size: 0.68rem; color: var(--olive); letter-spacing: 0.04em; margin-top: 0.4rem; text-transform: uppercase; }
 
