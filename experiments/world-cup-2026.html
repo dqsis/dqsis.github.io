@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="../styles/style.css">
 <style>
 .bracket-scroll { overflow-x: auto; padding-bottom: 1.5rem; -webkit-overflow-scrolling: touch; }
-.bracket { display: flex; align-items: stretch; min-width: 1050px; }
-.round-col { display: flex; flex-direction: column; flex: 1; min-width: 148px; padding: 0 3px; }
+.bracket { display: flex; align-items: stretch; min-width: 0; }
+.round-col { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 0 3px; }
 .round-col:first-child { padding-left: 0; }
 .round-col:last-child { padding-right: 0; }
 .round-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--olive); text-align: center; padding-bottom: 0.45rem; border-bottom: 1px solid var(--sand); margin-bottom: 0.6rem; white-space: nowrap; }
@@ -26,7 +26,14 @@
 .team-row.winner .team-name { font-weight: 600; }
 .team-score { font-weight: 600; font-size: 0.78rem; color: var(--mid); min-width: 14px; text-align: right; flex-shrink: 0; }
 .team-score.winner { color: var(--terracotta); }
-.connector { width: 20px; flex-shrink: 0; position: relative; }
+.connector { width: 14px; flex-shrink: 0; position: relative; }
+@media (min-width: 761px) {
+  .bracket-scroll {
+    --bracket-w: min(100vw - 3rem, 1160px);
+    width: var(--bracket-w);
+    margin-left: calc((100% - var(--bracket-w)) / 2);
+  }
+}
 .bracket-svg { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
 .bracket-scroll { position: relative; }
 .champion-wrap { text-align: center; margin-top: 0.6rem; }
@@ -40,6 +47,16 @@
 .refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .loading { text-align: center; padding: 3rem 0; color: var(--mid); font-size: 0.85rem; font-style: italic; }
 .error { background: white; border: 1px solid var(--sand); border-radius: 5px; padding: 1.2rem; text-align: center; color: var(--mid); font-size: 0.82rem; }
+@media (max-width: 760px) {
+  .bracket { flex-direction: column; min-width: 0; }
+  .connector { display: none; }
+  .round-col { padding: 0; min-width: 0; }
+  .round-col:not(:first-child) .round-label { margin-top: 1.6rem; }
+  .round-label { text-align: left; font-size: 0.66rem; }
+  .matches-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .round-final .matches-col { grid-template-columns: minmax(0, 1fr); }
+  .match-wrap { min-height: 0; min-width: 0; }
+}
 </style>
 </head>
 <body>
@@ -207,10 +224,12 @@ function merge(skeleton, apiMatches) {
     const merged = round.matches.map((slot, i) => {
       const lm = live[i];
       if (!lm) return slot;
+      // openfootball uses placeholder codes like "W97" (winner of match 97)
+      const real = t => t && !/^[WL]\d+$/.test(t) ? t : null;
       return {
         date: fmtDate(lm.date, lm.time),
-        team1: lm.team1 || slot.team1,
-        team2: lm.team2 || slot.team2,
+        team1: real(lm.team1) || slot.team1,
+        team2: real(lm.team2) || slot.team2,
         score: lm.score || null,
         ground: lm.ground,
       };
