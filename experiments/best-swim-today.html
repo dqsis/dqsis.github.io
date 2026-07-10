@@ -93,7 +93,7 @@
   <header class="header">
     <p class="eyebrow">Marmari · Karystia · Southern Evia</p>
     <h1 class="title">Where to<br><em>Swim Today.</em></h1>
-    <p class="subtitle">Every beach around Marmari answers to the wind differently — a southerly that wrecks the water at Figia can leave Kallianou glassy calm, and vice versa. This page checks today's forecast against nine local favourites and ranks them by how calm each one should be, using what actually shelters — or exposes — each cove.</p>
+    <p class="subtitle">Every beach around Marmari answers to the wind differently — a southerly that wrecks the water at Figia can leave Kallianou glassy calm, and vice versa. This page checks today's forecast against ten local favourites and ranks them by how calm each one should be, using what actually shelters — or exposes — each cove.</p>
   </header>
 
   <div class="status-bar">
@@ -106,7 +106,7 @@
   <div class="block">
     <p class="section-label">On The Map</p>
     <div class="map-wrap">
-      <svg class="map-svg" viewBox="0 0 480 377" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the nine beaches around Marmari and Karystos, southern Evia">
+      <svg class="map-svg" viewBox="0 0 480 377" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the beaches around Marmari and Karystos, southern Evia; Chiliadou lies 74 km further north, off the map">
     <style>
       .map-lbl { font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; fill: var(--ink); }
       .map-lbl-home { fill: var(--terracotta); font-size: 11.5px; }
@@ -132,6 +132,7 @@
       <path d="M0,-12 L-3.5,-4 L3.5,-4 Z" fill="var(--ink)"/>
       <text x="0" y="24" text-anchor="middle" font-size="9" font-weight="600" fill="var(--ink)" font-family="Inter, sans-serif">N</text>
     </g>
+    <text x="14" y="80" text-anchor="start" class="map-lbl">&#8598; Chiliadou &#183; 74 km</text>
     <circle cx="96.1" cy="169.7" r="4.5" fill="var(--ink)" stroke="var(--white)" stroke-width="1.5"/>
     <text x="87.1" y="173.7" text-anchor="end" class="map-lbl">Agia Irini</text>
     <circle cx="128.3" cy="199.8" r="4.5" fill="var(--ink)" stroke="var(--white)" stroke-width="1.5"/>
@@ -154,7 +155,7 @@
     <text x="109.4" y="192.0" text-anchor="end" class="map-lbl map-lbl-home">Paralia Figia</text>
   </svg>
     </div>
-    <p class="map-caption">The Karystia peninsula, southern Evia · ◆ home (Paralia Figia)</p>
+    <p class="map-caption">The Karystia peninsula, southern Evia · ◆ home (Paralia Figia) · Chiliadou lies off-map, 74 km north</p>
   </div>
 
   <div class="block">
@@ -201,7 +202,10 @@ const BEACHES = [
     blurb:'Faces the meltemi almost head-on but is boxed in by cliffs on both sides — often calmer than it looks.' },
   { id:'agios-dimitrios', name:'Agios Dimitrios Gorge', nameGr:'Άγιος Δημήτριος', lat:38.142036, lon:24.4477712,
     badFrom:90, shelter:0.55,
-    blurb:'A gorge beach walled in by cliffs — only a rare easterly ever reaches it.' }
+    blurb:'A gorge beach walled in by cliffs — only a rare easterly ever reaches it.' },
+  { id:'chiliadou', name:'Chiliadou', nameGr:'Χηλιαδού', lat:38.6668265, lon:23.9292203,
+    badFrom:45, shelter:0.3,
+    blurb:'Pebble cove beneath the Dirfys cliffs in central Evia — a long drive north, wide open to the meltemi but bulletproof in a southerly.' }
 ];
 
 const COMPASS16 = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
@@ -228,7 +232,7 @@ function computeScore(beach, speed, dir){
 
 function tierFor(rank){
   if (rank<=3) return {cls:'calm', label:'Calm'};
-  if (rank<=6) return {cls:'moderate', label:'Moderate'};
+  if (rank<=7) return {cls:'moderate', label:'Moderate'};
   return {cls:'choppy', label:'Choppy'};
 }
 
