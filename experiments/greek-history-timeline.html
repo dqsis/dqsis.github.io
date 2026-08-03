@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Greeks — A Timeline</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --stone: #F7F4EE;
+      --ink: #1C2B3A;
+      --olive: #8A9070;
+      --terracotta: #C4714A;
+      --sand: #E2DDD4;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--stone);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Header — align shared site-header to this page's 860px content width */
+    .site-header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 40px 40px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: var(--olive);
+      font-size: 0.95rem;
+      max-width: 540px;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      max-width: 860px;
+      margin: 0 auto 40px;
+      padding: 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      padding: 5px 14px;
+      border: 1px solid var(--sand);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--ink);
+      color: var(--stone);
+      border-color: var(--ink);
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    /* Era group */
+    .era-group { margin-bottom: 8px; }
+    .era-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0 12px 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .era-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      border: 2px solid var(--stone);
+      outline: 1px solid var(--terracotta);
+      flex-shrink: 0;
+      margin-left: -6px;
+      position: relative;
+      left: -22px;
+    }
+    .era-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--ink);
+      flex: 1;
+    }
+    .era-dates {
+      font-size: 0.72rem;
+      color: var(--terracotta);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .era-toggle {
+      font-size: 0.8rem;
+      color: var(--olive);
+      margin-left: 8px;
+      transition: transform 0.2s;
+    }
+    .era-group.collapsed .era-toggle { transform: rotate(-90deg); }
+
+    /* Events list */
+    .events-list {
+      padding-left: 28px;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .era-group.collapsed .events-list { max-height: 0 !important; }
+
+    /* Event item */
+    .event {
+      display: flex;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--sand);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .event:last-child { border-bottom: none; }
+    .event:hover { background: transparent; }
+
+    .event-year {
+      min-width: 90px;
+      font-size: 0.72rem;
+      color: var(--terracotta);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .event-content { flex: 1; }
+    .event-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .event-desc {
+      font-size: 0.82rem;
+      color: #5a6a78;
+      line-height: 1.55;
+    }
+    .event-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .tag-politics { background: #e8edf2; color: #3a5068; }
+    .tag-culture { background: #eef0e8; color: #4a5438; }
+    .tag-war { background: #f5e8e0; color: #7a3820; }
+    .tag-religion { background: #ede8f5; color: #4a3870; }
+    .tag-expansion { background: #e8f0ee; color: #285448; }
+    .tag-decline { background: #f0e8e8; color: #703838; }
+    .tag-modern { background: #e8eff5; color: #284870; }
+
+    /* Hidden state for filter */
+    .event.hidden { display: none; }
+    .era-group.all-hidden { opacity: 0.3; pointer-events: none; }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 0.72rem;
+      color: var(--olive);
+      border-top: 1px solid var(--sand);
+    }
+
+    @media (max-width: 600px) {
+      .site-header, .hero, .filter-bar, .timeline { padding-left: 20px; padding-right: 20px; }
+      .hero h1 { font-size: 1.9rem; }
+      .timeline::before { left: 20px; }
+      .event-year { min-width: 70px; font-size: 0.68rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="https://dqsis.com" class="site-logo">
+    <img src="../images/groupworkout_icon.png" alt="DQSIS logo">
+    <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+  </a>
+  <span class="site-nav">Experiments</span>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">Based on Roderick Beaton · The Greeks: A Global History</div>
+  <h1>Three Thousand Years<br />of Greek History</h1>
+  <p>From Bronze Age Mycenae to the modern diaspora — the major events, eras, and turning points that shaped a civilisation.</p>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-tag="all">All</button>
+  <button class="filter-btn" data-tag="politics">Politics</button>
+  <button class="filter-btn" data-tag="war">War</button>
+  <button class="filter-btn" data-tag="culture">Culture</button>
+  <button class="filter-btn" data-tag="expansion">Expansion</button>
+  <button class="filter-btn" data-tag="religion">Religion</button>
+  <button class="filter-btn" data-tag="decline">Decline</button>
+  <button class="filter-btn" data-tag="modern">Modern</button>
+</div>
+
+<!-- Timeline -->
+<div class="timeline" id="timeline"></div>
+
+<footer class="page-footer">DQSIS · Reading reference · The Greeks by Roderick Beaton (2021)</footer>
+
+<script>
+const eras = [
+  {
+    title: "Bronze Age",
+    dates: "3000 – 1100 BC",
+    events: [
+      { year: "c.3000 BC", title: "Minoan Civilisation Emerges", desc: "Palace culture develops on Crete. Trade networks extend across the Eastern Mediterranean. Linear A script in use.", tags: ["culture","expansion"] },
+      { year: "c.1600 BC", title: "Mycenaean Civilisation", desc: "Warrior kingdoms at Mycenae, Tiryns, and Pylos. Cyclopean fortresses built. Linear B — earliest known Greek writing.", tags: ["politics","culture"] },
+      { year: "c.1200 BC", title: "Bronze Age Collapse", desc: "Widespread destruction of palace centres across the Eastern Mediterranean. Causes debated: invasion, drought, systems failure. Greek Dark Ages begin.", tags: ["decline","war"] },
+    ]
+  },
+  {
+    title: "Archaic Period",
+    dates: "800 – 480 BC",
+    events: [
+      { year: "c.800 BC", title: "Recovery & the Polis", desc: "Greek city-states (poleis) emerge. Population grows. Colonisation of the Mediterranean and Black Sea begins.", tags: ["politics","expansion"] },
+      { year: "c.776 BC", title: "First Olympic Games", desc: "Pan-Hellenic games held at Olympia. A rare shared identity across rival city-states.", tags: ["culture"] },
+      { year: "c.750 BC", title: "Homer's Epics Written Down", desc: "Iliad and Odyssey committed to writing. Foundation of Greek literary and cultural identity.", tags: ["culture"] },
+      { year: "c.600 BC", title: "Age of Tyrants & Lawgivers", desc: "Solon reforms Athenian law. Sparta develops its military constitution. Political experimentation across the Greek world.", tags: ["politics"] },
+      { year: "490 BC", title: "Battle of Marathon", desc: "Athens defeats the Persian army despite being heavily outnumbered. Defining moment of Athenian self-confidence.", tags: ["war"] },
+    ]
+  },
+  {
+    title: "Classical Period",
+    dates: "480 – 323 BC",
+    events: [
+      { year: "480 BC", title: "Persian Wars — Thermopylae & Salamis", desc: "Leonidas and 300 Spartans hold the pass at Thermopylae. Greek fleet defeats Persia at Salamis. Greece survives.", tags: ["war"] },
+      { year: "461–429 BC", title: "Age of Pericles", desc: "Athenian democracy at its height. Parthenon built on the Acropolis. Philosophy, drama, and the arts flourish.", tags: ["politics","culture"] },
+      { year: "431–404 BC", title: "Peloponnesian War", desc: "Athens vs. Sparta. Thirty years of exhausting conflict ends in Athenian defeat and the end of its empire.", tags: ["war","decline"] },
+      { year: "399 BC", title: "Death of Socrates", desc: "Tried and executed by Athens for impiety. Plato's dialogues preserve his philosophy and define Western thought.", tags: ["culture"] },
+      { year: "338 BC", title: "Battle of Chaeronea", desc: "Philip II of Macedon defeats Athens and Thebes. Greek city-states lose their independence. Macedonia takes control.", tags: ["war","politics"] },
+    ]
+  },
+  {
+    title: "Hellenistic Period",
+    dates: "323 – 31 BC",
+    events: [
+      { year: "334–323 BC", title: "Alexander the Great's Conquests", desc: "From Macedon to Egypt, Persia, and the edge of India. Greek language and culture spread across three continents.", tags: ["expansion","war"] },
+      { year: "323 BC", title: "Death of Alexander", desc: "Alexander dies in Babylon at 32. His empire fractures into rival kingdoms ruled by his generals (the Diadochi).", tags: ["politics","decline"] },
+      { year: "300–200 BC", title: "Hellenistic Kingdoms Flourish", desc: "Alexandria becomes the intellectual capital of the world. Library of Alexandria founded. Euclid, Archimedes, Eratosthenes.", tags: ["culture","expansion"] },
+      { year: "146 BC", title: "Rome Destroys Corinth", desc: "Rome sacks Corinth. Greece becomes a Roman province. Greek culture survives and transforms its conquerors.", tags: ["war","decline"] },
+    ]
+  },
+  {
+    title: "Roman & Early Christian",
+    dates: "146 BC – 330 AD",
+    events: [
+      { year: "31 BC", title: "Battle of Actium", desc: "Octavian defeats Mark Antony and Cleopatra. The last Hellenistic kingdom (Egypt) falls to Rome.", tags: ["war","politics"] },
+      { year: "c.50 AD", title: "Paul in Greece", desc: "St. Paul preaches in Athens, Corinth, and Thessaloniki. Christianity takes root in the Greek world.", tags: ["religion"] },
+      { year: "313 AD", title: "Edict of Milan", desc: "Constantine legalises Christianity across the Roman Empire. The Greek world begins its transformation into Byzantine Christianity.", tags: ["religion","politics"] },
+      { year: "330 AD", title: "Constantinople Founded", desc: "Constantine establishes his new capital on the Bosphorus. The centre of Greek-speaking civilisation shifts eastward.", tags: ["politics","expansion"] },
+    ]
+  },
+  {
+    title: "Byzantine Empire",
+    dates: "330 – 1453 AD",
+    events: [
+      { year: "527–565 AD", title: "Reign of Justinian", desc: "Byzantine Empire at its greatest extent. Hagia Sophia built. Justinian's Code codifies Roman law.", tags: ["politics","culture"] },
+      { year: "726–843 AD", title: "Iconoclasm", desc: "Bitter theological controversy over religious images tears the Byzantine world apart for over a century.", tags: ["religion"] },
+      { year: "1054 AD", title: "Great Schism", desc: "Christianity splits into Roman Catholic and Eastern Orthodox. The Greek church goes its own way permanently.", tags: ["religion"] },
+      { year: "1204 AD", title: "Fourth Crusade — Constantinople Sacked", desc: "Latin crusaders sack the greatest Christian city in the world. A blow from which Byzantium never fully recovers.", tags: ["war","decline"] },
+      { year: "1453 AD", title: "Fall of Constantinople", desc: "Ottoman Sultan Mehmed II takes the city. The Byzantine Empire ends. Scholars flee west, bringing Greek texts to Renaissance Europe.", tags: ["war","decline"] },
+    ]
+  },
+  {
+    title: "Ottoman Period",
+    dates: "1453 – 1821 AD",
+    events: [
+      { year: "1453–1800", title: "Greeks Under Ottoman Rule", desc: "The Orthodox Church preserves Greek identity. Phanariots — Greek elites in Istanbul — gain influence in the Ottoman administration.", tags: ["politics","religion"] },
+      { year: "c.1750", title: "Greek Enlightenment (Diafotismos)", desc: "Educated Greeks absorb Enlightenment ideas from Europe. National consciousness begins to awaken.", tags: ["culture","modern"] },
+    ]
+  },
+  {
+    title: "Modern Greek State",
+    dates: "1821 – present",
+    events: [
+      { year: "1821", title: "Greek War of Independence", desc: "Revolution against Ottoman rule begins. Byron dies at Missolonghi. Europe's philhellenic movement rallies support.", tags: ["war","modern"] },
+      { year: "1830", title: "Greek State Recognised", desc: "The London Protocol establishes an independent Greek state. The capital eventually moves to Athens.", tags: ["politics","modern"] },
+      { year: "1912–13", title: "Balkan Wars", desc: "Greece doubles in size, recovering Thessaloniki, Crete, and Aegean islands. A transformative moment of territorial expansion.", tags: ["war","modern"] },
+      { year: "1919–22", title: "Catastrophe of Asia Minor", desc: "Greek campaign in Anatolia ends in catastrophic defeat. The population exchange displaces 1.5 million Greeks from Turkey.", tags: ["war","decline","modern"] },
+      { year: "1941–44", title: "Axis Occupation", desc: "Greece occupied by Germany, Italy, and Bulgaria. Famine kills tens of thousands. Resistance movements divide the country.", tags: ["war","modern"] },
+      { year: "1946–49", title: "Greek Civil War", desc: "Brutal conflict between communist and nationalist forces. US intervention under the Truman Doctrine. Lasting trauma.", tags: ["war","modern"] },
+      { year: "1967–74", title: "Military Junta", desc: "Colonels' coup suspends democracy. Seven years of authoritarian rule ended by the Cyprus crisis.", tags: ["politics","modern"] },
+      { year: "1981", title: "Greece Joins the EEC", desc: "Greece becomes a member of the European Community. A new chapter of integration and economic transformation.", tags: ["politics","modern"] },
+      { year: "2010–18", title: "Debt Crisis", desc: "Sovereign debt crisis and three international bailouts. GDP contracts 25%. Deep social pain and political upheaval.", tags: ["decline","modern"] },
+    ]
+  }
+];
+
+// Render timeline
+const container = document.getElementById('timeline');
+
+eras.forEach((era, eraIdx) => {
+  const group = document.createElement('div');
+  group.className = 'era-group';
+  group.dataset.eraIdx = eraIdx;
+
+  const header = document.createElement('div');
+  header.className = 'era-header';
+  header.innerHTML = `
+    <div class="era-dot"></div>
+    <div class="era-title">${era.title}</div>
+    <div class="era-dates">${era.dates}</div>
+    <div class="era-toggle">▾</div>
+  `;
+
+  const list = document.createElement('div');
+  list.className = 'events-list';
+
+  era.events.forEach(ev => {
+    const item = document.createElement('div');
+    item.className = 'event';
+    item.dataset.tags = ev.tags.join(',');
+    item.innerHTML = `
+      <div class="event-year">${ev.year}</div>
+      <div class="event-content">
+        <div class="event-title">${ev.title}</div>
+        <div class="event-desc">${ev.desc}</div>
+        <div>${ev.tags.map(t => `<span class="event-tag tag-${t}">${t}</span>`).join(' ')}</div>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+
+  // Set max-height after render
+  group.appendChild(header);
+  group.appendChild(list);
+  container.appendChild(group);
+
+  requestAnimationFrame(() => {
+    list.style.maxHeight = list.scrollHeight + 'px';
+  });
+
+  // Toggle collapse
+  header.addEventListener('click', () => {
+    const isCollapsed = group.classList.contains('collapsed');
+    if (isCollapsed) {
+      group.classList.remove('collapsed');
+      list.style.maxHeight = list.scrollHeight + 'px';
+    } else {
+      group.classList.add('collapsed');
+      list.style.maxHeight = '0';
+    }
+  });
+});
+
+// Filter logic
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const tag = btn.dataset.tag;
+    document.querySelectorAll('.era-group').forEach(group => {
+      const events = group.querySelectorAll('.event');
+      let visible = 0;
+      events.forEach(ev => {
+        const tags = ev.dataset.tags.split(',');
+        const show = tag === 'all' || tags.includes(tag);
+        ev.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      const list = group.querySelector('.events-list');
+      group.classList.toggle('all-hidden', visible === 0);
+      group.classList.remove('collapsed');
+      list.style.maxHeight = list.scrollHeight + 'px';
+    });
+  });
+});
+</script>
+</body>
+</html>
