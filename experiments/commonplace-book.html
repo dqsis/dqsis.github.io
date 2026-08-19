@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commonplace Book — Quotes, Anecdotes & Passages</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --stone: #F7F4EE;
+      --ink: #1C2B3A;
+      --olive: #8A9070;
+      --terracotta: #C4714A;
+      --sand: #E2DDD4;
+      --mid: #5A6670;
+      --white: #FFFFFF;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--stone);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Header — align shared site-header to this page's content width */
+    .site-header {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 56px 40px 32px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: var(--olive);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      max-width: 760px;
+      margin: 0 auto 36px;
+      padding: 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      padding: 5px 14px;
+      border: 1px solid var(--sand);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--ink);
+      color: var(--stone);
+      border-color: var(--ink);
+    }
+
+    /* Entries */
+    .entries {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .entry {
+      background: var(--white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 32px 34px 28px;
+      margin-bottom: 28px;
+    }
+    .entry.hidden { display: none; }
+
+    .entry-kind {
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .entry-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+
+    /* The passage / quote itself */
+    .passage {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: var(--ink);
+      border-left: 2px solid var(--terracotta);
+      padding-left: 20px;
+      margin-bottom: 18px;
+    }
+    .passage.quote::before { content: '\201C'; }
+    .passage.quote::after  { content: '\201D'; }
+    .passage p { margin-bottom: 0.7em; }
+    .passage p:last-child { margin-bottom: 0; }
+
+    .source {
+      font-size: 0.82rem;
+      color: var(--olive);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .source a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(196,113,74,0.35); }
+    .source a:hover { border-bottom-color: var(--terracotta); }
+
+    /* Reflection / analysis */
+    .reflection-label {
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olive);
+      font-weight: 600;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--sand);
+      margin-bottom: 14px;
+    }
+    .reflection {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.72;
+    }
+    .reflection p { margin-bottom: 0.85em; }
+    .reflection p:last-child { margin-bottom: 0; }
+    .reflection em { color: var(--ink); font-style: italic; }
+
+    /* Tags */
+    .entry-tags { margin-top: 20px; }
+    .tag {
+      display: inline-block;
+      font-size: 0.64rem;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-right: 6px;
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: #eef0e8;
+      color: #4a5438;
+    }
+
+    /* Empty state */
+    .empty {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      text-align: center;
+      color: var(--olive);
+      font-style: italic;
+      display: none;
+    }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 0.72rem;
+      color: var(--olive);
+      border-top: 1px solid var(--sand);
+    }
+
+    @media (max-width: 600px) {
+      .site-header, .hero, .filter-bar, .entries, .empty { padding-left: 20px; padding-right: 20px; }
+      .hero h1 { font-size: 1.95rem; }
+      .entry { padding: 24px 22px; }
+      .entry-title { font-size: 1.3rem; }
+      .passage { font-size: 1.04rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="https://dqsis.com" class="site-logo">
+    <img src="../images/groupworkout_icon.png" alt="DQSIS logo">
+    <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+  </a>
+  <span class="site-nav">Experiments</span>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">A Commonplace Book</div>
+  <h1>Passages &amp;<br />Marginalia</h1>
+  <p>Quotes, anecdotes, and passages I have read or come upon — kept here with a note on why each one stayed with me.</p>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar" id="filterBar"></div>
+
+<!-- Entries -->
+<div class="entries" id="entries"></div>
+<div class="empty" id="empty">Nothing filed under this theme yet.</div>
+
+<footer class="page-footer">DQSIS · A commonplace book · kept and annotated by Dimitrios Kiousis</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   To add an entry, copy one block below and edit the fields.
+     kind      — small label above the title (e.g. "Anecdote", "Quote")
+     title     — short heading you give the passage
+     quote     — if true, wraps the passage in quotation marks
+     passage   — the text itself; use "\n\n" between paragraphs
+     source    — attribution line; HTML links are allowed
+     reflection— your note/analysis; use "\n\n" between paragraphs,
+                 and <em>…</em> for emphasis
+     tags      — themes; these become the filter buttons automatically
+   ------------------------------------------------------------------ */
+const entries = [
+  {
+    kind: "Anecdote · Parable",
+    title: "The Ninety-Ninth Night",
+    quote: false,
+    passage:
+      "A mandarin fell in love with a courtesan. She told him she would be his if he waited for her, sitting on a stool in her garden, for one hundred nights in a row. He agreed, and night after night he sat beneath her window, patient and unmoving. On the ninety-ninth night, with only one night left, he suddenly rose, tucked his stool under his arm, and walked away.",
+    source:
+      'Retold by Roland Barthes in <em>A Lover’s Discourse: Fragments</em> (1977), in the fragment “Waiting.” I first met it in Έρωτας και άλλες πολεμικές τέχνες.',
+    reflection:
+      "That is the whole story. No reason is given for why he leaves — and the silence is the point.\n\n" +
+      "It is usually read as a meditation on desire and waiting. One reading says his desire died precisely because it was about to be satisfied: the anticipation <em>was</em> the love, and possession would only have ended it. Another reads pride into it — a man who will not be tested to the very last inch, and who reclaims himself by refusing the final step. A third finds simple exhaustion: the limit of any patience, which can turn, without warning, into refusal. Barthes uses it to show how the lover’s waiting is “unbearable” — how devotion and abandonment sit closer together than we like to think.\n\n" +
+      "What I find striking is where the story comes from. Barthes borrowed it from the Japanese legend of the poet <em>Ono no Komachi</em> and Captain Fukakusa no Shōshō — “The Hundred Nights.” In the original, the suitor does not walk away on the last night. He dies on it. Barthes’ quiet edit — turning a death into a decision — is the whole difference between tragedy and freedom. The captain is defeated by the hundredth night; the mandarin defeats it.",
+    tags: ["desire", "patience", "love", "paradox"]
+  }
+];
+
+/* ---------------------- rendering ---------------------- */
+const entriesEl = document.getElementById('entries');
+const emptyEl = document.getElementById('empty');
+const filterBar = document.getElementById('filterBar');
+
+function paragraphs(text) {
+  return text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+}
+
+entries.forEach(e => {
+  const el = document.createElement('article');
+  el.className = 'entry';
+  el.dataset.tags = e.tags.join(',');
+  el.innerHTML = `
+    <div class="entry-kind">${e.kind}</div>
+    <h2 class="entry-title">${e.title}</h2>
+    <div class="passage${e.quote ? ' quote' : ''}">${paragraphs(e.passage)}</div>
+    <div class="source">${e.source}</div>
+    <div class="reflection-label">Note</div>
+    <div class="reflection">${paragraphs(e.reflection)}</div>
+    <div class="entry-tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+  `;
+  entriesEl.appendChild(el);
+});
+
+/* ---------------------- filters ---------------------- */
+const allTags = [...new Set(entries.flatMap(e => e.tags))].sort();
+const tags = ['all', ...allTags];
+
+tags.forEach((tag, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+  btn.dataset.tag = tag;
+  btn.textContent = tag === 'all' ? 'All' : tag;
+  filterBar.appendChild(btn);
+});
+
+filterBar.addEventListener('click', ev => {
+  const btn = ev.target.closest('.filter-btn');
+  if (!btn) return;
+  filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const tag = btn.dataset.tag;
+  let visible = 0;
+  document.querySelectorAll('.entry').forEach(entry => {
+    const show = tag === 'all' || entry.dataset.tags.split(',').includes(tag);
+    entry.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  emptyEl.style.display = visible === 0 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>
