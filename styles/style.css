@@ -214,6 +214,19 @@ body {
   line-height: 1.55;
 }
 
+/* ── Accented cards (highlighted / current) ── */
+.card-terracotta {
+  border-left: 3px solid var(--terracotta);
+  background: #FBF2EC;
+}
+.card-terracotta h3 { color: var(--terracotta); }
+
+.card-olive {
+  border-left: 3px solid var(--olive);
+  background: #F1F3EA;
+}
+.card-olive h3 { color: var(--olive); }
+
 /* ── Checklist ── */
 .checklist {
   list-style: none;
