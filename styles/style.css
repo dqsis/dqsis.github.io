@@ -227,6 +227,12 @@ body {
 }
 .card-olive h3 { color: var(--olive); }
 
+.card-navy {
+  border-left: 3px solid #2B3B4E;
+  background: #E9EDF1;
+}
+.card-navy h3 { color: #2B3B4E; }
+
 /* ── Checklist ── */
 .checklist {
   list-style: none;

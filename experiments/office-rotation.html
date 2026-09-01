@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Office Rotation — DQSIS</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F7F4EE;
+      color: #1C2B3A;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* ── Stat strip ── */
+    .stat-strip {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+    .stat-strip .stat {
+      font-size: 0.8rem;
+      color: #8A9070;
+      letter-spacing: 0.02em;
+    }
+    .stat-strip .stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1C2B3A;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .content { margin-bottom: 2rem; }
+
+    /* ── Rotation grid ── */
+    .rotation {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 560px) { .rotation { grid-template-columns: 1fr; } }
+
+    .day-card {
+      background: #fff;
+      border: 1px solid #E2DDD4;
+      border-radius: 4px;
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .day-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1C2B3A;
+      line-height: 1.2;
+    }
+    .day-role {
+      font-size: 0.7rem;
+      color: #8A9070;
+      margin-top: 3px;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .piece-list { list-style: none; flex: 1; }
+    .piece {
+      padding: 8px 0;
+      border-top: 1px solid #EAE6DE;
+    }
+    .piece:first-child { border-top: none; }
+    .piece-role {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4714A;
+      margin-bottom: 2px;
+    }
+    .piece-name {
+      font-size: 0.82rem;
+      color: #1C2B3A;
+      line-height: 1.4;
+    }
+    .piece-name a {
+      color: #C4714A;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196, 113, 74, 0.35);
+    }
+    .piece-name a:hover { border-bottom-color: #C4714A; }
+
+    .layer-note {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed #E2DDD4;
+      font-size: 0.72rem;
+      color: #5A6670;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ── Closing note ── */
+    .note {
+      padding: 16px 18px;
+      border-left: 3px solid #C4714A;
+      background: #fff;
+      border-radius: 0 3px 3px 0;
+      font-size: 0.85rem;
+      color: #5A6670;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Site header -->
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo">
+      <img src="../images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+    </a>
+    <span class="site-nav">Experiments</span>
+  </header>
+
+  <!-- Page header -->
+  <header class="header">
+    <p class="eyebrow">Wardrobe · Life 2.0</p>
+    <h1 class="title">Kit &amp; Carry.<br><em>Office Rotation.</em></h1>
+    <p class="subtitle">A five-day office baseline built from one small wardrobe — shirt and trouser doing most of the work, and a single overshirt covering the days that need a little more.</p>
+    <div class="stat-strip">
+      <span class="stat"><strong>12</strong>pieces</span>
+      <span class="stat"><strong>5</strong>office days</span>
+      <span class="stat"><strong>1</strong>small wardrobe</span>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="content">
+
+    <div class="rotation">
+
+      <!-- Monday -->
+      <div class="day-card">
+        <div class="day-name">Monday</div>
+        <div class="day-role">Strongest day — meetings</div>
+        <ul class="piece-list">
+          <li class="piece"><span class="piece-role">Layer</span><span class="piece-name"><a href="https://www.adaysmarch.com" target="_blank" rel="noopener">Banagher overshirt</a>, navy</span></li>
+          <li class="piece"><span class="piece-role">Base</span><span class="piece-name"><a href="https://www.levi.com" target="_blank" rel="noopener">Levi's</a> tee, white</span></li>
+          <li class="piece"><span class="piece-role">Trouser</span><span class="piece-name"><a href="https://www.adaysmarch.com" target="_blank" rel="noopener">Smart Lyocell</a>, navy</span></li>
+          <li class="piece"><span class="piece-role">Shoe</span><span class="piece-name"><a href="https://www.sneakysteve.com" target="_blank" rel="noopener">Sneaky Steve</a> leather</span></li>
+          <li class="piece"><span class="piece-role">Belt</span><span class="piece-name">Black leather</span></li>
+        </ul>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="day-card">
+        <div class="day-name">Tuesday</div>
+        <div class="day-role">Shirt does the work alone</div>
+        <ul class="piece-list">
+          <li class="piece"><span class="piece-role">Shirt</span><span class="piece-name"><a href="https://www.scotch-soda.com" target="_blank" rel="noopener">Scotch &amp; Soda</a> stripe</span></li>
+          <li class="piece"><span class="piece-role">Trouser</span><span class="piece-name"><a href="https://www.nudiejeans.com" target="_blank" rel="noopener">Nudie Lean Dean</a>, dark wash</span></li>
+          <li class="piece"><span class="piece-role">Shoe</span><span class="piece-name"><a href="https://www.adidas.com" target="_blank" rel="noopener">Adidas SL 72 RS</a></span></li>
+          <li class="piece"><span class="piece-role">Belt</span><span class="piece-name">Navy woven</span></li>
+        </ul>
+      </div>
+
+      <!-- Wednesday -->
+      <div class="day-card">
+        <div class="day-name">Wednesday</div>
+        <div class="day-role">Office-casual, structured</div>
+        <ul class="piece-list">
+          <li class="piece"><span class="piece-role">Shirt</span><span class="piece-name"><a href="https://www.levi.com" target="_blank" rel="noopener">Levi's</a> corduroy, beige</span></li>
+          <li class="piece"><span class="piece-role">Trouser</span><span class="piece-name"><a href="https://www.adaysmarch.com" target="_blank" rel="noopener">Smart Lyocell</a> or dark <a href="https://www.nudiejeans.com" target="_blank" rel="noopener">Nudie</a></span></li>
+          <li class="piece"><span class="piece-role">Shoe</span><span class="piece-name"><a href="https://www.sneakysteve.com" target="_blank" rel="noopener">Sneaky Steve</a> leather</span></li>
+        </ul>
+      </div>
+
+      <!-- Thursday -->
+      <div class="day-card">
+        <div class="day-name">Thursday</div>
+        <div class="day-role">Low-key, still clears the bar</div>
+        <ul class="piece-list">
+          <li class="piece"><span class="piece-role">Shirt</span><span class="piece-name"><a href="https://www.arket.com" target="_blank" rel="noopener">Arket</a> stripe</span></li>
+          <li class="piece"><span class="piece-role">Trouser</span><span class="piece-name"><a href="https://www.nudiejeans.com" target="_blank" rel="noopener">Nudie Lean Dean</a>, dark wash</span></li>
+          <li class="piece"><span class="piece-role">Shoe</span><span class="piece-name"><a href="https://www.adidas.com" target="_blank" rel="noopener">SL 72 RS</a></span></li>
+        </ul>
+      </div>
+
+      <!-- Friday -->
+      <div class="day-card">
+        <div class="day-name">Friday</div>
+        <div class="day-role">Most flexible piece, in play</div>
+        <ul class="piece-list">
+          <li class="piece"><span class="piece-role">Shirt</span><span class="piece-name"><a href="https://www.adaysmarch.com" target="_blank" rel="noopener">Oxford</a>, white</span></li>
+          <li class="piece"><span class="piece-role">Layer</span><span class="piece-name"><a href="https://www.adaysmarch.com" target="_blank" rel="noopener">Banagher overshirt</a>, navy</span></li>
+          <li class="piece"><span class="piece-role">Trouser</span><span class="piece-name"><a href="https://www.nudiejeans.com" target="_blank" rel="noopener">Nudie Lean Dean</a>, dark wash</span></li>
+          <li class="piece"><span class="piece-role">Shoe</span><span class="piece-name"><a href="https://www.sneakysteve.com" target="_blank" rel="noopener">Sneaky Steve</a> leather</span></li>
+        </ul>
+        <div class="layer-note">Bare for casual, layered for anything that comes up.</div>
+      </div>
+
+    </div>
+
+    <!-- Closing note -->
+    <div class="section-label">The idea</div>
+    <div class="note">
+      An experiment in building a capsule wardrobe — a small, deliberate set of pieces that carries a full week at the office and works just as well off the clock. It runs on twelve items for now, and that number will shift over time, but the intent stays the same: fewer, better things. High-quality pieces, one less decision every morning, and a look that stays polished without losing something modern and a little playful.
+    </div>
+
+  </main>
+
+  <footer class="site-footer">DQSIS · Life 2.0 · Office Rotation</footer>
+
+</div>
+</body>
+</html>
