@@ -5,17 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Office Rotation — DQSIS</title>
   <link rel="stylesheet" href="../styles/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #F7F4EE;
-      color: #1C2B3A;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
-    }
 
     /* ── Stat strip ── */
     .stat-strip {
@@ -26,15 +17,15 @@
     }
     .stat-strip .stat {
       font-size: 0.8rem;
-      color: #8A9070;
+      color: var(--olive);
       letter-spacing: 0.02em;
     }
     .stat-strip .stat strong {
       display: block;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-size: 1.35rem;
       font-weight: 700;
-      color: #1C2B3A;
+      color: var(--ink);
       line-height: 1.1;
       margin-bottom: 2px;
     }
@@ -51,23 +42,23 @@
     @media (max-width: 560px) { .rotation { grid-template-columns: 1fr; } }
 
     .day-card {
-      background: #fff;
-      border: 1px solid #E2DDD4;
-      border-radius: 4px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 0;
       padding: 16px 16px 18px;
       display: flex;
       flex-direction: column;
     }
     .day-name {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-size: 1.05rem;
       font-weight: 700;
-      color: #1C2B3A;
+      color: var(--ink);
       line-height: 1.2;
     }
     .day-role {
       font-size: 0.7rem;
-      color: #8A9070;
+      color: var(--olive);
       margin-top: 3px;
       margin-bottom: 14px;
       line-height: 1.45;
@@ -76,7 +67,7 @@
     .piece-list { list-style: none; flex: 1; }
     .piece {
       padding: 8px 0;
-      border-top: 1px solid #EAE6DE;
+      border-top: 1px solid var(--panel);
     }
     .piece:first-child { border-top: none; }
     .piece-role {
@@ -84,27 +75,27 @@
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #C4714A;
+      color: var(--terracotta);
       margin-bottom: 2px;
     }
     .piece-name {
       font-size: 0.82rem;
-      color: #1C2B3A;
+      color: var(--ink);
       line-height: 1.4;
     }
     .piece-name a {
-      color: #C4714A;
+      color: var(--terracotta);
       text-decoration: none;
-      border-bottom: 1px solid rgba(196, 113, 74, 0.35);
+      border-bottom: 1px solid color-mix(in srgb, var(--terracotta) 35%, transparent);
     }
-    .piece-name a:hover { border-bottom-color: #C4714A; }
+    .piece-name a:hover { border-bottom-color: var(--terracotta); }
 
     .layer-note {
       margin-top: 14px;
       padding-top: 12px;
-      border-top: 1px dashed #E2DDD4;
+      border-top: 1px dashed var(--border);
       font-size: 0.72rem;
-      color: #5A6670;
+      color: var(--mid);
       font-style: italic;
       line-height: 1.5;
     }
@@ -112,11 +103,11 @@
     /* ── Closing note ── */
     .note {
       padding: 16px 18px;
-      border-left: 3px solid #C4714A;
-      background: #fff;
-      border-radius: 0 3px 3px 0;
+      border: 1px solid var(--terracotta);
+      background: color-mix(in srgb, var(--terracotta) 12%, var(--bg));
+      border-radius: 0;
       font-size: 0.85rem;
-      color: #5A6670;
+      color: var(--mid);
       line-height: 1.6;
       margin-bottom: 48px;
     }
