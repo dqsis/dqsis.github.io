@@ -9,8 +9,8 @@
 /* ── Status bar (loading / refresh) ── */
 .status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 0.5rem; }
 .status-text { font-size: 0.75rem; color: var(--mid); font-style: italic; }
-.refresh-btn { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: white; border: 1px solid var(--terracotta); border-radius: 4px; padding: 5px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
-.refresh-btn:hover { background: var(--terracotta); color: white; }
+.refresh-btn { font-family: var(--font-body); font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: var(--white); border: 1px solid var(--terracotta); border-radius: 0; padding: 5px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
+.refresh-btn:hover { background: var(--terracotta); color: var(--white); }
 .refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .loading { text-align: center; padding: 3rem 0; color: var(--mid); font-size: 0.85rem; font-style: italic; }
 .error { background: white; border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.2rem; text-align: center; color: var(--mid); font-size: 0.82rem; }
@@ -41,14 +41,14 @@
 .home-verdict { font-size: 0.88rem; color: var(--mid); margin-top: 0.45rem; line-height: 1.6; }
 
 /* ── Ranked list ── */
-:root { --amber: #B9852E; }
+:root { --amber: #D0A215; }
 .beach-list { list-style: none; }
 .beach-item { position: relative; display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0.9rem; border-bottom: 1px solid var(--sand); border-left: 4px solid transparent; }
 .beach-item:first-child { border-top: 1px solid var(--sand); }
 .beach-item.group-start { margin-top: 1.4rem; border-top: 1px solid var(--sand); }
-.beach-item.tier-calm { background: rgba(138,144,112,0.08); border-left-color: var(--olive); }
-.beach-item.tier-moderate { background: rgba(185,133,46,0.08); border-left-color: var(--amber); }
-.beach-item.tier-choppy { background: rgba(196,113,74,0.08); border-left-color: var(--terracotta); }
+.beach-item.tier-calm { background: color-mix(in srgb, var(--olive) 8%, var(--bg)); border-left-color: var(--olive); }
+.beach-item.tier-moderate { background: color-mix(in srgb, var(--amber) 8%, var(--bg)); border-left-color: var(--amber); }
+.beach-item.tier-choppy { background: color-mix(in srgb, var(--terracotta) 8%, var(--bg)); border-left-color: var(--terracotta); }
 .beach-ghost { flex-shrink: 0; font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; color: var(--ghost); line-height: 1; width: 2.4rem; text-align: right; user-select: none; }
 .beach-item.tier-calm .beach-ghost { color: var(--olive); }
 .beach-item.tier-moderate .beach-ghost { color: var(--amber); }
@@ -57,7 +57,7 @@
 .beach-name-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
 .beach-name { font-size: 0.98rem; font-weight: 600; color: var(--ink); }
 .beach-name-gr { font-size: 0.78rem; color: var(--mid); font-style: italic; }
-.tier-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-left: auto; white-space: nowrap; color: var(--white); }
+.tier-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 0; margin-left: auto; white-space: nowrap; color: var(--white); }
 .tier-badge.tier-calm { background: var(--olive); }
 .tier-badge.tier-moderate { background: var(--amber); }
 .tier-badge.tier-choppy { background: var(--terracotta); }
@@ -108,9 +108,9 @@
     <div class="map-wrap">
       <svg class="map-svg" viewBox="0 0 480 377" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the beaches around Marmari and Karystos, southern Evia; Chiliadou lies 74 km further north, off the map">
     <style>
-      .map-lbl { font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; fill: var(--ink); }
+      .map-lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: var(--ink); }
       .map-lbl-home { fill: var(--terracotta); font-size: 11.5px; }
-      .map-geo { font-family: 'Playfair Display', serif; font-style: italic; fill: var(--olive); }
+      .map-geo { font-family: 'JetBrains Mono', monospace; font-style: italic; fill: var(--olive); }
     </style>
     <rect x="0" y="0" width="480" height="377" rx="6" fill="var(--stone)"/>
     <g stroke="var(--olive)" stroke-width="1" stroke-opacity="0.55" fill="var(--sand)" fill-opacity="0.75">
@@ -130,7 +130,7 @@
     <g transform="translate(24,28)" opacity="0.6">
       <line x1="0" y1="10" x2="0" y2="-8" stroke="var(--ink)" stroke-width="1.2"/>
       <path d="M0,-12 L-3.5,-4 L3.5,-4 Z" fill="var(--ink)"/>
-      <text x="0" y="24" text-anchor="middle" font-size="9" font-weight="600" fill="var(--ink)" font-family="Inter, sans-serif">N</text>
+      <text x="0" y="24" text-anchor="middle" font-size="9" font-weight="600" fill="var(--ink)" font-family="'JetBrains Mono', monospace">N</text>
     </g>
     <text x="14" y="80" text-anchor="start" class="map-lbl">&#8598; Chiliadou &#183; 74 km</text>
     <circle cx="96.1" cy="169.7" r="4.5" fill="var(--ink)" stroke="var(--white)" stroke-width="1.5"/>
@@ -242,10 +242,10 @@ function renderCompassArrow(dir){
   return `
   <svg class="compass-wrap" viewBox="0 0 100 100">
     <circle cx="50" cy="50" r="46" fill="none" stroke="var(--sand)" stroke-width="1.5"/>
-    <text x="50" y="12" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">N</text>
-    <text x="50" y="94" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">S</text>
-    <text x="8" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">W</text>
-    <text x="92" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="Inter, sans-serif" font-weight="600">E</text>
+    <text x="50" y="12" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="'JetBrains Mono', monospace" font-weight="600">N</text>
+    <text x="50" y="94" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="'JetBrains Mono', monospace" font-weight="600">S</text>
+    <text x="8" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="'JetBrains Mono', monospace" font-weight="600">W</text>
+    <text x="92" y="53" text-anchor="middle" font-size="9" fill="var(--olive)" font-family="'JetBrains Mono', monospace" font-weight="600">E</text>
     <g class="compass-arrow" style="transform: rotate(${rot}deg)">
       <line x1="50" y1="50" x2="50" y2="18" stroke="var(--terracotta)" stroke-width="3" stroke-linecap="round"/>
       <path d="M50,12 L44,24 L56,24 Z" fill="var(--terracotta)"/>

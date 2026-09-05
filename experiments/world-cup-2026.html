@@ -15,12 +15,12 @@
 .round-final .round-label { color: var(--terracotta); }
 .matches-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 5px; }
 .match-wrap { display: flex; align-items: center; flex: 1; min-height: 58px; }
-.match-card { background: white; border: 1px solid var(--sand); border-radius: 5px; overflow: hidden; width: 100%; }
-.round-final .match-card { border-color: var(--terracotta); border-width: 1.5px; }
+.match-card { background: var(--bg); border: 1px solid var(--sand); border-radius: 0; overflow: hidden; width: 100%; }
+.round-final .match-card { border-color: var(--terracotta); border-width: 1.5px; background: color-mix(in srgb, var(--terracotta) 6%, var(--bg)); }
 .match-meta { font-size: 0.58rem; color: var(--olive); padding: 2px 6px; background: var(--ghost); border-bottom: 1px solid var(--sand); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .team-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; gap: 3px; }
 .team-row + .team-row { border-top: 1px solid var(--sand); }
-.team-row.winner { background: var(--ghost); }
+.team-row.winner { background: color-mix(in srgb, var(--terracotta) 14%, var(--bg)); }
 .team-row.tbd .team-name { color: var(--mid); font-style: italic; font-size: 0.67rem; }
 .team-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); font-size: 0.72rem; }
 .team-row.winner .team-name { font-weight: 600; }
@@ -42,11 +42,11 @@
 .champion-name { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-top: 2px; }
 .status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
 .status-text { font-size: 0.75rem; color: var(--mid); font-style: italic; }
-.refresh-btn { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: white; border: 1px solid var(--terracotta); border-radius: 4px; padding: 4px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
-.refresh-btn:hover { background: var(--terracotta); color: white; }
+.refresh-btn { font-family: var(--font-body); font-size: 0.72rem; font-weight: 500; color: var(--terracotta); background: var(--bg); border: 1px solid var(--terracotta); border-radius: 0; padding: 4px 14px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; }
+.refresh-btn:hover { background: var(--terracotta); color: var(--bg); }
 .refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .loading { text-align: center; padding: 3rem 0; color: var(--mid); font-size: 0.85rem; font-style: italic; }
-.error { background: white; border: 1px solid var(--sand); border-radius: 5px; padding: 1.2rem; text-align: center; color: var(--mid); font-size: 0.82rem; }
+.error { background: var(--bg); border: 1px solid var(--sand); border-radius: 0; padding: 1.2rem; text-align: center; color: var(--mid); font-size: 0.82rem; }
 @media (max-width: 760px) {
   .bracket { flex-direction: column; min-width: 0; }
   .connector { display: none; }

@@ -5,18 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Greeks — A Timeline</title>
   <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --stone: #F7F4EE;
-      --ink: #1C2B3A;
-      --olive: #8A9070;
-      --terracotta: #C4714A;
-      --sand: #E2DDD4;
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'Inter', sans-serif;
+      /* extra era-tag hues not in the shared palette, pulled from the same Flexoki Light family */
+      --red: #D14D41;
+      --brown: #683b15;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,7 +44,7 @@
       font-weight: 500;
     }
     .hero h1 {
-      font-family: var(--font-display);
+      font-family: var(--font-hero);
       font-size: 2.6rem;
       line-height: 1.15;
       color: var(--ink);
@@ -75,7 +68,7 @@
     .filter-btn {
       padding: 5px 14px;
       border: 1px solid var(--sand);
-      border-radius: 20px;
+      border-radius: 0;
       background: transparent;
       color: var(--ink);
       font-family: var(--font-body);
@@ -190,26 +183,26 @@
     }
     .event-desc {
       font-size: 0.82rem;
-      color: #5a6a78;
+      color: var(--mid);
       line-height: 1.55;
     }
     .event-tag {
       display: inline-block;
       font-size: 0.65rem;
       padding: 2px 8px;
-      border-radius: 10px;
+      border-radius: 0;
       margin-top: 6px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-weight: 500;
     }
-    .tag-politics { background: #e8edf2; color: #3a5068; }
-    .tag-culture { background: #eef0e8; color: #4a5438; }
-    .tag-war { background: #f5e8e0; color: #7a3820; }
-    .tag-religion { background: #ede8f5; color: #4a3870; }
-    .tag-expansion { background: #e8f0ee; color: #285448; }
-    .tag-decline { background: #f0e8e8; color: #703838; }
-    .tag-modern { background: #e8eff5; color: #284870; }
+    .tag-politics  { background: color-mix(in srgb, var(--blue) 16%, var(--bg));       color: var(--blue); }
+    .tag-culture   { background: color-mix(in srgb, var(--olive) 16%, var(--bg));      color: var(--olive); }
+    .tag-war       { background: color-mix(in srgb, var(--red) 16%, var(--bg));        color: var(--red); }
+    .tag-religion  { background: color-mix(in srgb, var(--pink) 16%, var(--bg));       color: var(--pink); }
+    .tag-expansion { background: color-mix(in srgb, var(--cyan) 16%, var(--bg));       color: var(--cyan); }
+    .tag-decline   { background: color-mix(in srgb, var(--brown) 16%, var(--bg));      color: var(--brown); }
+    .tag-modern    { background: color-mix(in srgb, var(--terracotta) 16%, var(--bg)); color: var(--terracotta); }
 
     /* Hidden state for filter */
     .event.hidden { display: none; }

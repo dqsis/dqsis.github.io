@@ -5,22 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commonplace Book — Quotes, Anecdotes & Passages</title>
   <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --stone: #F7F4EE;
-      --ink: #1C2B3A;
-      --olive: #8A9070;
-      --terracotta: #C4714A;
-      --sand: #E2DDD4;
-      --mid: #5A6670;
-      --white: #FFFFFF;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Inter', system-ui, sans-serif;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -53,7 +38,7 @@
       font-weight: 600;
     }
     .hero h1 {
-      font-family: var(--font-display);
+      font-family: var(--font-hero);
       font-size: 2.6rem;
       line-height: 1.12;
       color: var(--ink);
@@ -77,7 +62,7 @@
     .filter-btn {
       padding: 5px 14px;
       border: 1px solid var(--sand);
-      border-radius: 20px;
+      border-radius: 0;
       background: transparent;
       color: var(--ink);
       font-family: var(--font-body);
@@ -102,7 +87,7 @@
     .entry {
       background: var(--white);
       border: 1px solid var(--sand);
-      border-radius: 8px;
+      border-radius: 0;
       padding: 32px 34px 28px;
       margin-bottom: 28px;
     }
@@ -145,7 +130,7 @@
       font-style: italic;
       margin-bottom: 20px;
     }
-    .source a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(196,113,74,0.35); }
+    .source a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--terracotta) 35%, transparent); }
     .source a:hover { border-bottom-color: var(--terracotta); }
 
     /* Reflection / analysis */
@@ -174,14 +159,14 @@
       display: inline-block;
       font-size: 0.64rem;
       padding: 2px 10px;
-      border-radius: 10px;
+      border-radius: 0;
       margin-right: 6px;
       margin-top: 6px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-weight: 500;
-      background: #eef0e8;
-      color: #4a5438;
+      background: color-mix(in srgb, var(--olive) 16%, var(--bg));
+      color: var(--ink-2);
     }
 
     /* Empty state */
