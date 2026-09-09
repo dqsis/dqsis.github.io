@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commonplace Book — Quotes, Anecdotes & Passages</title>
   <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="commonplace/commonplace.css" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -84,90 +85,9 @@
       padding: 0 40px 80px;
     }
 
-    .entry {
-      background: var(--white);
-      border: 1px solid var(--sand);
-      border-radius: 0;
-      padding: 32px 34px 28px;
-      margin-bottom: 28px;
-    }
-    .entry.hidden { display: none; }
-
-    .entry-kind {
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .entry-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      line-height: 1.2;
-      color: var(--ink);
-      margin-bottom: 18px;
-    }
-
-    /* The passage / quote itself */
-    .passage {
-      font-family: var(--font-display);
-      font-size: 1.12rem;
-      line-height: 1.7;
-      color: var(--ink);
-      border-left: 2px solid var(--terracotta);
-      padding-left: 20px;
-      margin-bottom: 18px;
-    }
-    .passage.quote::before { content: '\201C'; }
-    .passage.quote::after  { content: '\201D'; }
-    .passage p { margin-bottom: 0.7em; }
-    .passage p:last-child { margin-bottom: 0; }
-
-    .source {
-      font-size: 0.82rem;
-      color: var(--olive);
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    .source a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--terracotta) 35%, transparent); }
-    .source a:hover { border-bottom-color: var(--terracotta); }
-
-    /* Reflection / analysis */
-    .reflection-label {
-      font-size: 0.64rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--olive);
-      font-weight: 600;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--sand);
-      margin-bottom: 14px;
-    }
-    .reflection {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.72;
-    }
-    .reflection p { margin-bottom: 0.85em; }
-    .reflection p:last-child { margin-bottom: 0; }
-    .reflection em { color: var(--ink); font-style: italic; }
-
-    /* Tags */
-    .entry-tags { margin-top: 20px; }
-    .tag {
-      display: inline-block;
-      font-size: 0.64rem;
-      padding: 2px 10px;
-      border-radius: 0;
-      margin-right: 6px;
-      margin-top: 6px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-weight: 500;
-      background: color-mix(in srgb, var(--olive) 16%, var(--bg));
-      color: var(--ink-2);
-    }
+    /* Entry card styles (.entry, .passage, .source, .reflection, .tag, …)
+       live in commonplace/commonplace.css so the index and every
+       generated permalink page share one definition. */
 
     /* Empty state */
     .empty {
@@ -192,9 +112,6 @@
     @media (max-width: 600px) {
       .site-header, .hero, .filter-bar, .entries, .empty { padding-left: 20px; padding-right: 20px; }
       .hero h1 { font-size: 1.95rem; }
-      .entry { padding: 24px 22px; }
-      .entry-title { font-size: 1.3rem; }
-      .passage { font-size: 1.04rem; }
     }
   </style>
 </head>
@@ -227,81 +144,19 @@
 
 <script>
 /* ------------------------------------------------------------------
-   To add an entry, copy one block below and edit the fields.
-     kind      — small label above the title (e.g. "Anecdote", "Quote")
-     title     — short heading you give the passage
-     quote     — if true, wraps the passage in quotation marks
-     passage   — the text itself; use "\n\n" between paragraphs
-     source    — attribution line; HTML links are allowed
-     reflection— your note/analysis; use "\n\n" between paragraphs,
-                 and <em>…</em> for emphasis
-     tags      — themes; these become the filter buttons automatically
-   Entries are shown newest-first, so add a new one at the TOP of the list.
+   Entries live in commonplace/entries.json (one shared source of
+   data), not inline here — that file also feeds the standalone
+   permalink page generated for each entry by
+   scripts/generate-commonplace-pages.js. To add an entry:
+     1. Add a new object at the TOP of the array in entries.json
+        (entries are shown newest-first). Give it a unique "slug"
+        (short, url-safe, e.g. "same-river-twice").
+     2. Run: node scripts/generate-commonplace-pages.js
+        to build its permalink page at experiments/commonplace/<slug>.html.
+   Fields: kind, title, quote (wraps passage in “ ” if true), passage,
+   source, reflection — all support "\n\n" for paragraph breaks and
+   inline HTML (<em>, <a href>) — plus tags, which become filter buttons.
    ------------------------------------------------------------------ */
-const entries = [
-  {
-    kind: "Fragment · Quote",
-    title: "You Cannot Step Into the Same River Twice",
-    quote: true,
-    passage:
-      "You cannot step into the same river twice, because other waters are always flowing toward you. The river keeps its name. The water never repeats.",
-    source:
-      "Heraclitus, c. 500 BCE — preserved as a fragment through Plato's <em>Cratylus</em>. I was reminded of it by DHH (David Heinemeier Hansson), on his <a href=\"https://music.youtube.com/watch?v=NYFGCESmikA\">appearance on the Lex Fridman Podcast</a>.",
-    reflection:
-      "I keep running into this one in places that have nothing to do with philosophy.\n\n" +
-      "Every year I go back to my country of origin for the holidays. My parents, relatives, old friends still carry an image of who I was when I left. But that person does not exist anymore. Years abroad, different work, different daily pressures, they all reshaped me into someone they are not fully familiar with. And it runs both ways. They have changed too, in ways I only half see because I am not there for the slow accumulation of it. We meet expecting the old river. We get new water.\n\n" +
-      "Same thing watching my daughters grow. One year they are children. A few years later they are teenagers with their own opinions, their own friction points, their own version of the world. I cannot parent the teenager the way I parented the child, even though she carries the same name and the same photographs from before.\n\n" +
-      "Software has its own version of this. Customer requirements are never the fixed thing a contract or a spec implies. What a product needed to do a month ago is not what it needs to do now. Cybersecurity is a clean example. Requirements that barely existed a few months back now show up mid-sprint, forcing teams to rework priorities around demands that were not there when the roadmap was first drawn. Nobody planned poorly. The regulatory water just kept moving.\n\n" +
-      "The lesson is not to plan harder so the river holds still. It won't. Since requirements change constantly, the only sane response is to accept change itself as the one constant and build the capacity to adjust to it as it comes, rather than treating the original plan as sacred. This is exactly what the <a href=\"https://agilemanifesto.org/\">Agile Manifesto</a> and its authors have been advocating since 2001: \"responding to change over following a plan.\" Two decades on, teams still relearn it the hard way, project by project, because the instinct to defend the original spec is stronger than the evidence that the water has already moved.\n\n" +
-      "The mistake, in families and in product development, is treating the name as if it guarantees the substance. It does not. The river is still called a river. The product is still called the same product. But what is actually flowing through it changes constantly, and pretending otherwise is how you end up planning for <em>a version of the world that already left</em>.",
-    tags: ["philosophy", "change", "family", "software"]
-  },
-  {
-    kind: "Passage · Quote",
-    title: "Dissatisfaction Is an Acquired Taste",
-    quote: true,
-    passage:
-      "Hedonic adaptation — a fancy term that simply means what once felt extraordinary becomes ordinary over time. Last year’s raise is now the paycheck you expect every two weeks. And yesterday’s upgrade is now today’s obsolescence.\n\n" +
-      "The thing we obtain isn’t the flashy car or the giant house or the impressive job title. What we really acquire is a taste for those things — a synthetic thirst that now needs repeated quenching. So in a real way, dissatisfaction is an acquired taste.\n\n" +
-      "This is why the path of improvement eventually leads to deficiency. The moment we decide water must taste better, we have declared that water itself is insufficient.",
-    source:
-      'The Minimalists (Joshua Fields Millburn &amp; Ryan Nicodemus). See also the <a href="https://en.wikipedia.org/wiki/Hedonic_treadmill">hedonic treadmill</a>.',
-    reflection:
-      "What stuck with me is the reversal. I always thought I was chasing the <em>thing</em> — the camera, the raise, the better apartment. But what I really pick up is the <em>wanting</em>. The thing wears off fast; the taste for it stays. That’s the trap of an inflated lifestyle: earn a bit more and the new amount just becomes normal, so the raise that made me happy in month one is simply the salary I expect by month three.\n\n" +
-      "So the real question about the mirrorless camera isn’t <em>can I afford it</em>, or even <em>would it take better photos</em>. It’s: am I buying a tool, or am I buying a new want that I’ll have to feed again in a couple of months? If the happiness only lasts a few weeks, I’m not really buying an object — I’m signing up for the next craving.\n\n" +
-      "“The moment we decide water must taste better, we have declared that water itself is insufficient.” The point isn’t to give everything up. It’s to learn that the water is already enough.",
-    tags: ["minimalism", "desire", "contentment", "money"]
-  },
-  {
-    kind: "Aphorism · Quote",
-    title: "The Optimist and the Pessimist",
-    quote: true,
-    passage:
-      "The optimist proclaims that we live in the best of all possible worlds; and the pessimist fears this is true.",
-    source:
-      'James Branch Cabell, <em>The Silver Stallion: A Comedy of Redemption</em> (1926) — Book Four, ch. XXVI, “The Realist in Defeat,” spoken by the character Coth. Again by way of Έρωτας και άλλες πολεμικές τέχνες.',
-    reflection:
-      "The optimist and the pessimist say the same thing — this is the best of all possible worlds — but one <em>proclaims</em> it and the other <em>fears</em> it is true. They don’t disagree about the world; they just feel differently about it.\n\n" +
-      "(The line is often credited to Oppenheimer, who quoted a looser version. The original is Cabell’s, twenty years earlier.)",
-    tags: ["philosophy", "optimism", "irony"]
-  },
-  {
-    kind: "Anecdote · Parable",
-    title: "The Ninety-Ninth Night",
-    quote: false,
-    passage:
-      "A mandarin fell in love with a courtesan. She told him she would be his if he waited for her, sitting on a stool in her garden, for one hundred nights in a row. He agreed, and night after night he sat beneath her window, patient and unmoving. On the ninety-ninth night, with only one night left, he suddenly rose, tucked his stool under his arm, and walked away.",
-    source:
-      'Retold by Roland Barthes in <em>A Lover’s Discourse: Fragments</em> (1977), in the fragment “Waiting.” I first met it in Έρωτας και άλλες πολεμικές τέχνες.',
-    reflection:
-      "That is the whole story. No reason is given for why he leaves — and the silence is the point.\n\n" +
-      "It is usually read as a meditation on desire and waiting. One reading says his desire died precisely because it was about to be satisfied: the anticipation <em>was</em> the love, and possession would only have ended it. Another reads pride into it — a man who will not be tested to the very last inch, and who reclaims himself by refusing the final step. A third finds simple exhaustion: the limit of any patience, which can turn, without warning, into refusal. Barthes uses it to show how the lover’s waiting is “unbearable” — how devotion and abandonment sit closer together than we like to think.\n\n" +
-      "What I find striking is where the story comes from. Barthes borrowed it from the Japanese legend of the poet <em>Ono no Komachi</em> and Captain Fukakusa no Shōshō — “The Hundred Nights.” In the original, the suitor does not walk away on the last night. He dies on it. Barthes’ quiet edit — turning a death into a decision — is the whole difference between tragedy and freedom. The captain is defeated by the hundredth night; the mandarin defeats it.",
-    tags: ["desire", "patience", "love", "paradox"]
-  }
-];
-
-/* ---------------------- rendering ---------------------- */
 const entriesEl = document.getElementById('entries');
 const emptyEl = document.getElementById('empty');
 const filterBar = document.getElementById('filterBar');
@@ -310,49 +165,66 @@ function paragraphs(text) {
   return text.split('\n\n').map(p => `<p>${p}</p>`).join('');
 }
 
-entries.forEach(e => {
-  const el = document.createElement('article');
-  el.className = 'entry';
-  el.dataset.tags = e.tags.join(',');
-  el.innerHTML = `
-    <div class="entry-kind">${e.kind}</div>
-    <h2 class="entry-title">${e.title}</h2>
-    <div class="passage${e.quote ? ' quote' : ''}">${paragraphs(e.passage)}</div>
-    <div class="source">${e.source}</div>
-    <div class="reflection-label">Note</div>
-    <div class="reflection">${paragraphs(e.reflection)}</div>
-    <div class="entry-tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-  `;
-  entriesEl.appendChild(el);
-});
+async function init() {
+  const entries = await (await fetch('commonplace/entries.json')).json();
 
-/* ---------------------- filters ---------------------- */
-const allTags = [...new Set(entries.flatMap(e => e.tags))].sort();
-const tags = ['all', ...allTags];
-
-tags.forEach((tag, i) => {
-  const btn = document.createElement('button');
-  btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
-  btn.dataset.tag = tag;
-  btn.textContent = tag === 'all' ? 'All' : tag;
-  filterBar.appendChild(btn);
-});
-
-filterBar.addEventListener('click', ev => {
-  const btn = ev.target.closest('.filter-btn');
-  if (!btn) return;
-  filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const tag = btn.dataset.tag;
-  let visible = 0;
-  document.querySelectorAll('.entry').forEach(entry => {
-    const show = tag === 'all' || entry.dataset.tags.split(',').includes(tag);
-    entry.classList.toggle('hidden', !show);
-    if (show) visible++;
+  entries.forEach(e => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.id = `entry-${e.slug}`;
+    el.dataset.tags = e.tags.join(',');
+    el.innerHTML = `
+      <div class="entry-head">
+        <div class="entry-kind">${e.kind}</div>
+        <a class="permalink" href="commonplace/${e.slug}.html">Permalink →</a>
+      </div>
+      <h2 class="entry-title">${e.title}</h2>
+      <div class="passage${e.quote ? ' quote' : ''}">${paragraphs(e.passage)}</div>
+      <div class="source">${e.source}</div>
+      <div class="reflection-label">Note</div>
+      <div class="reflection">${paragraphs(e.reflection)}</div>
+      <div class="entry-tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    `;
+    entriesEl.appendChild(el);
   });
-  emptyEl.style.display = visible === 0 ? 'block' : 'none';
-});
+
+  /* ---------------------- filters ---------------------- */
+  const allTags = [...new Set(entries.flatMap(e => e.tags))].sort();
+  const tags = ['all', ...allTags];
+
+  tags.forEach((tag, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+    btn.dataset.tag = tag;
+    btn.textContent = tag === 'all' ? 'All' : tag;
+    filterBar.appendChild(btn);
+  });
+
+  filterBar.addEventListener('click', ev => {
+    const btn = ev.target.closest('.filter-btn');
+    if (!btn) return;
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const tag = btn.dataset.tag;
+    let visible = 0;
+    document.querySelectorAll('.entry').forEach(entry => {
+      const show = tag === 'all' || entry.dataset.tags.split(',').includes(tag);
+      entry.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  });
+
+  /* Jump to a specific entry when the URL carries #entry-<slug>,
+     e.g. arriving from a permalink page's "back to full list" link. */
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) target.scrollIntoView({ block: 'start' });
+  }
+}
+
+init();
 </script>
 </body>
 </html>

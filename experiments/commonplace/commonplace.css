@@ -1,0 +1,117 @@
+/* ============================================================
+   Commonplace Book — shared entry-card styles
+   Used by both experiments/commonplace-book.html (the index)
+   and every generated experiments/commonplace/<slug>.html
+   permalink page. Keep this the single source of styling for
+   an entry card so the two never drift apart.
+   ============================================================ */
+
+.entry {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 0;
+  padding: 32px 34px 28px;
+  margin-bottom: 28px;
+}
+.entry.hidden { display: none; }
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.entry-kind {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+.permalink {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--olive);
+  text-decoration: none;
+  border-bottom: 1px dotted color-mix(in srgb, var(--olive) 50%, transparent);
+  white-space: nowrap;
+}
+.permalink:hover { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+.entry-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+/* The passage / quote itself */
+.passage {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--ink);
+  border-left: 2px solid var(--terracotta);
+  padding-left: 20px;
+  margin-bottom: 18px;
+}
+.passage.quote::before { content: '\201C'; }
+.passage.quote::after  { content: '\201D'; }
+.passage p { margin-bottom: 0.7em; }
+.passage p:last-child { margin-bottom: 0; }
+
+.source {
+  font-size: 0.82rem;
+  color: var(--olive);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.source a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--terracotta) 35%, transparent); }
+.source a:hover { border-bottom-color: var(--terracotta); }
+
+/* Reflection / analysis */
+.reflection-label {
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--olive);
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--sand);
+  margin-bottom: 14px;
+}
+.reflection {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.72;
+}
+.reflection p { margin-bottom: 0.85em; }
+.reflection p:last-child { margin-bottom: 0; }
+.reflection em { color: var(--ink); font-style: italic; }
+
+/* Tags */
+.entry-tags { margin-top: 20px; }
+.tag {
+  display: inline-block;
+  font-size: 0.64rem;
+  padding: 2px 10px;
+  border-radius: 0;
+  margin-right: 6px;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: color-mix(in srgb, var(--olive) 16%, var(--bg));
+  color: var(--ink-2);
+}
+
+@media (max-width: 600px) {
+  .entry { padding: 24px 22px; }
+  .entry-title { font-size: 1.3rem; }
+  .passage { font-size: 1.04rem; }
+}
