@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sand in the Sandwich — DQSIS Commonplace Book</title>
+  <meta name="description" content="This talk has stayed with me. It made me think hard about how I use AI — privately, and professionally during product development. Not the pitch version. The real one, powers and harms both. Subtit…" />
+  <link rel="canonical" href="https://dqsis.com/experiments/commonplace/sand-in-the-sandwich.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Sand in the Sandwich" />
+  <meta property="og:description" content="This talk has stayed with me. It made me think hard about how I use AI — privately, and professionally during product development. Not the pitch version. The real one, powers and harms both. Subtit…" />
+  <meta property="og:url" content="https://dqsis.com/experiments/commonplace/sand-in-the-sandwich.html" />
+  <meta property="og:image" content="https://dqsis.com/images/groupworkout_icon.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="../../styles/style.css" />
+  <link rel="stylesheet" href="../commonplace/commonplace.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--stone); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6; }
+    .site-header { max-width: 760px; margin: 0 auto; padding: 20px 40px; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 40px 80px; }
+    .back-link {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: var(--olive);
+      text-decoration: none;
+      margin-bottom: 24px;
+      border-bottom: 1px solid color-mix(in srgb, var(--olive) 35%, transparent);
+    }
+    .back-link:hover { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+    .page-footer { text-align: center; padding: 32px; font-size: 0.72rem; color: var(--olive); border-top: 1px solid var(--sand); }
+    @media (max-width: 600px) {
+      .site-header, .wrap { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://dqsis.com" class="site-logo">
+    <img src="../../images/groupworkout_icon.png" alt="DQSIS logo">
+    <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+  </a>
+  <span class="site-nav">Experiments</span>
+</header>
+
+<div class="wrap">
+  <a class="back-link" href="../commonplace-book.html">← All passages &amp; marginalia</a>
+  
+    <article class="entry" id="entry-sand-in-the-sandwich">
+      <div class="entry-head">
+        <div class="entry-kind">Talk · Argument</div>
+        <a class="permalink" href="../commonplace-book.html#entry-sand-in-the-sandwich">Full list →</a>
+      </div>
+      <h2 class="entry-title">Sand in the Sandwich</h2>
+      <div class="passage"><p>Every efficiency gain from AI comes as a trade — sand in the sandwich. We can generate subtitles for almost any video with near-zero effort; knowledge gets more accessible, more democratized. But we accept errors in exchange. The question that matters is not whether errors will appear. They will. The question is how much error we are willing to swallow for a cheaper, faster process.</p><p>And once output looks plausible, review doesn't save us. The brain switches off its own error detection — what Høst calls output blindness. Humans are far better at constructing something correct than at verifying something already built. Verification is passive; construction keeps the mind engaged. So the workflow most teams lean on — AI generates, human checks — is broken by design. The check happens exactly when the checker is least equipped to do it.</p></div>
+      <div class="source">Einar W. Høst, talk on AI narratives and harms — <a href="https://vimeo.com/1223705758">Vimeo</a> / <a href="https://www.youtube.com/watch?v=ZW3cBpAQhLw">YouTube</a>.</div>
+      <div class="reflection-label">Note</div>
+      <div class="reflection"><p>This talk has stayed with me. It made me think hard about how I use AI — privately, and professionally during product development. Not the pitch version. The real one, powers and harms both.</p><p>Subtitles are, relatively, low stakes. A wrong word is an annoyance. But what does the same trade-off mean for software as a medical device? How much sand are we willing to accept when the text in question is a risk assessment, a clinical claim, a piece of documentation someone downstream will trust without re-checking? And if the answer is none, or close to none, how do we actually keep the sand out, rather than just hoping we notice it once it's already in the sandwich?</p><p>Which is where output blindness bites hardest. If review is not the safety net we assumed it was, what does keeping the sand out actually look like in a SaMD context?</p></div>
+      <div class="entry-tags"><span class="tag">AI</span><span class="tag">product development</span><span class="tag">risk</span><span class="tag">verification</span><span class="tag">medical devices</span></div>
+    </article>
+</div>
+
+<footer class="page-footer">DQSIS · A commonplace book · kept and annotated by Dimitrios Kiousis</footer>
+
+</body>
+</html>

@@ -1,5 +1,15 @@
 [
   {
+    "slug": "sand-in-the-sandwich",
+    "kind": "Talk · Argument",
+    "title": "Sand in the Sandwich",
+    "quote": false,
+    "passage": "Every efficiency gain from AI comes as a trade — sand in the sandwich. We can generate subtitles for almost any video with near-zero effort; knowledge gets more accessible, more democratized. But we accept errors in exchange. The question that matters is not whether errors will appear. They will. The question is how much error we are willing to swallow for a cheaper, faster process.\n\nAnd once output looks plausible, review doesn't save us. The brain switches off its own error detection — what Høst calls output blindness. Humans are far better at constructing something correct than at verifying something already built. Verification is passive; construction keeps the mind engaged. So the workflow most teams lean on — AI generates, human checks — is broken by design. The check happens exactly when the checker is least equipped to do it.",
+    "source": "Einar W. Høst, talk on AI narratives and harms — <a href=\"https://vimeo.com/1223705758\">Vimeo</a> / <a href=\"https://www.youtube.com/watch?v=ZW3cBpAQhLw\">YouTube</a>.",
+    "reflection": "This talk has stayed with me. It made me think hard about how I use AI — privately, and professionally during product development. Not the pitch version. The real one, powers and harms both.\n\nSubtitles are, relatively, low stakes. A wrong word is an annoyance. But what does the same trade-off mean for software as a medical device? How much sand are we willing to accept when the text in question is a risk assessment, a clinical claim, a piece of documentation someone downstream will trust without re-checking? And if the answer is none, or close to none, how do we actually keep the sand out, rather than just hoping we notice it once it's already in the sandwich?\n\nWhich is where output blindness bites hardest. If review is not the safety net we assumed it was, what does keeping the sand out actually look like in a SaMD context?",
+    "tags": ["AI", "product development", "risk", "verification", "medical devices"]
+  },
+  {
     "slug": "same-river-twice",
     "kind": "Fragment · Quote",
     "title": "You Cannot Step Into the Same River Twice",
