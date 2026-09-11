@@ -1,5 +1,15 @@
 [
   {
+    "slug": "ai-and-the-faustian-bargain",
+    "kind": "Talk · Framework",
+    "title": "AI and the Faustian Bargain",
+    "quote": true,
+    "passage": "What is the problem to which this technology is the solution?\n\nWhose problem is it?\n\nWhat new problems will be created by solving the old one?\n\nWhich people and institutions will be most harmed?\n\nWhat changes in language are being forced by the new technology?\n\nWhat shifts in economic and political power might result?\n\nWhat alternate uses might be made of the technology?",
+    "source": "Neil Postman, from <em>The Surrender of Culture to Technology</em> (1997 lecture), building on his book <em>Technopoly</em> (1992).",
+    "reflection": "Postman wasn't talking about AI — he was talking about television, computers, the internet, the wave of technologies that arrived promising to make life easier and quietly rearranged everything underneath us. Postman frames every technological adoption as a Faustian bargain, after the legend of the scholar who sells his soul for knowledge and power — he gets exactly what he asked for. That is the trap: the bargain is never advertised as a bargain. It is advertised as a gift.\n\nBefore you introduce AI into your product, your process, or your team's daily workflow, run the questions. Not as a formality. As the actual gate. The bargain will get made either way. The only choice you have is whether you read the fine print at the bottom of the contract first.",
+    "tags": ["AI", "technology", "ethics", "medical devices", "accountability"]
+  },
+  {
     "slug": "sand-in-the-sandwich",
     "kind": "Talk · Argument",
     "title": "Sand in the Sandwich",
