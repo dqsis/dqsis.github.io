@@ -1,5 +1,15 @@
 [
   {
+    "slug": "sisyphus-happy",
+    "kind": "Essay · Quote",
+    "title": "One Must Imagine Sisyphus Happy",
+    "quote": true,
+    "passage": "I leave Sisyphus at the foot of the mountain! One always finds one’s burden again. But Sisyphus teaches the higher fidelity that negates the gods and raises rocks.\n\nThe struggle itself toward the heights is enough to fill a man’s heart. One must imagine Sisyphus happy.",
+    "source": "Albert Camus, <em>The Myth of Sisyphus</em> (<em>Le Mythe de Sisyphe</em>, 1942), the closing lines, in Justin O’Brien’s translation (1955). In the original: «&nbsp;Il faut imaginer Sisyphe heureux.&nbsp;»",
+    "reflection": "Camus wrote <em>The Myth of Sisyphus</em> in his late twenties, during the war, and it was published in occupied Paris in 1942, the same year as <em>The Stranger</em>. It opens with a challenge: there is only one truly serious philosophical problem, and that is judging whether life is worth living. Camus’s name for the difficulty is <em>the absurd</em>: “born of this confrontation between the human need and the unreasonable silence of the world.” Neither half is absurd on its own. The absurd is the gap between them.\n\nHe looks at the ways people try to escape that gap. One is to give up. Another is what he calls philosophical suicide: the leap into a faith or a system that promises the meaning the world won’t give. Camus rejects both. What’s left is revolt: living with the gap, eyes open, without false hope, and refusing to be crushed by it. (He disliked being called an existentialist. The label stuck anyway.)\n\nSisyphus is his model. In the Greek myth, the king of Corinth who cheated death is condemned to push a boulder up a hill and watch it roll back down, forever. To the gods there was no worse punishment than futile, hopeless labour. Camus is interested in the moment the stone rolls back and Sisyphus walks down after it. That descent is “the hour of consciousness.” He knows exactly how hopeless his condition is, and that knowledge, which should be his torment, is what lifts him above his fate. “There is no fate that cannot be surmounted by scorn.” The rock is still there. But “his fate belongs to him. His rock is his thing.”\n\nThat is why the last line isn’t a consolation. Camus is not promising that the rock will one day stay at the top, or that the labour has some hidden purpose. He is saying that meaning doesn’t have to wait at the summit. It can be found in the pushing, in owning the climb instead of waiting for it to end. On some days that reads as bleak. On most days, to me, it reads as freedom.",
+    "tags": ["philosophy", "absurdism", "meaning", "persistence"]
+  },
+  {
     "slug": "ai-and-the-faustian-bargain",
     "kind": "Talk · Framework",
     "title": "AI and the Faustian Bargain",
