@@ -263,6 +263,12 @@ a:hover {
 }
 .card-navy h3 { color: var(--blue); }
 
+.card-pink {
+  border: 1px solid var(--pink);
+  background: color-mix(in srgb, var(--pink) 12%, var(--bg));
+}
+.card-pink h3 { color: var(--pink); }
+
 /* ── Checklist ── */
 .checklist {
   list-style: none;
