@@ -1949,6 +1949,7 @@
   var max = Math.max.apply(null, data.map(function (d) { return d.n; }));
   var peak = data.filter(function (d) { return d.n === max; }).pop();
   var top = Math.ceil(max / 10) * 10;
+  var current = data[data.length - 1].year === new Date().getFullYear() ? data[data.length - 1] : null;
 
   var wrap = document.getElementById('books-chart');
   var svg = wrap.querySelector('svg'), tip = wrap.querySelector('.chart-tip');
@@ -1981,14 +1982,16 @@
       bars.push(el('rect', { class: 'bar', x: x, y: yPos(d.n), width: bw, height: h }));
       var showYear = d.year === first || d.year === last ||
         (d.year % 5 === 0 && d.year - first > 2 && last - d.year > 2);
-      if (showYear) el('text', { x: x + bw / 2, y: H - 4, 'text-anchor': 'middle' }, d.year);
+      if (d === current) el('text', { x: x + bw, y: H - 4, 'text-anchor': 'end' }, d.year + ' so far');
+      else if (showYear) el('text', { x: x + bw / 2, y: H - 4, 'text-anchor': 'middle' }, d.year);
       if (d === peak || d.year === last) {
         el('text', { class: 'val', x: x + bw / 2, y: yPos(d.n) - 4, 'text-anchor': 'middle' }, d.n);
       }
       var hit = el('rect', { class: 'hit', x: L + i * slot, y: T, width: slot, height: plotH });
       hit.addEventListener('mouseenter', function () {
         bars.forEach(function (b, j) { b.classList.toggle('dim', j !== i); });
-        tip.innerHTML = d.year + ' <span>·</span> ' + d.n + ' book' + (d.n === 1 ? '' : 's');
+        tip.innerHTML = d.year + ' <span>·</span> ' + d.n + ' book' + (d.n === 1 ? '' : 's') +
+          (d === current ? ' <span>so far</span>' : '');
         tip.style.left = (x + bw / 2) + 'px';
         tip.style.top = (svg.offsetTop + yPos(d.n) - 6) + 'px';
         tip.style.display = 'block';
