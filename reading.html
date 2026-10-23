@@ -29,6 +29,22 @@
     .book-author { grid-column: 2; grid-row: 2; text-align: left; }
     .book-rating { grid-column: 3; grid-row: 1; }
   }
+  .chart { margin-bottom: 2.5rem; position: relative; }
+  .chart svg { display: block; width: 100%; height: 180px; overflow: visible; }
+  .chart .bar { fill: var(--terracotta); }
+  .chart .bar.dim { opacity: 0.35; }
+  .chart .hit { fill: transparent; cursor: default; }
+  .chart .axis { stroke: var(--border); stroke-width: 1; }
+  .chart .grid { stroke: var(--panel); stroke-width: 1; stroke-dasharray: 2 3; }
+  .chart text { font-family: var(--font-body); font-size: 10px; fill: var(--mid); }
+  .chart text.val { fill: var(--ink-2); }
+  .chart-tip {
+    position: absolute; pointer-events: none; display: none;
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 0.25rem 0.5rem; font-size: 0.75rem; color: var(--ink); white-space: nowrap;
+    transform: translate(-50%, -100%);
+  }
+  .chart-tip span { color: var(--mid); }
 </style>
 </head>
 <body>
@@ -49,6 +65,12 @@
     <h1 class="title">Books I have <em>read</em>.</h1>
     <p class="subtitle">293 books since 2006, newest first. I try to read 2 to 3 per month. Some years go better than others.</p>
   </div>
+
+  <section class="chart" id="books-chart" aria-label="Books read per year">
+    <p class="section-label">Books per year</p>
+    <svg role="img" aria-label="Bar chart of books read per year since 2006"></svg>
+    <div class="chart-tip"></div>
+  </section>
 
     <section class="year">
       <p class="section-label">2026 <span class="year-count">· 20 books</span></p>
@@ -1912,5 +1934,74 @@
   <footer class="site-footer">DQSIS · Dimitrios Kiousis</footer>
 
 </div>
+<script>
+(function () {
+  var counts = {};
+  document.querySelectorAll('.year .section-label').forEach(function (el) {
+    var m = el.textContent.match(/(\d{4})\D+(\d+) book/);
+    if (m) counts[+m[1]] = +m[2];
+  });
+  var years = Object.keys(counts).map(Number);
+  if (!years.length) return;
+  var first = Math.min.apply(null, years), last = Math.max.apply(null, years);
+  var data = [];
+  for (var y = first; y <= last; y++) data.push({ year: y, n: counts[y] || 0 });
+  var max = Math.max.apply(null, data.map(function (d) { return d.n; }));
+  var peak = data.filter(function (d) { return d.n === max; }).pop();
+  var top = Math.ceil(max / 10) * 10;
+
+  var wrap = document.getElementById('books-chart');
+  var svg = wrap.querySelector('svg'), tip = wrap.querySelector('.chart-tip');
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    svg.appendChild(e);
+    return e;
+  }
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var W = svg.clientWidth, H = 180, L = 24, B = 20, T = 14;
+    var plotW = W - L, plotH = H - B - T;
+    var slot = plotW / data.length, bw = Math.max(2, slot - 2);
+    var yPos = function (v) { return T + plotH - (v / top) * plotH; };
+
+    for (var g = 10; g <= top; g += 10) {
+      el('line', { class: 'grid', x1: L, x2: W, y1: yPos(g), y2: yPos(g) });
+      el('text', { x: L - 6, y: yPos(g) + 3, 'text-anchor': 'end' }, g);
+    }
+    el('line', { class: 'axis', x1: L, x2: W, y1: yPos(0), y2: yPos(0) });
+
+    var bars = [];
+    data.forEach(function (d, i) {
+      var x = L + i * slot + 1;
+      var h = yPos(0) - yPos(d.n);
+      bars.push(el('rect', { class: 'bar', x: x, y: yPos(d.n), width: bw, height: h }));
+      var showYear = d.year === first || d.year === last ||
+        (d.year % 5 === 0 && d.year - first > 2 && last - d.year > 2);
+      if (showYear) el('text', { x: x + bw / 2, y: H - 4, 'text-anchor': 'middle' }, d.year);
+      if (d === peak || d.year === last) {
+        el('text', { class: 'val', x: x + bw / 2, y: yPos(d.n) - 4, 'text-anchor': 'middle' }, d.n);
+      }
+      var hit = el('rect', { class: 'hit', x: L + i * slot, y: T, width: slot, height: plotH });
+      hit.addEventListener('mouseenter', function () {
+        bars.forEach(function (b, j) { b.classList.toggle('dim', j !== i); });
+        tip.innerHTML = d.year + ' <span>·</span> ' + d.n + ' book' + (d.n === 1 ? '' : 's');
+        tip.style.left = (x + bw / 2) + 'px';
+        tip.style.top = (svg.offsetTop + yPos(d.n) - 6) + 'px';
+        tip.style.display = 'block';
+      });
+      hit.addEventListener('mouseleave', function () {
+        bars.forEach(function (b) { b.classList.remove('dim'); });
+        tip.style.display = 'none';
+      });
+    });
+  }
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
 </body>
 </html>
