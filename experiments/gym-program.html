@@ -208,6 +208,7 @@
     line-height: 1.3;
   }
   .day-cell.rest .day-label { color: var(--olive); font-weight: 400; }
+  .week-grid.rotation { grid-template-columns: repeat(4, 1fr); margin-bottom: 16px; }
 
   /* ── Principles ── */
   .principles {
@@ -262,7 +263,7 @@
       <span class="stat"><strong>45 min</strong>per session</span>
       <span class="stat"><strong>62 kg</strong>target weight</span>
     </div>
-    <p class="version-note">Current version · v3, starts 16 Nov 2026 — <a href="#previous-versions">previous versions ↓</a></p>
+    <p class="version-note">Current version · v3, started 4 Nov 2026 — <a href="#previous-versions">previous versions ↓</a></p>
   </header>
 
   <!-- Main content -->
@@ -275,7 +276,7 @@
       <!-- Squat -->
       <div class="session-card">
         <div class="session-header">
-          <div class="session-number">Session 1 · Mon</div>
+          <div class="session-number">Session 1</div>
           <div class="session-title">Squat</div>
           <div class="session-focus">Back squat, vertical pull</div>
         </div>
@@ -302,7 +303,7 @@
       <!-- Bench -->
       <div class="session-card">
         <div class="session-header">
-          <div class="session-number">Session 2 · Tue</div>
+          <div class="session-number">Session 2</div>
           <div class="session-title">Bench</div>
           <div class="session-focus">Bench press, horizontal pull</div>
         </div>
@@ -329,7 +330,7 @@
       <!-- Deadlift -->
       <div class="session-card">
         <div class="session-header">
-          <div class="session-number">Session 3 · Thu</div>
+          <div class="session-number">Session 3</div>
           <div class="session-title">Deadlift</div>
           <div class="session-focus">Trap bar, incline press</div>
         </div>
@@ -356,7 +357,7 @@
       <!-- Press -->
       <div class="session-card">
         <div class="session-header">
-          <div class="session-number">Session 4 · Fri</div>
+          <div class="session-number">Session 4</div>
           <div class="session-title">Press</div>
           <div class="session-focus">Standing press, paused front squat</div>
         </div>
@@ -404,43 +405,32 @@
     <!-- Cardio -->
     <div class="section-label">Cardio · winter</div>
     <ul class="points">
-      <li><strong>Wednesday, fixed:</strong> swimming, 45 minutes.</li>
-      <li><strong>Fallback:</strong> if the pool hasn't happened by Wednesday evening, 30–40 minutes of incline treadmill walking or bike at the gym. The fallback is not skipping.</li>
-      <li><strong>Saturday, optional:</strong> a run, a swim, or a long walk — whichever is most appealing. If it's skipped, the week still counts.</li>
+      <li><strong>Once a week, fixed:</strong> swimming, 45 minutes — whichever day fits.</li>
+      <li><strong>Fallback:</strong> if the pool hasn't happened by midweek, 30–40 minutes of incline treadmill walking or bike at the gym. The fallback is not skipping.</li>
+      <li><strong>Second session, optional:</strong> a run, a swim, or a long walk — whichever is most appealing. If it's skipped, the week still counts.</li>
     </ul>
 
-    <!-- Weekly rhythm -->
-    <div class="section-label">Weekly rhythm</div>
-    <div class="week-grid">
+    <!-- Rotation -->
+    <div class="section-label">Rotation</div>
+    <div class="week-grid rotation">
       <div class="day-cell strength">
-        <div class="day-num">Mon</div>
+        <div class="day-num">1</div>
         <div class="day-label">Squat</div>
       </div>
       <div class="day-cell strength">
-        <div class="day-num">Tue</div>
+        <div class="day-num">2</div>
         <div class="day-label">Bench</div>
       </div>
-      <div class="day-cell cardio">
-        <div class="day-num">Wed</div>
-        <div class="day-label">Cardio</div>
-      </div>
       <div class="day-cell strength">
-        <div class="day-num">Thu</div>
+        <div class="day-num">3</div>
         <div class="day-label">Deadlift</div>
       </div>
       <div class="day-cell strength">
-        <div class="day-num">Fri</div>
+        <div class="day-num">4</div>
         <div class="day-label">Press</div>
       </div>
-      <div class="day-cell optional">
-        <div class="day-num">Sat</div>
-        <div class="day-label">Cardio, optional</div>
-      </div>
-      <div class="day-cell rest">
-        <div class="day-num">Sun</div>
-        <div class="day-label">Rest</div>
-      </div>
     </div>
+    <p class="section-note">No fixed days. Run the four sessions in order as the week allows — the next session is always the one after the last, so nothing gets skipped when a day moves. Aim for four a week, with cardio wherever it fits.</p>
 
     <!-- Progression -->
     <div class="section-label">Progression</div>
@@ -459,20 +449,20 @@
       </div>
       <div class="principle">
         <div class="principle-title">Review cadence</div>
-        <div class="principle-value">Reassess every 8 weeks — first review mid-January 2027</div>
+        <div class="principle-value">Reassess every 8 weeks — first review end of December 2026</div>
       </div>
     </div>
 
     <!-- Previous versions -->
     <div class="section-label" id="previous-versions">Previous versions</div>
     <ul class="points">
-      <li><a href="gym-program-v2.html" style="color:var(--terracotta);">v2 · Upper / Lower Split</a> — 21 Sep – 15 Nov 2026. Back-friendly rework: trap bar, supersets, 4×5.</li>
+      <li><a href="gym-program-v2.html" style="color:var(--terracotta);">v2 · Upper / Lower Split</a> — 21 Sep – 3 Nov 2026. Back-friendly rework: trap bar, supersets, 4×5.</li>
       <li><a href="gym-program-v1.html" style="color:var(--terracotta);">v1 · Upper / Lower Split</a> — Jul – 20 Sep 2026. The first block: 4×4 on the main lifts.</li>
     </ul>
 
   </main>
 
-  <footer class="site-footer">DQSIS · Life 2.0 · Training Program · v3 · Starts 16 November 2026</footer>
+  <footer class="site-footer">DQSIS · Life 2.0 · Training Program · v3 · Started 4 November 2026</footer>
 
 </div>
 </body>
