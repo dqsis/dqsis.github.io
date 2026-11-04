@@ -190,38 +190,38 @@
 
       <div class="theme">
         <div class="theme-head">
-          <span class="theme-name">White</span>
+          <span class="theme-name">Hackerman</span>
           <span class="theme-tag active">Current</span>
         </div>
         <div class="swatches">
-          <div class="swatch" style="background:#ffffff;color:#000000;">bg</div>
-          <div class="swatch" style="background:#f5f5f5;color:#000000;">dark bg</div>
-          <div class="swatch" style="background:#e8e8e8;color:#000000;">darker</div>
-          <div class="swatch" style="background:#c0c0c0;color:#000000;">select</div>
-          <div class="swatch" style="background:#808080;color:#ffffff;">muted</div>
-          <div class="swatch" style="background:#6e6e6e;color:#ffffff;">accent</div>
-          <div class="swatch" style="background:#2a2a2a;color:#ffffff;">red</div>
-          <div class="swatch" style="background:#000000;color:#ffffff;">fg</div>
+          <div class="swatch" style="background:#0B0C16;color:#ddf7ff;">bg</div>
+          <div class="swatch" style="background:#1f253a;color:#ddf7ff;">select</div>
+          <div class="swatch" style="background:#2d3450;color:#ddf7ff;">muted</div>
+          <div class="swatch" style="background:#287b51;color:#ddf7ff;">brown</div>
+          <div class="swatch" style="background:#829dd4;color:#0B0C16;">blue</div>
+          <div class="swatch" style="background:#4fe88f;color:#0B0C16;">green</div>
+          <div class="swatch" style="background:#82FB9C;color:#0B0C16;">accent</div>
+          <div class="swatch" style="background:#ddf7ff;color:#0B0C16;">fg</div>
         </div>
-        <p class="theme-note">One of Omarchy's built-in themes: pure greyscale, light mode, where even "red" is just a dark grey.</p>
+        <p class="theme-note">One of Omarchy's built-in themes: a near-black navy background with phosphor-green accents — even "red" is a green here.</p>
       </div>
 
       <div class="theme">
         <div class="theme-head">
-          <span class="theme-name">dqsis-wallhaven-0001</span>
+          <span class="theme-name">dqsis-whale</span>
           <span class="theme-tag">My own</span>
         </div>
         <div class="swatches">
-          <div class="swatch" style="background:#0e0301;color:#E2E3EA;">bg</div>
-          <div class="swatch" style="background:#261c1a;color:#E2E3EA;">select</div>
-          <div class="swatch" style="background:#624f4a;color:#E2E3EA;">brown</div>
-          <div class="swatch" style="background:#946e65;color:#E2E3EA;">red</div>
-          <div class="swatch" style="background:#967662;color:#E2E3EA;">green</div>
-          <div class="swatch" style="background:#97a7c7;color:#0e0301;">magenta</div>
-          <div class="swatch" style="background:#aebddf;color:#0e0301;">accent</div>
-          <div class="swatch" style="background:#E2E3EA;color:#0e0301;">fg</div>
+          <div class="swatch" style="background:#161d25;color:#ffffff;">bg</div>
+          <div class="swatch" style="background:#2d343b;color:#ffffff;">select</div>
+          <div class="swatch" style="background:#6a7168;color:#ffffff;">brown</div>
+          <div class="swatch" style="background:#787f85;color:#ffffff;">muted</div>
+          <div class="swatch" style="background:#7b9ea0;color:#161d25;">accent</div>
+          <div class="swatch" style="background:#a2b0a0;color:#161d25;">red</div>
+          <div class="swatch" style="background:#a8c6ce;color:#161d25;">magenta</div>
+          <div class="swatch" style="background:#ffffff;color:#161d25;">fg</div>
         </div>
-        <p class="theme-note">A dark theme generated with Aether from a wallpaper I found on Wallhaven: near-black brown, muted rust tones and a cold blue-grey accent.</p>
+        <p class="theme-note">A dark theme generated with Aether from a whale wallpaper I found on Wallhaven: deep slate-blue background, sage and sea-glass tones and a muted teal accent.</p>
       </div>
 
     </div>
@@ -229,10 +229,12 @@
     <!-- Tweaks -->
     <p class="section-label">My tweaks</p>
     <ul class="points">
-      <li><strong>Idle Suspend plugin:</strong> the built-in idle service handles the screensaver (15 min) and the lock (30 min). I wrote a small Quickshell plugin, <code>dqsis.idle-suspend</code>, that adds a third step and suspends the laptop after 45 minutes. It respects idle inhibitors and the Stay Awake toggle.</li>
-      <li><strong>Bar layout:</strong> menu and workspaces on the left; the clock in the centre, flanked by indicators, keyboard layout, weather and the update check; tray, agents, Bluetooth, network, audio, monitor and power on the right.</li>
-      <li><strong>Clock:</strong> shows the weekday and the time (<code>dddd HH:mm</code>). Its alternate view shows the date with the week number (<code>d MMMM 'W'ww yyyy</code>).</li>
-      <li><strong>Two screens:</strong> the laptop panel at 1.25× scale and a 34-inch 3440×1440 ultrawide over HDMI.</li>
+      <li><strong>Idle chain:</strong> screensaver after 10 minutes, lock after 45, suspend after 60. The first two come from my own clone of Omarchy's idle service, <code>dqsis.idle</code>, which launches my screensaver instead of the default. A small Quickshell plugin I wrote, <code>dqsis.idle-suspend</code>, adds the suspend step. Both respect idle inhibitors and the Stay Awake toggle.</li>
+      <li><strong>Screensaver:</strong> a fullscreen terminal on every screen running <code>asciiquarium</code> on pure black, with the cursor hidden (<code>cmatrix</code> is one line away). Any key or a change of focus closes it.</li>
+      <li><strong>Bar layout:</strong> menu and workspaces on the left; the clock in the centre, flanked by indicators, keyboard layout, weather and the update check; tray (with NordVPN pinned), agents, Bluetooth, network, audio, monitor and power on the right.</li>
+      <li><strong>Clock:</strong> shows the weekday, date and time (<code>dddd d MMMM HH:mm</code>). Its alternate view shows the date with the week number (<code>d MMMM 'W'ww yyyy</code>), and the calendar popup includes a life-progress bar.</li>
+      <li><strong>Keyboard:</strong> Swedish and Greek layouts, switched with Right Ctrl. Caps Lock is a Compose key; pressing both Shifts toggles real Caps Lock.</li>
+      <li><strong>Two screens:</strong> the laptop panel at 1.25× scale and a 34-inch 3440×1440 ultrawide over HDMI, run at 30 Hz.</li>
     </ul>
 
     <!-- Stack -->
@@ -240,7 +242,7 @@
     <div class="stack-grid">
       <div class="stack-item">
         <div class="stack-title">Base</div>
-        <div class="stack-value">Arch Linux, set up by Omarchy</div>
+        <div class="stack-value">Arch Linux, set up by Omarchy 4</div>
       </div>
       <div class="stack-item">
         <div class="stack-title">Window manager</div>
@@ -254,11 +256,15 @@
         <div class="stack-title">Themes</div>
         <div class="stack-value">Omarchy's built-ins, plus my own generated with Aether</div>
       </div>
+      <div class="stack-item">
+        <div class="stack-title">Agent</div>
+        <div class="stack-value">Claude Code, set as Omarchy's default agent and shown in the bar</div>
+      </div>
     </div>
 
   </main>
 
-  <footer class="site-footer">DQSIS · Desktop · Omarchy · Updated 6 October 2026</footer>
+  <footer class="site-footer">DQSIS · Desktop · Omarchy · Updated 4 November 2026</footer>
 
 </div>
 </body>
