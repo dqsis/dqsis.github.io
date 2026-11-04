@@ -150,6 +150,16 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+/* ── ASCII hero (figlet "dqsis.com") ── */
+.ascii-title pre {
+  font-family: var(--font-body);
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+}
+
 .title em {
   font-style: normal;
   color: var(--terracotta);
