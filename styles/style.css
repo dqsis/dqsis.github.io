@@ -24,6 +24,7 @@
   --cyan:        #3AA99F;
   --olive:       #879A39;
   --terracotta:  #d0772b;
+  --logo-orange: #EF8017;  /* sampled from the logo icon */
   --pink:        #CE5D97;
 
   /* legacy aliases still referenced by per-page <style> blocks */
@@ -154,9 +155,9 @@ a:hover {
 .ascii-title pre {
   font-family: var(--font-body);
   font-size: clamp(0.45rem, 1.5vw, 0.6rem);
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1.25;
-  color: var(--ink);
+  color: var(--logo-orange);
   margin: 0;
   max-width: 100%;
   overflow: hidden;              /* never a scrollbar, even if a font runs wide */
