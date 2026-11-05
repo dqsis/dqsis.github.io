@@ -110,6 +110,7 @@ const html = `<!DOCTYPE html>
 <title>Reading · DQSIS</title>
 <meta name="description" content="Every book Dimitrios Kiousis has read since ${firstYear}, newest first.">
 <link rel="stylesheet" href="styles/style.css">
+<link rel="icon" type="image/png" href="/images/groupworkout_icon.png">
 <style>
   .year { margin-bottom: 2.5rem; }
   .year-count { color: var(--mid); }

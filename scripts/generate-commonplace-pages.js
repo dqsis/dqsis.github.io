@@ -77,6 +77,7 @@ function renderPage(e) {
   <meta name="twitter:card" content="summary" />
 
   <link rel="stylesheet" href="../../styles/style.css" />
+  <link rel="icon" type="image/png" href="/images/groupworkout_icon.png">
   <link rel="stylesheet" href="../commonplace/commonplace.css" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
