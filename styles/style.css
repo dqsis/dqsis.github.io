@@ -413,6 +413,62 @@ a:hover {
   transition: opacity 0.3s;
 }
 
+/* ── Contact form ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin-bottom: 3rem;
+}
+
+.contact-form label {
+  font-size: 0.75rem;
+  color: var(--mid);
+  margin-bottom: 0.35rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.contact-form textarea { resize: vertical; min-height: 7rem; }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--terracotta);
+}
+
+.contact-form button {
+  align-self: flex-start;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--terracotta);
+  background: color-mix(in srgb, var(--terracotta) 14%, var(--bg));
+  border: 1px solid var(--terracotta);
+  border-radius: 0;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.contact-form button:hover { background: color-mix(in srgb, var(--terracotta) 24%, var(--bg)); }
+.contact-form button:disabled { opacity: 0.5; cursor: default; }
+
+.cf-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.cf-status { font-size: 0.78rem; color: var(--mid); margin-top: 0.75rem; min-height: 1.2em; }
+.cf-status.ok  { color: var(--olive); }
+.cf-status.err { color: var(--pink); }
+
 /* ── Divider ── */
 hr {
   border: none;
