@@ -317,6 +317,12 @@ a:hover {
 }
 .card-pink h3 { color: var(--pink); }
 
+.card-cyan {
+  border: 1px solid var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 12%, var(--bg));
+}
+.card-cyan h3 { color: color-mix(in srgb, var(--cyan) 72%, var(--ink)); }
+
 /* ── Checklist ── */
 .checklist {
   list-style: none;
