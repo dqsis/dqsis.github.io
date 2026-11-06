@@ -413,6 +413,31 @@ a:hover {
   transition: opacity 0.3s;
 }
 
+/* ── Prose blocks (home page sections) ── */
+.prose {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.prose p + p,
+.prose dl + p { margin-top: 1.2rem; }
+
+/* Year · milestone list, same rhythm as the reading page */
+.milestones {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.2rem 1rem;
+  margin: 0.9rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.milestones dt { color: var(--pink); }
+.milestones dd { color: var(--ink-2); }
+
 /* ── Contact form ── */
 .contact-form {
   display: flex;
