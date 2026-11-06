@@ -165,26 +165,29 @@ a:hover {
   text-size-adjust: 100%;
 }
 
-/* ── Home intro: photo beside the subtitle ── */
+/* ── Home intro: subtitle + round headshot (as on the CV) ── */
 .intro {
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
   margin-top: 1.25rem;
 }
 
 .intro .subtitle { margin-top: 0; }
 
 .intro-photo {
-  width: 140px;
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
   display: block;
-  border-radius: var(--radius);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 @media (max-width: 520px) {
-  .intro { flex-direction: column; gap: 1.25rem; }
-  .intro-photo { width: 160px; }
+  .intro { flex-direction: column-reverse; align-items: flex-start; gap: 1.25rem; }
+  .intro-photo { width: 96px; height: 96px; }
 }
 
 .title em {
