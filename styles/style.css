@@ -422,21 +422,18 @@ a:hover {
 }
 
 .prose p + p,
+.prose p + dl,
 .prose dl + p { margin-top: 1.2rem; }
 
-/* Year · milestone list, same rhythm as the reading page */
+/* Year · milestone list: reads as part of the prose */
 .milestones {
   display: grid;
   grid-template-columns: 3.5rem 1fr;
-  gap: 0.2rem 1rem;
-  margin: 0.9rem 0 0;
-  padding-left: 1rem;
-  border-left: 2px solid var(--border);
-  font-size: 0.85rem;
+  gap: 0.35rem 1rem;
 }
 
-.milestones dt { color: var(--pink); }
-.milestones dd { color: var(--ink-2); }
+.milestones dt { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.milestones dd { color: var(--mid); }
 
 /* ── Contact form ── */
 .contact-form {
