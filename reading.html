@@ -46,6 +46,13 @@
     transform: translate(-50%, -100%);
   }
   .chart-tip span { color: var(--mid); }
+  .chart-note {
+    margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--border);
+    font-size: 0.85rem; color: var(--mid); line-height: 1.7; max-width: 480px;
+  }
+  .chart-note em { color: var(--ink-2); }
+  .chart-note cite { display: block; font-size: 0.72rem; font-style: normal; margin-bottom: 0.75rem; }
+  .chart-note cite::before { content: '— '; color: var(--pink); }
 </style>
 </head>
 <body>
@@ -64,13 +71,18 @@
   <div class="header">
     <p class="eyebrow">Reading</p>
     <h1 class="title">Books I have <em>read</em>.</h1>
-    <p class="subtitle">293 books since 2006, newest first. I try to read 2 to 3 per month. Some years go better than others.</p>
+    <p class="subtitle">293 books since 2006, newest first. Some years go better than others.</p>
   </div>
 
   <section class="chart" id="books-chart" aria-label="Books read per year">
     <p class="section-label">Books per year</p>
     <svg role="img" aria-label="Bar chart of books read per year since 2006"></svg>
     <div class="chart-tip"></div>
+    <blockquote class="chart-note">
+      <p><em>Some books are to be tasted, others to be swallowed, and some few to be chewed and digested.</em></p>
+      <cite>Francis Bacon, Of Studies</cite>
+      <p>The bars count books, not what stayed with me. One slow book that changed my mind is worth a shelf of fast ones I have forgotten.</p>
+    </blockquote>
   </section>
 
     <section class="year">

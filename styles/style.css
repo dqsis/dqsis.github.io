@@ -165,6 +165,28 @@ a:hover {
   text-size-adjust: 100%;
 }
 
+/* ── Home intro: photo beside the subtitle ── */
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.intro .subtitle { margin-top: 0; }
+
+.intro-photo {
+  width: 140px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 520px) {
+  .intro { flex-direction: column; gap: 1.25rem; }
+  .intro-photo { width: 160px; }
+}
+
 .title em {
   font-style: normal;
   color: var(--terracotta);
@@ -244,6 +266,14 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: 0;
   padding: 1rem 1.1rem;
+}
+
+.card-date {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--mid);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
 }
 
 .card h3 {
