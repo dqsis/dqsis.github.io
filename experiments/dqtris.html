@@ -35,6 +35,9 @@
   .compare figcaption.mine { color: var(--accent); }
   .compare figure.original img { background: #2e3436; }
 
+  /* ── Figlet title: larger than the homepage one, scaled to fit 50 columns ── */
+  .ascii-title pre { font-size: clamp(0.5rem, 2.9vw, 0.95rem); line-height: 1.2; }
+
   /* ── Tetromino strip ── */
   .pieces { display: flex; gap: 6px; margin-top: 1.25rem; }
   .pieces span { width: 14px; height: 14px; display: inline-block; }
@@ -150,7 +153,11 @@
   <!-- Page header -->
   <header class="header">
     <p class="eyebrow">Terminal Game · Fork</p>
-    <h1 class="title">dqtris.<br><em>Bastard Tetris, tuned.</em></h1>
+    <h1 class="title ascii-title" aria-label="dqtris"><pre aria-hidden="true">    ____    ____   ______    ____     ____   _____
+   / __ \  / __ \ /_  __/   / __ \   /  _/  / ___/
+  / / / / / / / /  / /     / /_/ /   / /    \__ \
+ / /_/ / / /_/ /  / /     / _, _/  _/ /    ___/ /
+/_____/  \___\_\ /_/     /_/ |_|  /___/   /____/</pre></h1>
     <p class="subtitle">My fork of <em>Bastet</em>, a terminal Tetris that deliberately hands you the worst possible next piece. I left the cruelty alone and gave it classic colours, a grid and a ghost piece, so at least I can see exactly how I'm about to lose.</p>
     <div class="pieces" aria-hidden="true">
       <span style="background:#00ffff"></span><span style="background:#ffd700"></span><span style="background:#af00ff"></span><span style="background:#00d700"></span><span style="background:#ff0000"></span><span style="background:#005fff"></span><span style="background:#ff8700"></span>
