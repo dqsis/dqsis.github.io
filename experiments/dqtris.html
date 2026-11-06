@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>dqtris · Bastard Tetris — DQSIS</title>
+<link rel="stylesheet" href="../styles/style.css" />
+<link rel="icon" type="image/png" href="/images/groupworkout_icon.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root { --accent: color-mix(in srgb, var(--cyan) 72%, var(--ink)); }
+
+  .content { margin-bottom: 2rem; }
+
+  /* ── Before / after ── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 500px) { .compare { grid-template-columns: 1fr; } }
+  .compare figure { border: 1px solid var(--border); background: #0b0c16; }
+  .compare img { display: block; width: 100%; height: 280px; object-fit: contain; padding: 12px; }
+  .compare figcaption {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: var(--bg);
+    padding: 8px 12px;
+    border-top: 1px solid var(--border);
+  }
+  .compare figcaption.mine { color: var(--accent); }
+  .compare figure.original img { background: #2e3436; }
+
+  /* ── Tetromino strip ── */
+  .pieces { display: flex; gap: 6px; margin-top: 1.25rem; }
+  .pieces span { width: 14px; height: 14px; display: inline-block; }
+
+  /* ── CTA row ── */
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .cta-link {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .cta-link:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+  .cta-link.secondary { border-color: var(--border); color: var(--ink); }
+  .cta-link.secondary:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-note {
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    max-width: 60ch;
+    margin-bottom: 2rem;
+  }
+  .section-note code, .points code, .stack-value code {
+    font-size: 0.8rem;
+    background: var(--panel);
+    padding: 1px 5px;
+  }
+
+  /* ── Stack grid ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 500px) { .stack-grid { grid-template-columns: 1fr; } }
+  .stack-item {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    background: var(--bg);
+  }
+  .stack-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .stack-value {
+    font-size: 0.85rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  /* ── Points ── */
+  .points { list-style: none; margin-bottom: 3rem; max-width: 62ch; }
+  .points li {
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+    padding: 6px 0 6px 1.1rem;
+    position: relative;
+  }
+  .points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .points li strong { color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .page { padding: 0 1.25rem 4rem; }
+    .site-header { padding: 1.25rem 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Site header -->
+  <header class="site-header">
+    <a href="https://dqsis.com" class="site-logo" target="_blank" rel="noopener">
+      <img src="https://dqsis.com/images/groupworkout_icon.png" alt="DQSIS logo">
+      <span class="site-logo-name">DQSIS<span class="site-logo-sub">Dimitrios Kiousis</span></span>
+    </a>
+    <span class="site-nav">Experiments</span>
+  </header>
+
+  <!-- Page header -->
+  <header class="header">
+    <p class="eyebrow">Terminal Game · Fork</p>
+    <h1 class="title">dqtris.<br><em>Bastard Tetris, tuned.</em></h1>
+    <p class="subtitle">My fork of <em>Bastet</em>, a terminal Tetris that deliberately hands you the worst possible next piece. I left the cruelty alone and gave it classic colours, a grid and a ghost piece, so at least I can see exactly how I'm about to lose.</p>
+    <div class="pieces" aria-hidden="true">
+      <span style="background:#00ffff"></span><span style="background:#ffd700"></span><span style="background:#af00ff"></span><span style="background:#00d700"></span><span style="background:#ff0000"></span><span style="background:#005fff"></span><span style="background:#ff8700"></span>
+    </div>
+    <div class="cta-row">
+      <a class="cta-link" href="https://github.com/dqsis/dqtris" target="_blank" rel="noopener">View on GitHub →</a>
+      <a class="cta-link secondary" href="https://github.com/fph/bastet" target="_blank" rel="noopener">The original Bastet →</a>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="content">
+
+    <!-- What it is -->
+    <p class="section-label">What it is</p>
+    <p class="section-note">
+      Bastet ("bastard Tetris") is a small ncurses game from 2005. Instead of picking pieces at random, it looks at your stack and chooses the one that hurts most. That usually means the straight I-piece never comes. I play it in a terminal on my <a href="omarchy.html" style="color:var(--accent);">Omarchy desktop</a>, and a few things bugged me: the colours were off, it was hard to judge where a piece would land, and the screen went blank whenever my tiling window manager resized the window. So I forked it.
+    </p>
+
+    <!-- Before / after -->
+    <p class="section-label">Before &amp; after</p>
+    <div class="compare">
+      <figure>
+        <img src="../images/dqtris.png" alt="dqtris: classic tetromino colours, a faint dot grid, gaps between squares and a red ghost piece showing where the falling Z will land" loading="lazy">
+        <figcaption class="mine">dqtris</figcaption>
+      </figure>
+      <figure class="original">
+        <img src="../images/bastet-original.png" alt="Original bastet: solid blocks in basic terminal colours, white O-piece, no grid or ghost piece" loading="lazy">
+        <figcaption>Original Bastet 0.43</figcaption>
+      </figure>
+    </div>
+
+    <!-- Changes -->
+    <p class="section-label">What I changed</p>
+    <ul class="points">
+      <li><strong>Classic colours:</strong> every tetromino gets the colour you'd expect (I cyan, O yellow, T purple, S green, Z red, J blue, L orange). The original only had the 8 basic terminal colours, so the O-piece was white and there was no orange.</li>
+      <li><strong>Ghost piece:</strong> a <code>[]</code> outline in the falling piece's colour shows exactly where it will land if you hard-drop it.</li>
+      <li><strong>Background grid:</strong> a faint dot in every empty cell, so you can see which column you're lining up with.</li>
+      <li><strong>Tile gaps:</strong> a thin dark gap between squares, so you can count the cells in a stack.</li>
+      <li><strong>Resize-safe:</strong> the original goes blank whenever its window changes size, which happens all the time under Hyprland. dqtris re-centres and redraws the game, the menus and the pause screen on every resize.</li>
+    </ul>
+
+    <p class="section-label">How it was made</p>
+    <p class="section-note">
+      Built in one morning with Claude Code, one change at a time. I tried a couple of looks before settling. White outlines around each square looked busy, so they lost to simple gaps, and a giant fullscreen version went back to normal size. The bastard block-chooser itself is untouched: it's still Federico Poloni's 2005 algorithm, and it still won't send me the line piece. The fork is about 150 lines of C++, published on GitHub under the original GPL v3 licence.
+    </p>
+
+    <!-- Stack -->
+    <p class="section-label">Stack</p>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <div class="stack-title">Language</div>
+        <div class="stack-value">C++ with ncurses (wide-character build) and Boost</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-title">Upstream</div>
+        <div class="stack-value">Bastet 0.43 by Federico Poloni, GPL v3</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-title">Terminal</div>
+        <div class="stack-value">foot with JetBrains Mono Nerd Font, 256 colours</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-title">Launch</div>
+        <div class="stack-value">A shell alias: type <code>dqtris</code> in any terminal</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">DQSIS · Terminal Game · dqtris · Updated 6 November 2026</footer>
+
+</div>
+</body>
+</html>
